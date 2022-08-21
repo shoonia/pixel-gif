@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>My First Parcel App</title>
+  <link rel="stylesheet" href="styles/index.css" />
+  <script type="module" src="scripts/index.js" defer></script>
+</head>
+
+<body>
+  <h1>Hello, World!</h1>
+
+  <form action="#">
+    <fieldset>
+      <input id="hex" list="colorList" type="text" value="ffffff" spellcheck="false" autocomplete="on" placeholder="ffffff">
+      <datalist id="colorList"></datalist>
+    </fieldset>
+    <div>
+      <fieldset>
+        <label>
+          <input id="r-number" data-rgb="r" type="number" value="255" max="255" min="0" step="1">
+        </label>
+        <label>
+          <input id="r-range" data-rgb="r" type="range" value="255" max="255" min="0" step="1">
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <input id="g-number" data-rgb="g" type="number" value="255" max="255" min="0" step="1">
+        </label>
+        <label>
+          <input id="g-range" data-rgb="g" type="range" value="255" max="255" min="0" step="1">
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <input id="b-number" data-rgb="b" type="number" value="255" max="255" min="0" step="1">
+        </label>
+        <label>
+          <input id="b-range" data-rgb="b" type="range" value="255" max="255" min="0" step="1">
+        </label>
+      </fieldset>
+    </div>
+  </form>
+</body>
+
+</html>
