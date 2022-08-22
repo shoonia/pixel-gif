@@ -76,6 +76,10 @@ $$('[data-rgb]').forEach((input) =>
 
 $('#colorList').append(createOptionList(colors));
 
+$('#random').addEventListener('click', () => {
+  setHex(random16(6));
+});
+
 hex.addEventListener('change', () => {
   const [isValid, color] = parseHex(hex.value);
 
