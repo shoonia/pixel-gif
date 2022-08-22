@@ -95,14 +95,14 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
 
   console.log('%c  ', css, '#' + color);
+  location.hash = color;
   hex.value = color;
   outputData.value = dataURL;
   outputCss.value = background;
   outputLink.value = location.href;
   outputLength.textContent = dataURL.length;
-  document.location.hash = color;
   document.body.style.backgroundImage = url;
-  document.title = `1x1 Pixel GIF | ${color}`;
+  document.title = '1x1 Pixel GIF | ' + color;
 });
 
 connect('r', ({ r }) => {
