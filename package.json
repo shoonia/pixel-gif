@@ -5,12 +5,13 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "clean": "rm -rf .parcel-cache dist",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "rgb-hex": "^4.0.0",
-    "storeon": "^3.1.5",
-    "storeon-connect": "^0.9.0"
+    "rgb-hex": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^8.22.0",
