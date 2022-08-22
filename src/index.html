@@ -13,11 +13,18 @@
 
   <form action="#">
     <fieldset>
-      <input id="hex" list="colorList" type="text" value="ffffff" spellcheck="false" autocomplete="on" placeholder="ffffff">
+      <legend>
+        Color
+      </legend>
+      <input id="hex" list="colorList" type="text" value="ffffff" spellcheck="false" autocomplete="on"
+        placeholder="ffffff">
       <datalist id="colorList"></datalist>
     </fieldset>
     <div>
       <fieldset>
+        <legend>
+          Red
+        </legend>
         <label>
           <input id="r-number" data-rgb="r" type="number" value="255" max="255" min="0" step="1">
         </label>
@@ -26,6 +33,9 @@
         </label>
       </fieldset>
       <fieldset>
+        <legend>
+          Green
+        </legend>
         <label>
           <input id="g-number" data-rgb="g" type="number" value="255" max="255" min="0" step="1">
         </label>
@@ -34,6 +44,9 @@
         </label>
       </fieldset>
       <fieldset>
+        <legend>
+          Blue
+        </legend>
         <label>
           <input id="b-number" data-rgb="b" type="number" value="255" max="255" min="0" step="1">
         </label>
@@ -43,6 +56,24 @@
       </fieldset>
     </div>
   </form>
+
+  <br />
+
+  <fieldset>
+    <legend>
+      Output
+    </legend>
+    <label>
+      <input id="output-data" type="text" readonly spellcheck="false" />
+    </label>
+    <output id="length"></output>
+    <label>
+      <input id="output-css" type="text" readonly spellcheck="false" />
+    </label>
+    <label>
+      <input id="output-link" type="text" readonly spellcheck="false" />
+    </label>
+  </fieldset>
 </body>
 
 </html>

@@ -17,6 +17,10 @@ const gNumber = $('#g-number');
 const gRange = $('#g-range');
 const bNumber = $('#b-number');
 const bRange = $('#b-range');
+const outputData = $('#output-data');
+const outputLength = $('#length');
+const outputCss = $('#output-css');
+const outputLink = $('#output-link');
 
 const parseHex = (value) => {
   let color = value
@@ -87,10 +91,15 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   const dataURL = createPixel(r, g, b);
 
   const url = `url(${dataURL})`;
-  const css = `display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:${url}`;
+  const background = `background-image: ${url};`;
+  const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
 
-  console.log('%c  ', css, `#${color}`);
+  console.log('%c  ', css, '#' + color);
   hex.value = color;
+  outputData.value = dataURL;
+  outputCss.value = background;
+  outputLink.value = location.href;
+  outputLength.textContent = dataURL.length;
   document.location.hash = color;
   document.body.style.backgroundImage = url;
   document.title = `1x1 Pixel GIF | ${color}`;
@@ -115,6 +124,6 @@ connect('b', ({ b }) => {
   const [isValid, color] = parseHex(location.hash);
   const hexColor = isValid ? color : random16(6);
 
-  history.pushState(1, null, `#${hexColor}`);
+  history.pushState(1, null, '#' + hexColor);
   setHex(hexColor);
 }
