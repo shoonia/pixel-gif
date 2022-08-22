@@ -27,7 +27,7 @@ export const decimalToHex = (i) => {
 export const random16 = (size) => {
   let id = '';
 
-  while (0 < size--) {
+  while (size--) {
     id += (16 * Math.random() | 0).toString(16);
   }
 

@@ -1,26 +1,39 @@
-import { createStoreon } from 'storeon';
-import { storeonConnect } from 'storeon-connect';
+let state = {
+  r: 0,
+  g: 0,
+  b: 0,
+};
 
-const app = (store) => {
-  store.on('@init', () => {
-    return {
-      r: 255,
-      g: 255,
-      b: 255,
-    };
-  });
+const subs = [];
 
-  store.on('hex', (_, color) => {
-    const i = parseInt(color, 16);
+const setState = (data) => {
+  state = { ...state, ...data };
 
-    return {
-      r: i >> 16 & 255,
-      g: i >> 8 & 255,
-      b: i & 255,
-    };
+  subs.forEach((s) => {
+    const changesInKeys = s.keys.some((i) => i in data);
+
+    if (changesInKeys) {
+      s.cb(state);
+    }
   });
 };
 
-const store = createStoreon([app]);
+export const setRgb = (key, value) => setState({
+  [key]: parseFloat(value),
+});
 
-export const { setState, dispatch, connect } = storeonConnect(store);
+export const setHex = (color) => {
+  const i = parseInt(color, 16);
+
+  setState({
+    r: i >> 16 & 255,
+    g: i >> 8 & 255,
+    b: i & 255,
+  });
+};
+
+export const connect = (...keys) => {
+  const cb = keys.pop();
+
+  subs.push({ keys, cb });
+};
