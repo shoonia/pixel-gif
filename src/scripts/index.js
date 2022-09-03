@@ -5,8 +5,8 @@ import colors from './colors.json';
 const SYMBOL_HASH = /^#/;
 const NOT_HEXADECIMAL = /[^\da-f]/ig;
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+const $ = (i) => document.querySelector(i);
+const $$ = (i) => document.querySelectorAll(i);
 
 const hex = $('#hex');
 const rNumber = $('#r-number');
@@ -49,6 +49,16 @@ function changeRgb() {
   setRgb(this.dataset.rgb, this.valueAsNumber);
 }
 
+const changeHex = () => {
+  const [isValid, color] = parseHex(hex.value);
+
+  if (isValid) {
+    setHex(color);
+  } else {
+    hex.focus();
+  }
+};
+
 const createOptionList = () => {
   const list = new DocumentFragment();
   const option = document.createElement('option');
@@ -74,13 +84,11 @@ $('#random').addEventListener('click', () => {
   setHex(random16(6));
 });
 
-hex.addEventListener('change', () => {
-  const [isValid, color] = parseHex(hex.value);
+hex.addEventListener('change', changeHex);
 
-  if (isValid) {
-    setHex(color);
-  } else {
-    hex.focus();
+hex.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    changeHex();
   }
 });
 
