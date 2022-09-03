@@ -1,7 +1,5 @@
-import rgbHex from 'rgb-hex';
-
 import { connect, setRgb, setHex } from './store';
-import { createPixel, decimalToHex, random16 } from './util';
+import { createPixel, decimalToHex, random16, rgbHex } from './util';
 import colors from './colors.json';
 
 const SYMBOL_HASH = /^#/;
@@ -33,11 +31,7 @@ const parseHex = (value) => {
   }
 
   if (NOT_HEXADECIMAL.test(color)) {
-    try {
-      color = rgbHex(value);
-    } catch {
-      return [false];
-    }
+    color = rgbHex(color);
   }
 
   if (color.length === 3) {
