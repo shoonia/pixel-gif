@@ -17,6 +17,11 @@
     "eslint": "^8.23.0",
     "parcel": "^2.7.0"
   },
+  "targets": {
+    "default": {
+      "publicUrl": "https://shoonia.github.io/pixel-gif/"
+    }
+  },
   "author": "Alexander Zaytsev",
   "license": "MIT"
 }
