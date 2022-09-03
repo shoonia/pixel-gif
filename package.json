@@ -10,11 +10,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "serve": "python3 -m http.server -d dist"
   },
-  "dependencies": {
-    "rgb-hex": "^4.0.0"
-  },
   "devDependencies": {
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "parcel": "^2.7.0"
   },
   "author": "Alexander Zaytsev",
