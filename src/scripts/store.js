@@ -1,3 +1,5 @@
+import { parseNumber } from './util';
+
 let state = {
   r: 0,
   g: 0,
@@ -19,7 +21,7 @@ const setState = (data) => {
 };
 
 export const setRgb = (key, value) => setState({
-  [key]: parseFloat(value),
+  [key]: parseNumber(value),
 });
 
 export const setHex = (color) => {
