@@ -7,7 +7,7 @@
     "start": "parcel",
     "build": "parcel build",
     "clean": "rm -rf .parcel-cache dist",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint 'src/**/*.js'",
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
