@@ -1,15 +1,15 @@
 const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
-const triplet = (e1, e2, e3) =>
-  keys.charAt(e1 >> 2) +
-  keys.charAt(((e1 & 3) << 4) | (e2 >> 4)) +
-  keys.charAt(((e2 & 15) << 2) | (e3 >> 6)) +
-  keys.charAt(e3 & 63);
+const triplet = (a, b, c) =>
+  keys.charAt(a >> 2) +
+  keys.charAt(((a & 3) << 4) | (b >> 4)) +
+  keys.charAt(((b & 15) << 2) | (c >> 6)) +
+  keys.charAt(c & 63);
 
 export const createPixel = (r, g, b) =>
   'data:image/gif;base64,R0lGODlhAQABAPAA' +
   triplet(0, r, g) +
-  triplet(b, 255, 255) +
+  triplet(b, 0, 0) +
   '/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 export const parseNumber = (n) => {
