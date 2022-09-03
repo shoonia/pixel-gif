@@ -75,6 +75,16 @@ const createOptionList = () => {
   return list;
 };
 
+let timeout;
+
+const updateUrl = (color) => {
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    location.hash = color;
+  }, 500);
+};
+
 $$('[data-rgb]').forEach((input) =>
   input.addEventListener('input', changeRgb),
 );
@@ -101,19 +111,20 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   const color = [r, g, b].map(decimalToHex).join('');
   const dataURL = createPixel(r, g, b);
 
+  const withHash = '#' + color;
   const url = `url(${dataURL})`;
   const background = `background-image: ${url};`;
   const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
 
-  console.log('%c  ', css, '#' + color);
-  location.hash = color;
+  console.log('%c  ', css, withHash);
+  updateUrl(withHash);
   hex.value = color;
   outputData.value = dataURL;
   outputCss.value = background;
-  outputLink.value = location.href;
+  outputLink.value = new URL(withHash, location.href).href;
   outputLength.textContent = dataURL.length;
   document.body.style.backgroundImage = url;
-  document.title = '1x1 Pixel GIF | ' + color;
+  document.title = '1x1 Pixel GIF | ' + withHash;
   picker.color = color;
 });
 
