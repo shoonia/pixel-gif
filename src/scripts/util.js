@@ -34,11 +34,13 @@ export const random16 = (size) => {
   return id;
 };
 
-export const rgbHex = (color) => {
-  const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g);
+export const rgbToHex = (color) => {
+  const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
   const rgb = [r, g, b].map(Number);
 
   if (rgb.every((i) => typeof i === 'number' && i >= 0 && i <= 255)) {
     return rgb.map(decimalToHex).join('');
   }
+
+  return '';
 };
