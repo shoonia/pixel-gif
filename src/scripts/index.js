@@ -19,6 +19,7 @@ const outputData = $('#output-data');
 const outputLength = $('#length');
 const outputCss = $('#output-css');
 const outputLink = $('#output-link');
+const picker = $('hex-color-picker');
 
 const parseHex = (value) => {
   let color = value
@@ -92,6 +93,10 @@ hex.addEventListener('keyup', (event) => {
   }
 });
 
+picker.addEventListener('color-changed', (event) => {
+  setHex(event.detail.value.slice(1));
+});
+
 connect('r', 'g', 'b', ({ r, g, b }) => {
   const color = [r, g, b].map(decimalToHex).join('');
   const dataURL = createPixel(r, g, b);
@@ -109,6 +114,7 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   outputLength.textContent = dataURL.length;
   document.body.style.backgroundImage = url;
   document.title = '1x1 Pixel GIF | ' + color;
+  picker.color = color;
 });
 
 connect('r', ({ r }) => {

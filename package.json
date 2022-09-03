@@ -10,6 +10,9 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "serve": "python3 -m http.server -d dist"
   },
+  "dependencies": {
+    "vanilla-colorful": "^0.7.1"
+  },
   "devDependencies": {
     "eslint": "^8.23.0",
     "parcel": "^2.7.0"
