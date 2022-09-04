@@ -1,6 +1,7 @@
 import { connect, setRgb, setHex } from './store';
 import { createPixel, decimalToHex, random16, rgbToHex } from './util';
 import colors from './colors.json';
+import { createFavicon } from './elements';
 
 const SYMBOL_HASH = /^#/;
 const NOT_HEXADECIMAL = /[^\da-f]/ig;
@@ -19,6 +20,7 @@ const outputData = $('#output-data');
 const outputCss = $('#output-css');
 const outputLink = $('#output-link');
 const picker = $('hex-color-picker');
+const favicon = $('link[rel="icon"]');
 
 const parseHex = (value) => {
   let color = value
@@ -74,16 +76,6 @@ const createOptionList = () => {
   return list;
 };
 
-let timeout;
-
-const updateUrl = (color) => {
-  clearTimeout(timeout);
-
-  timeout = setTimeout(() => {
-    location.hash = color;
-  }, 500);
-};
-
 $$('[data-rgb]').forEach((input) =>
   input.addEventListener('input', changeRgb),
 );
@@ -106,6 +98,8 @@ picker.addEventListener('color-changed', (event) => {
   setHex(event.detail.value.slice(1));
 });
 
+let timeout;
+
 connect('r', 'g', 'b', ({ r, g, b }) => {
   const color = [r, g, b].map(decimalToHex).join('');
   const dataURL = createPixel(r, g, b);
@@ -116,14 +110,19 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
 
   console.log('%c  ', css, withHash);
-  updateUrl(withHash);
   hex.value = color;
   outputData.value = dataURL;
   outputCss.value = background;
   outputLink.value = new URL(withHash, location.href).href;
   document.body.style.backgroundImage = url;
-  document.title = '1x1 Pixel GIF | ' + withHash;
   picker.color = color;
+
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    document.title = '1x1 Pixel GIF | ' + withHash;
+    location.hash = withHash;
+    favicon.href = createFavicon(withHash);
+  }, 500);
 });
 
 connect('r', ({ r }) => {
