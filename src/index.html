@@ -16,7 +16,7 @@
   <form action="#">
     <fieldset>
       <legend>
-        Color
+        HEX
       </legend>
       <input id="hex" class="text" list="colorList" type="text" value="ffffff" spellcheck="false" autocomplete="on"
         placeholder="ffffff">
@@ -25,41 +25,45 @@
     <div>
       <fieldset>
         <legend>
-          Red
+          RGB
         </legend>
-        <label>
-          <input id="r-number" data-rgb="r" type="number" value="255" max="255" min="0" step="1">
-        </label>
-        <label>
-          <input id="r-range" data-rgb="r" type="range" value="255" max="255" min="0" step="1">
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Green
-        </legend>
-        <label>
-          <input id="g-number" data-rgb="g" type="number" value="255" max="255" min="0" step="1">
-        </label>
-        <label>
-          <input id="g-range" data-rgb="g" type="range" value="255" max="255" min="0" step="1">
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>
-          Blue
-        </legend>
-        <label>
-          <input id="b-number" data-rgb="b" type="number" value="255" max="255" min="0" step="1">
-        </label>
-        <label>
-          <input id="b-range" data-rgb="b" type="range" value="255" max="255" min="0" step="1">
-        </label>
+        <div>
+          <label>
+            <input id="r-number" data-rgb="r" type="number" value="255" max="255" min="0" step="1">
+          </label>
+          <label>
+            <input id="r-range" data-rgb="r" type="range" value="255" max="255" min="0" step="1">
+          </label>
+        </div>
+        <div>
+          <label>
+            <input id="g-number" data-rgb="g" type="number" value="255" max="255" min="0" step="1">
+          </label>
+          <label>
+            <input id="g-range" data-rgb="g" type="range" value="255" max="255" min="0" step="1">
+          </label>
+        </div>
+        <div>
+          <label>
+            <input id="b-number" data-rgb="b" type="number" value="255" max="255" min="0" step="1">
+          </label>
+          <label>
+            <input id="b-range" data-rgb="b" type="range" value="255" max="255" min="0" step="1">
+          </label>
+        </div>
       </fieldset>
     </div>
   </form>
 
   <br />
+
+  <hex-color-picker></hex-color-picker>
+
+  <br />
+
+  <button id="random" type="button">Random Color</button>
+
+  <br /><br />
 
   <fieldset>
     <legend>
@@ -76,13 +80,6 @@
     </label>
   </fieldset>
 
-  <br />
-
-  <hex-color-picker></hex-color-picker>
-
-  <br />
-
-  <button id="random" type="button">Random Color</button>
 </body>
 
 </html>
