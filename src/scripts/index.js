@@ -2,6 +2,7 @@ import colors from './colors.json';
 import { connect, setRgb, setHex } from './store';
 import { createPixel, decimalToHex, random16, rgbToHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
+import { debounce } from './helpers';
 
 const SYMBOL_HASH = /^#/;
 const NOT_HEXADECIMAL = /[^\da-f]/ig;
@@ -80,7 +81,11 @@ picker.addEventListener('color-changed', (event) => {
   setHex(event.detail.value.slice(1));
 });
 
-let timeout;
+const updateHead = debounce((hex) => {
+  document.title = '1x1 Pixel GIF | ' + hex;
+  location.hash = hex;
+  favicon.href = createFavicon(hex);
+}, 500);
 
 connect('r', 'g', 'b', ({ r, g, b }) => {
   const color = [r, g, b].map(decimalToHex).join('');
@@ -98,13 +103,7 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   outputLink.value = new URL(withHash, location.href).href;
   document.body.style.backgroundImage = url;
   picker.color = color;
-
-  clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    document.title = '1x1 Pixel GIF | ' + withHash;
-    location.hash = withHash;
-    favicon.href = createFavicon(withHash);
-  }, 500);
+  updateHead(withHash);
 });
 
 connect('r', ({ r }) => {
