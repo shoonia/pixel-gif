@@ -1,13 +1,10 @@
+import colors from './colors.json';
 import { connect, setRgb, setHex } from './store';
 import { createPixel, decimalToHex, random16, rgbToHex } from './util';
-import colors from './colors.json';
-import { createFavicon } from './elements';
+import { $, $$, createOptionList, createFavicon } from './elements';
 
 const SYMBOL_HASH = /^#/;
 const NOT_HEXADECIMAL = /[^\da-f]/ig;
-
-const $ = (i) => document.querySelector(i);
-const $$ = (i) => document.querySelectorAll(i);
 
 const hex = $('#hex');
 const rNumber = $('#r-number');
@@ -59,21 +56,6 @@ const changeHex = () => {
   } else {
     hex.focus();
   }
-};
-
-const createOptionList = () => {
-  const list = new DocumentFragment();
-  const option = document.createElement('option');
-
-  for (let key in colors) {
-    const item = option.cloneNode();
-
-    item.value = colors[key];
-    item.textContent = key;
-    list.append(item);
-  }
-
-  return list;
 };
 
 $$('[data-rgb]').forEach((input) =>
