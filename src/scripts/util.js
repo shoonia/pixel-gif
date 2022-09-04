@@ -1,16 +1,7 @@
-const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-const triplet = (a, b, c) =>
-  keys.charAt(a >> 2) +
-  keys.charAt(((a & 3) << 4) | (b >> 4)) +
-  keys.charAt(((b & 15) << 2) | (c >> 6)) +
-  keys.charAt(c & 63);
-
 export const createPixel = (r, g, b) =>
-  'data:image/gif;base64,R0lGODlhAQABAPAA' +
-  triplet(0, r, g) +
-  triplet(b, 0, 0) +
-  '/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
+  'data:image/gif;base64,' +
+  btoa(String.fromCharCode(71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0, r, g, b, 0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59));
+
 
 export const parseDecimal = (n) => {
   const i = Math.abs(~~n);
