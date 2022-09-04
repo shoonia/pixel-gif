@@ -1,4 +1,4 @@
-import { parseNumber } from './util';
+import { hexToRgb, parseDecimal } from './util';
 
 let state = {
   r: 0,
@@ -21,18 +21,10 @@ const setState = (data) => {
 };
 
 export const setRgb = (key, value) => setState({
-  [key]: parseNumber(value),
+  [key]: parseDecimal(value),
 });
 
-export const setHex = (color) => {
-  const i = parseInt(color, 16);
-
-  setState({
-    r: i >> 16 & 255,
-    g: i >> 8 & 255,
-    b: i & 255,
-  });
-};
+export const setHex = (color) => setState(hexToRgb(color));
 
 export const connect = (...keys) => {
   const cb = keys.pop();

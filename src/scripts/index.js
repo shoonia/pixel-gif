@@ -1,6 +1,6 @@
 import colors from './colors.json';
 import { connect, setRgb, setHex } from './store';
-import { createPixel, decimalToHex, random16, rgbToHex } from './util';
+import { createPixel, decimalToHex, randomHex, rgbToHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
 import { debounce } from './helpers';
 
@@ -66,7 +66,7 @@ $$('[data-rgb]').forEach((input) =>
 $('#colorList').append(createOptionList(colors));
 
 $('#random').addEventListener('click', () => {
-  setHex(random16(6));
+  setHex(randomHex(6));
 });
 
 hex.addEventListener('change', changeHex);
@@ -123,7 +123,7 @@ connect('b', ({ b }) => {
 
 {
   const [isValid, color] = parseHex(location.hash);
-  const hexColor = isValid ? color : random16(6);
+  const hexColor = isValid ? color : randomHex(6);
 
   history.pushState(1, null, '#' + hexColor);
   setHex(hexColor);

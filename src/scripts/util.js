@@ -12,10 +12,20 @@ export const createPixel = (r, g, b) =>
   triplet(b, 0, 0) +
   '/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
 
-export const parseNumber = (n) => {
+export const parseDecimal = (n) => {
   const i = Math.abs(~~n);
 
   return i > 255 ? 255 : i;
+};
+
+export const hexToRgb = (hex) => {
+  const i = parseInt(hex, 16);
+
+  return {
+    r: i >> 16 & 255,
+    g: i >> 8 & 255,
+    b: i & 255,
+  };
 };
 
 export const decimalToHex = (i) => {
@@ -24,7 +34,7 @@ export const decimalToHex = (i) => {
   return hex.length < 2 ? '0' + hex : hex;
 };
 
-export const random16 = (size) => {
+export const randomHex = (size) => {
   let id = '';
 
   while (size--) {
