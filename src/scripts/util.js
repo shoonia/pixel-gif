@@ -1,7 +1,18 @@
-export const createPixel = (r, g, b) =>
-  'data:image/gif;base64,' +
-  btoa(String.fromCharCode(71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0, r, g, b, 0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59));
+const getBytesArray = (r, g, b) => [71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0, r, g, b, 0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59];
 
+export const createDataUrl = (r, g, b) => {
+  const arr = getBytesArray(r, g, b);
+  const str = String.fromCharCode.apply(null, arr);
+
+  return 'data:image/gif;base64,' + btoa(str);
+};
+
+export const createBlob = (r, g, b) => {
+  const arr = getBytesArray(r, g, b);
+  const bytes = new Uint8Array(arr);
+
+  return new Blob([bytes], { type: 'image/gif' });
+};
 
 export const parseDecimal = (n) => {
   const i = Math.abs(~~n);

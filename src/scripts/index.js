@@ -1,6 +1,6 @@
 import colors from './colors.json';
 import { connect, setRgb, setHex } from './store';
-import { createPixel, decimalToHex, randomHex, rgbToHex } from './util';
+import { createDataUrl, decimalToHex, randomHex, rgbToHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
 import { debounce } from './helpers';
 
@@ -89,7 +89,7 @@ const updateHead = debounce((hex) => {
 
 connect('r', 'g', 'b', ({ r, g, b }) => {
   const color = [r, g, b].map(decimalToHex).join('');
-  const dataURL = createPixel(r, g, b);
+  const dataURL = createDataUrl(r, g, b);
 
   const withHash = '#' + color;
   const url = `url(${dataURL})`;
