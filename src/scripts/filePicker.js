@@ -1,6 +1,8 @@
-export const isSupportFilePicker = typeof window.showSaveFilePicker === 'function';
+export const isSupportFilePicker = typeof window.showSaveFilePicker !== 'function';
 
-export const saveFile = async (suggestedName, blob) => {
+export const createName = (hex) => `1x1-${hex}.gif`;
+
+export const saveGif = async (suggestedName, blob) => {
   const file = await window.showSaveFilePicker({
     suggestedName,
   });

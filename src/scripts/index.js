@@ -1,8 +1,8 @@
 import colors from './colors.json';
 import { connect, getState, setRgb, setHex } from './store';
-import { createBlob, createDataUrl, decimalToHex, randomHex, rgbToHex } from './util';
+import { createBlob, createDataUrl, randomHex, rgbToHex, createHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
-import { isSupportFilePicker, saveFile } from './filePicker';
+import { createName, isSupportFilePicker, saveGif } from './filePicker';
 import { debounce } from './helpers';
 
 const SYMBOL_HASH = /^#/;
@@ -83,6 +83,17 @@ picker.addEventListener('color-changed', (event) => {
   setHex(event.detail.value.slice(1));
 });
 
+if (isSupportFilePicker) {
+  download.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const { r, g, b } = getState();
+    const color = createHex(r, g, b);
+
+    await saveGif(createName(color), createBlob(r, g, b));
+  });
+}
+
 const updateHead = debounce((hex) => {
   document.title = '1x1 Pixel GIF | ' + hex;
   location.hash = hex;
@@ -90,13 +101,18 @@ const updateHead = debounce((hex) => {
 }, 500);
 
 connect('r', 'g', 'b', ({ r, g, b }) => {
-  const color = [r, g, b].map(decimalToHex).join('');
+  const color = createHex(r, g, b);
   const dataURL = createDataUrl(r, g, b);
 
   const withHash = '#' + color;
   const url = `url(${dataURL})`;
   const background = `background-image: ${url};`;
   const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
+
+  if (!isSupportFilePicker) {
+    download.download = createName(color);
+    download.href = dataURL;
+  }
 
   console.log('%c  ', css, withHash);
   hex.value = color;
@@ -122,28 +138,6 @@ connect('b', ({ b }) => {
   bNumber.value = b;
   bRange.value = b;
 });
-
-if (isSupportFilePicker) {
-  download.addEventListener('click', async (event) => {
-    event.preventDefault();
-
-    const { r, g, b } = getState();
-    const blob = createBlob(r, g, b);
-    const color = [r, g, b].map(decimalToHex).join('');
-
-    await saveFile(`1x1-${color}.gif`, blob);
-  });
-} else {
-  connect('r', 'g', 'b', ({ r, g, b }) => {
-    const color = [r, g, b].map(decimalToHex).join('');
-    const blob = createBlob(r, g, b);
-
-    URL.revokeObjectURL(download.href);
-
-    download.download = `1x1-${color}.gif`;
-    download.href = URL.createObjectURL(blob);
-  });
-}
 
 {
   const [isValid, color] = parseHex(location.hash);

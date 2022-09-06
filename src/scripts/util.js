@@ -30,12 +30,6 @@ export const hexToRgb = (hex) => {
   };
 };
 
-export const decimalToHex = (i) => {
-  const hex = i.toString(16);
-
-  return hex.length < 2 ? '0' + hex : hex;
-};
-
 export const randomHex = (size) => {
   let id = '';
 
@@ -46,12 +40,20 @@ export const randomHex = (size) => {
   return id;
 };
 
+export const createHex = (...rgb) => {
+  return rgb.map((i) => {
+    const hex = i.toString(16);
+
+    return hex.length < 2 ? '0' + hex : hex;
+  }).join('');
+};
+
 export const rgbToHex = (color) => {
   const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
   const rgb = [r, g, b].map(Number);
 
   if (rgb.every((i) => typeof i === 'number' && i >= 0 && i <= 255)) {
-    return rgb.map(decimalToHex).join('');
+    return createHex(r, g, b);
   }
 
   return '';
