@@ -1,6 +1,6 @@
 import colors from './colors.json';
 import { connect, getState, setRgb, setHex } from './store';
-import { createBlob, createDataUrl, randomHex, rgbToHex, createHex } from './util';
+import { createDataUrl, randomHex, rgbToHex, createHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
 import { createName, isSupportFilePicker, saveGif } from './filePicker';
 import { debounce } from './helpers';
@@ -66,10 +66,7 @@ $$('[data-rgb]').forEach((input) =>
 );
 
 $('#colorList').append(createOptionList(colors));
-
-$('#random').addEventListener('click', () => {
-  setHex(randomHex(6));
-});
+$('#random').addEventListener('click', () => setHex(randomHex(6)));
 
 hex.addEventListener('change', changeHex);
 
@@ -86,11 +83,7 @@ picker.addEventListener('color-changed', (event) => {
 if (isSupportFilePicker) {
   download.addEventListener('click', async (event) => {
     event.preventDefault();
-
-    const { r, g, b } = getState();
-    const color = createHex(r, g, b);
-
-    await saveGif(createName(color), createBlob(r, g, b));
+    await saveGif(getState());
   });
 }
 
