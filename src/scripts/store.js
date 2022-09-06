@@ -20,6 +20,8 @@ const setState = (data) => {
   });
 };
 
+export const getState = () => state;
+
 export const setRgb = (key, value) => setState({
   [key]: parseDecimal(value),
 });

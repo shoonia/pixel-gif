@@ -1,7 +1,8 @@
 import colors from './colors.json';
-import { connect, setRgb, setHex } from './store';
-import { createDataUrl, decimalToHex, randomHex, rgbToHex } from './util';
+import { connect, getState, setRgb, setHex } from './store';
+import { createBlob, createDataUrl, decimalToHex, randomHex, rgbToHex } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
+import { isSupportFilePicker, saveFile } from './filePicker';
 import { debounce } from './helpers';
 
 const SYMBOL_HASH = /^#/;
@@ -19,6 +20,7 @@ const outputCss = $('#output-css');
 const outputLink = $('#output-link');
 const picker = $('hex-color-picker');
 const favicon = $('link[rel="icon"]');
+const download = $('#download');
 
 const parseHex = (value) => {
   let color = value
@@ -120,6 +122,28 @@ connect('b', ({ b }) => {
   bNumber.value = b;
   bRange.value = b;
 });
+
+if (isSupportFilePicker) {
+  download.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const { r, g, b } = getState();
+    const blob = createBlob(r, g, b);
+    const color = [r, g, b].map(decimalToHex).join('');
+
+    await saveFile(`1x1-${color}.gif`, blob);
+  });
+} else {
+  connect('r', 'g', 'b', ({ r, g, b }) => {
+    const color = [r, g, b].map(decimalToHex).join('');
+    const blob = createBlob(r, g, b);
+
+    URL.revokeObjectURL(download.href);
+
+    download.download = `1x1-${color}.gif`;
+    download.href = URL.createObjectURL(blob);
+  });
+}
 
 {
   const [isValid, color] = parseHex(location.hash);
