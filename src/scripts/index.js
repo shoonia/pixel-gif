@@ -76,9 +76,9 @@ hex.addEventListener('keyup', (event) => {
   }
 });
 
-picker.addEventListener('color-changed', (event) => {
-  setHex(event.detail.value.slice(1));
-});
+picker.addEventListener('color-changed',
+  (event) => setHex(event.detail.value.slice(1)),
+);
 
 if (isSupportFilePicker) {
   download.addEventListener('click', async (event) => {
