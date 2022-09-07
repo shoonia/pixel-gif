@@ -6,7 +6,7 @@ import { createName, isSupportFilePicker, saveGif } from './filePicker';
 import { debounce } from './helpers';
 
 const SYMBOL_HASH = /^#/;
-const NOT_HEXADECIMAL = /[^\da-f]/ig;
+const NOT_HEXADECIMAL = /[^\da-f]/g;
 
 const hex = $('#hex');
 const rNumber = $('#r-number');
