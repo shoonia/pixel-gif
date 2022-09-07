@@ -5,6 +5,9 @@ export const createDataUrl = (r, g, b) =>
     String.fromCharCode.apply(null, getBytesArray(r, g, b)),
   );
 
+export const createBytesString = (r, g, b, radix) =>
+  getBytesArray(r, g, b).map((i) => i.toString(radix)).join(' ');
+
 export const parseDecimal = (n) => {
   const i = Math.abs(~~n);
 

@@ -1,6 +1,6 @@
 import colors from './colors.json';
-import { connect, getState, setRgb, setHex } from './store';
-import { createDataUrl, randomHex, rgbToHex, createHex } from './util';
+import { connect, getState, setRgb, setHex, setRadix } from './store';
+import { createDataUrl, randomHex, rgbToHex, createHex, createBytesString } from './util';
 import { $, $$, createOptionList, createFavicon } from './elements';
 import { createName, isSupportFilePicker, saveGif } from './filePicker';
 import { debounce } from './helpers';
@@ -18,6 +18,8 @@ const bRange = $('#b-range');
 const outputData = $('#output-data');
 const outputCss = $('#output-css');
 const outputLink = $('#output-link');
+const outputBytes = $('#output-bytes');
+const selectRadix = $('#radix');
 const picker = $('hex-color-picker');
 const favicon = $('link[rel="icon"]');
 const download = $('#download');
@@ -66,7 +68,10 @@ $$('[data-rgb]').forEach((input) =>
 );
 
 $('#colorList').append(createOptionList(colors));
-$('#random').addEventListener('click', () => setHex(randomHex(6)));
+
+$('#random').addEventListener('click',
+  () => setHex(randomHex(6)),
+);
 
 hex.addEventListener('change', changeHex);
 
@@ -78,6 +83,10 @@ hex.addEventListener('keyup', (event) => {
 
 picker.addEventListener('color-changed',
   (event) => setHex(event.detail.value.slice(1)),
+);
+
+selectRadix.addEventListener('change',
+  () => setRadix(selectRadix.value),
 );
 
 if (isSupportFilePicker) {
@@ -93,7 +102,7 @@ const updateHead = debounce((hex) => {
   favicon.href = createFavicon(hex);
 }, 500);
 
-connect('r', 'g', 'b', ({ r, g, b }) => {
+connect(({ r, g, b, radix }) => {
   const color = createHex(r, g, b);
   const dataURL = createDataUrl(r, g, b);
 
@@ -111,7 +120,8 @@ connect('r', 'g', 'b', ({ r, g, b }) => {
   hex.value = color;
   outputData.value = dataURL;
   outputCss.value = background;
-  outputLink.value = new URL(withHash, location.href).href;
+  outputLink.value = 'https://shoonia.github.io/pixel-gif/' + withHash;
+  outputBytes.value = createBytesString(r, g, b, radix);
   document.body.style.backgroundImage = url;
   picker.color = color;
   updateHead(withHash);
@@ -130,6 +140,10 @@ connect('g', ({ g }) => {
 connect('b', ({ b }) => {
   bNumber.value = b;
   bRange.value = b;
+});
+
+connect('radix', ({ radix }) => {
+  selectRadix.value = radix;
 });
 
 {
