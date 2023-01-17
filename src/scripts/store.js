@@ -13,9 +13,7 @@ const setState = (data) => {
   state = { ...state, ...data };
 
   subs.forEach((s) => {
-    const shouldUpdate = s.keys.length < 1 || s.keys.some((i) => i in data);
-
-    if (shouldUpdate) {
+    if (s.keys.length < 1 || s.keys.some((i) => i in data)) {
       s.cb(state);
     }
   });
