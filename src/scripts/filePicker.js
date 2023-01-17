@@ -2,7 +2,7 @@ import { createHex, getBytesArray } from './util';
 
 export const isSupportFilePicker = typeof window.showSaveFilePicker === 'function';
 
-export const createName = (hex) => `1x1-${hex}.gif`;
+export const createName = (hex) => `1x1_#${hex.toUpperCase()}.gif`;
 
 export const saveGif = async ({ r, g, b }) => {
   const file = await window.showSaveFilePicker({
