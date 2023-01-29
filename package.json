@@ -14,9 +14,9 @@
     "vanilla-colorful": "^0.7.2"
   },
   "devDependencies": {
-    "@arkweid/lefthook": "^0.7.7",
-    "eslint": "^8.32.0",
-    "parcel": "^2.8.2",
+    "@evilmartians/lefthook": "^1.2.8",
+    "eslint": "^8.33.0",
+    "parcel": "^2.8.3",
     "stylelint": "^14.16.1",
     "stylelint-config-standard": "^29.0.0"
   },
