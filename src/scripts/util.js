@@ -48,10 +48,10 @@ export const createHex = (...rgb) =>
 
 export const rgbToHex = (color) => {
   const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
-  const rgb = [r, g, b].map(Number);
+  const rgb = [r, g, b].map((i) => Number(i));
 
-  if (rgb.every((i) => typeof i === 'number' && i >= 0 && i <= 255)) {
-    return createHex(r, g, b);
+  if (rgb.every((i) => i >= 0 && i <= 255)) {
+    return createHex(...rgb);
   }
 
   return '';

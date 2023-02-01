@@ -11,26 +11,19 @@
 </head>
 
 <body>
-  <section>
+  <header>
     <svg aria-label="stand with ukraine" viewBox="0 0 3 2" width="2em" role="img">
       <path fill="#005bbb" d="M0 0h3v1H0z"></path>
       <path fill="#ffd500" d="M0 1h3v1H0z"></path>
     </svg>
     <a href="https://shoonia.site/support-ukraine/">Support Ukraine</a>
-  </section>
+  </header>
 
-  <h1>One pixel Base64 encoded GIF generator</h1>
+  <main>
+    <h1>One pixel Base64 encoded GIF generator</h1>
 
-  <form action="#">
-    <fieldset>
-      <legend>
-        HEX
-      </legend>
-      <input id="hex" class="text" list="colorList" type="text" value="ffffff" spellcheck="false" autocomplete="on"
-        placeholder="ffffff">
-      <datalist id="colorList"></datalist>
-    </fieldset>
-    <div>
+    <div class="section-two">
+      <hex-color-picker></hex-color-picker>
       <fieldset>
         <legend>
           RGB
@@ -60,47 +53,51 @@
           </label>
         </div>
       </fieldset>
+      <fieldset>
+        <legend>
+          HEX
+        </legend>
+        <input id="hex" class="input-text" list="colorList" type="text" value="ffffff" spellcheck="false"
+          autocomplete="on" placeholder="ffffff">
+        <datalist id="colorList"></datalist>
+      </fieldset>
+      <fieldset>
+        <legend>
+          Random Color
+        </legend>
+        <button id="random" type="button">Generate</button>
+      </fieldset>
     </div>
-  </form>
 
-  <br />
+    <fieldset>
+      <legend>
+        Output
+      </legend>
+      <label>
+        <input id="output-data" class="input-text" type="text" readonly spellcheck="false" />
+      </label>
+      <label>
+        <input id="output-css" class="input-text" type="text" readonly spellcheck="false" />
+      </label>
+      <div class="bytes">
+        <select id="radix">
+          <option value="16">16</option>
+          <option value="10">10</option>
+          <option value="8">8</option>
+          <option value="2">2</option>
+        </select>
+        <label>
+          <input id="output-bytes" class="input-text" type="text" readonly spellcheck="false" />
+        </label>
+      </div>
+      <label>
+        <input id="output-link" class="input-text" type="text" readonly spellcheck="false" />
+      </label>
+    </fieldset>
 
-  <hex-color-picker></hex-color-picker>
+    <a id="download" class="download" href="#" role="button">Download</a>
 
-  <br />
-
-  <button id="random" type="button">Random Color</button>
-
-  <br /><br />
-
-  <fieldset>
-    <legend>
-      Output
-    </legend>
-    <label>
-      <input id="output-data" class="text" type="text" readonly spellcheck="false" />
-    </label>
-    <label>
-      <input id="output-css" class="text" type="text" readonly spellcheck="false" />
-    </label>
-    <label>
-      <select id="radix">
-        <option value="16">16</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-        <option value="2">2</option>
-      </select>
-      <input id="output-bytes" class="text" type="text" readonly spellcheck="false" />
-    </label>
-    <label>
-      <input id="output-link" class="text" type="text" readonly spellcheck="false" />
-    </label>
-  </fieldset>
-
-  <br />
-
-  <a id="download" href="#" role="button">Download</a>
-
+  </main>
 </body>
 
 </html>
