@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "jsx-dom-runtime": "^0.28.0",
+    "storeon-velo": "^4.1.1",
     "vanilla-colorful": "^0.7.2"
   },
   "devDependencies": {
