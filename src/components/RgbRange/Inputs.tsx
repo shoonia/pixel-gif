@@ -1,27 +1,25 @@
 import { FC, useRef } from 'jsx-dom-runtime/jsx-runtime';
 
-import type { State } from '../../store/types';
-import { connect, setState } from '../../store';
+import type { TParam } from '../../store/types';
+import { connect, dispatch } from '../../store';
 
 interface Props {
-  name: keyof State
+  param: TParam
 }
 
-export const Inputs: FC<Props> = ({ name }) => {
+export const Inputs: FC<Props> = ({ param }) => {
   const number = useRef<HTMLInputElement>();
   const range = useRef<HTMLInputElement>();
 
   const input: EventListener = (event) => {
     const el = event.target as HTMLInputElement;
-    const value = el.valueAsNumber;
+    const val = el.valueAsNumber;
 
-    setState({
-      [name]: value > 255 ? 255 : value,
-    });
-  }
+    dispatch('set/rgb', [param, val > 255 ? 255 : val]);
+  };
 
-  connect(name, (state) => {
-    const val = `${state[name]}`;
+  connect(param, (state) => {
+    const val = `${state[param]}`;
 
     number.current.value = val;
     range.current.value = val;
@@ -51,4 +49,4 @@ export const Inputs: FC<Props> = ({ name }) => {
       </label>
     </div>
   );
-}
+};

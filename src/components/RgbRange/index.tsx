@@ -6,8 +6,8 @@ export const RgbRange: FC = () => (
     <legend>
       RGB
     </legend>
-    <Inputs name="r" />
-    <Inputs name="g" />
-    <Inputs name="b" />
+    <Inputs param="r" />
+    <Inputs param="g" />
+    <Inputs param="b" />
   </fieldset>
-)
+);
