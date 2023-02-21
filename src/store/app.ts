@@ -9,7 +9,7 @@ export const app: StoreonModule<State, Events> = (store) => {
       r: 0,
       g: 0,
       b: 0,
-      radix: 10,
+      radix: 16,
       hex: '000000',
     };
   });
