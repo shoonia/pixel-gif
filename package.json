@@ -6,7 +6,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "npm run clean && parcel",
-    "build": "npm run clean && parcel build",
+    "build": "npm run clean && parcel build --no-source-maps --no-cache",
     "clean": "rm -rf .parcel-cache dist",
     "lint": "eslint 'src/**/*.{ts,tsx}' && stylelint 'src/**/*.css'",
     "serve": "python3 -m http.server -d dist"
@@ -28,7 +28,7 @@
   },
   "targets": {
     "default": {
-      "publicUrl": "https://shoonia.github.io/pixel-gif/"
+      "publicUrl": "/pixel-gif/"
     }
   },
   "author": "Alexander Zaytsev",

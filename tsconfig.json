@@ -9,6 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
     "strict": true,
     "noEmit": true,
     "lib": [
