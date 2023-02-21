@@ -1,7 +1,7 @@
 import type { FC } from 'jsx-dom-runtime';
 
 import { ColorPicker } from './ColorPicker';
-import { RgbRange } from "./RgbRange";
+import { RgbRange } from './RgbRange';
 
 export const App: FC = () => (
   <main>
