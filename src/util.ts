@@ -1,5 +1,9 @@
 import type { TParam } from './store/types';
-import colors from './colors.json';
+
+export const colors: Record<string, string> = JSON.parse(
+  // @ts-expect-error @typescript-eslint/ban-ts-comment
+  document.getElementById('colors').textContent,
+);
 
 export const createHex = ({ r, g, b }: Record<TParam, number>): string =>
   [r, g, b].map((i) => {
@@ -39,7 +43,6 @@ export const parseHex = (value: string) => {
     .replace(SYMBOL_HASH, '');
 
   if (color in colors) {
-    // @ts-expect-error @typescript-eslint/ban-ts-comment
     color = colors[color];
   }
 

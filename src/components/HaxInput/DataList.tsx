@@ -1,6 +1,6 @@
 import { type FC, Fragment } from 'jsx-dom-runtime';
 
-import colors from '../../colors.json';
+import { colors } from '../../util';
 
 interface Props {
   id: string;
@@ -12,7 +12,6 @@ export const DataList: FC<Props> = ({ id }) => {
 
     for (const key in colors) {
       fragment.append(
-        // @ts-expect-error @typescript-eslint/ban-ts-comment
         <option value={colors[key]}>
           {key}
         </option>
