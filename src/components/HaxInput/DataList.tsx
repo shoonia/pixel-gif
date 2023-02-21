@@ -1,0 +1,28 @@
+import { type FC, Fragment } from 'jsx-dom-runtime';
+
+import colors from '../../colors.json';
+
+interface Props {
+  id: string;
+}
+
+export const DataList: FC<Props> = ({ id }) => {
+  const ready = (node: HTMLDataListElement) => {
+    const fragment = Fragment({});
+
+    for (const key in colors) {
+      fragment.append(
+        // @ts-expect-error @typescript-eslint/ban-ts-comment
+        <option value={colors[key]}>
+          {key}
+        </option>
+      );
+    }
+
+    node.append(fragment);
+  };
+
+  return (
+    <datalist ref={ready} id={id} />
+  );
+};
