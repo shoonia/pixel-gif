@@ -8,7 +8,7 @@
     "start": "npm run clean && parcel",
     "build": "npm run clean && parcel build",
     "clean": "rm -rf .parcel-cache dist",
-    "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css'",
+    "lint": "eslint 'src/**/*.{ts,tsx}' && stylelint 'src/**/*.css'",
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@evilmartians/lefthook": "^1.2.9",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.34.0",
     "parcel": "^2.8.3",
     "stylelint": "^15.2.0",

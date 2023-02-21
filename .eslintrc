@@ -1,38 +1,41 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parserOptions": {
-    "ecmaVersion": 2022,
-    "sourceType": "module"
-  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "env": {
-    "es6": true,
     "browser": true,
-    "node": true
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "ignorePatterns": [
     "node_modules/",
     "dist/"
   ],
   "rules": {
-    "linebreak-style": "off",
-    "no-else-return": "error",
-    "no-trailing-spaces": "error",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "semi": "error",
     "indent": [
       "error",
       2,
       {
-        "SwitchCase": 2
+        "SwitchCase": 1
       }
     ],
     "quotes": [
       "error",
       "single"
-    ],
-    "semi": [
-      "error",
-      "always"
     ],
     "space-before-function-paren": [
       "error",
@@ -42,9 +45,16 @@
         "asyncArrow": "always"
       }
     ],
-    "comma-dangle": [
+    "no-else-return": "error",
+    "no-trailing-spaces": "error",
+    "no-use-before-define": "error",
+    "no-multiple-empty-lines": [
       "error",
-      "always-multiline"
+      {
+        "max": 1,
+        "maxBOF": 0,
+        "maxEOF": 0
+      }
     ]
   }
 }
