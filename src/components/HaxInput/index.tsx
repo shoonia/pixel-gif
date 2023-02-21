@@ -2,11 +2,11 @@ import { FC, useRef } from 'jsx-dom-runtime';
 
 import { DataList } from './DataList';
 import { connect, dispatch } from '../../store';
-import { parseHex } from '../../util';
+import { parseHex, randomHex } from '../../util';
 
 export const HaxInput: FC = () => {
   const ref = useRef<HTMLInputElement>();
-  const id = 'i' + Date.now().toString(36);
+  const id = 'i' + randomHex(6);
 
   const change = () => {
     const [isValid, color] = parseHex(ref.current.value);

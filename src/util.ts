@@ -60,3 +60,13 @@ export const parseHex = (value: string) => {
 
   return [true, color] as const;
 };
+
+export const randomHex = (size: number): string => {
+  let hex = '';
+
+  while (size--) {
+    hex += (16 * Math.random() | 0).toString(16);
+  }
+
+  return hex;
+};
