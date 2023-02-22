@@ -1,4 +1,4 @@
-import { type FC, Fragment } from 'jsx-dom-runtime';
+import type { FC } from 'jsx-dom-runtime';
 
 import { colors } from '../../util';
 
@@ -8,7 +8,7 @@ interface Props {
 
 export const DataList: FC<Props> = ({ id }) => {
   const ready = (node: HTMLDataListElement) => {
-    const fragment = Fragment({});
+    const fragment = <></>;
 
     for (const key in colors) {
       fragment.append(
