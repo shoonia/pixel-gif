@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": false,
-    "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "jsx-dom-runtime",
     "moduleResolution": "node",
