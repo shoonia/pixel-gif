@@ -2,12 +2,14 @@ import  { type FC, useRef } from 'jsx-dom-runtime';
 
 import { connect, setState } from '../../store';
 import { createBytesString, createDataUrl, createHex } from '../../util';
+import { createFavicon } from './createFavicon';
 
 export const Output: FC = () => {
   const dataUrl = useRef<HTMLInputElement>();
   const dataCss = useRef<HTMLInputElement>();
   const dataLink = useRef<HTMLInputElement>();
   const dataBytes = useRef<HTMLInputElement>();
+  const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
 
   const changeRadix = (node: HTMLSelectElement) => {
     node.addEventListener('change', () => {
@@ -30,6 +32,9 @@ export const Output: FC = () => {
     dataLink.current.value = 'https://shoonia.github.io/pixel-gif/' + withHash;
     dataBytes.current.value = createBytesString(r, g, b, radix);
     document.body.style.backgroundImage = url;
+    document.title = '1x1 Pixel GIF | ' + withHash;
+    location.hash = withHash;
+    favicon.href = createFavicon(withHash) ||'';
   });
 
   return (
