@@ -17,13 +17,25 @@ export const Output: FC = () => {
     });
   };
 
+  let timeout: number;
+
+  const updateHead = (withHash: string): void => {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      document.title = '1x1 Pixel GIF | ' + withHash;
+      location.hash = withHash;
+      favicon.href = createFavicon(withHash) ||'';
+    }, 300);
+  };
+
   connect('r', 'g', 'b', 'radix', ({ r, g, b, radix }) => {
     const color = createHex({r, g, b});
     const dataURL = createDataUrl(r, g, b);
 
     const withHash = '#' + color;
     const url = `url(${dataURL})`;
-    const background = `background-image: ${url};`;
+    const background = `background-image:${url};`;
     const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
 
     console.log('%c  ', css, withHash);
@@ -32,9 +44,7 @@ export const Output: FC = () => {
     dataLink.current.value = 'https://shoonia.github.io/pixel-gif/' + withHash;
     dataBytes.current.value = createBytesString(r, g, b, radix);
     document.body.style.backgroundImage = url;
-    document.title = '1x1 Pixel GIF | ' + withHash;
-    location.hash = withHash;
-    favicon.href = createFavicon(withHash) ||'';
+    updateHead(withHash);
   });
 
   return (
