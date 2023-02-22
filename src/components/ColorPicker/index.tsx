@@ -1,5 +1,6 @@
 import type { FC } from 'jsx-dom-runtime';
 import type { HexColorPicker } from 'vanilla-colorful';
+
 import { connect, dispatch } from '../../store';
 
 export const ColorPicker: FC = () => {

@@ -1,4 +1,4 @@
-import { FC, useRef } from 'jsx-dom-runtime/jsx-runtime';
+import { type FC, useRef } from 'jsx-dom-runtime';
 
 import type { TParam } from '../../store/types';
 import { connect, dispatch } from '../../store';

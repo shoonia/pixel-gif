@@ -1,4 +1,4 @@
-import { FC, useRef } from 'jsx-dom-runtime';
+import { type FC, useRef } from 'jsx-dom-runtime';
 
 import { DataList } from './DataList';
 import { connect, dispatch } from '../../store';

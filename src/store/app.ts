@@ -1,7 +1,7 @@
 import type { StoreonModule } from 'storeon-velo';
 
 import type { Events, State } from './types';
-import { createHex, hexToRgb } from '../util';
+import { createHex } from '../util';
 
 export const app: StoreonModule<State, Events> = (store) => {
   store.on('@init', () => {
@@ -27,8 +27,12 @@ export const app: StoreonModule<State, Events> = (store) => {
   });
 
   store.on('set/hex', (_, hex) => {
+    const i = parseInt(hex, 16);
+
     return {
-      ...hexToRgb(hex),
+      r: i >> 16 & 255,
+      g: i >> 8 & 255,
+      b: i & 255,
       hex,
     };
   });

@@ -11,16 +11,6 @@ export const createHex = (r: number, g: number, b: number): string => {
   }).join('');
 };
 
-export const hexToRgb = (hex: string) => {
-  const i = parseInt(hex, 16);
-
-  return {
-    r: i >> 16 & 255,
-    g: i >> 8 & 255,
-    b: i & 255,
-  } as const;
-};
-
 export const rgbToHex = (color: string): string => {
   const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
   const rgb = [Number(r), Number(g), Number(b)] as const;
