@@ -1,16 +1,15 @@
-import type { TParam } from './store/types';
-
 export const colors: Record<string, string> = JSON.parse(
   // @ts-expect-error @typescript-eslint/ban-ts-comment
   document.getElementById('colors').textContent,
 );
 
-export const createHex = ({ r, g, b }: Record<TParam, number>): string =>
-  [r, g, b].map((i) => {
+export const createHex = (r: number, g: number, b: number): string => {
+  return [r, g, b].map((i) => {
     const hex = i.toString(16);
 
     return hex.length < 2 ? '0' + hex : hex;
   }).join('');
+};
 
 export const hexToRgb = (hex: string) => {
   const i = parseInt(hex, 16);
@@ -24,10 +23,10 @@ export const hexToRgb = (hex: string) => {
 
 export const rgbToHex = (color: string): string => {
   const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
-  const rgb = [r, g, b].map((i) => Number(i));
+  const rgb = [Number(r), Number(g), Number(b)] as const;
 
   if (rgb.every((i) => i >= 0 && i <= 255)) {
-    return createHex({ r: rgb[0], g: rgb[1], b: rgb[2] });
+    return createHex(...rgb);
   }
 
   return '';
@@ -71,16 +70,16 @@ export const randomHex = (size: number): string => {
   return hex;
 };
 
-export const getBytesArray = (r: number, g: number, b: number): number[] => [
+export const getBytesArray = (r: number, g: number, b: number) => [
   71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0,
   r, g, b,
   0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0,
   0,0, 1,0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
-];
+] as const;
 
 export const createDataUrl = (r: number, g: number, b: number): string => {
   return 'data:image/gif;base64,' + btoa(
-    String.fromCharCode.apply(null, getBytesArray(r, g, b)),
+    String.fromCharCode(...getBytesArray(r, g, b)),
   );
 };
 

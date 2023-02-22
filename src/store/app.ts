@@ -15,9 +15,14 @@ export const app: StoreonModule<State, Events> = (store) => {
   });
 
   store.on('set/rgb', (state, [param, value]) => {
+    const { r, g, b }: Readonly<State> = {
+      ...state,
+      [param]: value,
+    };
+
     return {
       [param]: value,
-      hex: createHex({ ...state, [param]: value }),
+      hex: createHex(r, g, b),
     };
   });
 

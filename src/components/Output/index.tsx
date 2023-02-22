@@ -30,7 +30,7 @@ export const Output: FC = () => {
   };
 
   connect('r', 'g', 'b', 'radix', ({ r, g, b, radix }) => {
-    const color = createHex({r, g, b});
+    const color = createHex(r, g, b);
     const dataURL = createDataUrl(r, g, b);
 
     const withHash = '#' + color;
