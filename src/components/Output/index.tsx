@@ -1,5 +1,6 @@
 import  { type FC, useRef } from 'jsx-dom-runtime';
 
+import * as s from './styles.module.css';
 import { connect, setState } from '../../store';
 import { createBytesString, createDataUrl, createHex } from '../../util';
 import { createFavicon } from './createFavicon';
@@ -48,24 +49,24 @@ export const Output: FC = () => {
         Output
       </legend>
       <label>
-        <input ref={dataUrl} type="text" readOnly spellcheck="false" />
+        <input ref={dataUrl} type="text" class={s.output} readOnly spellcheck="false" />
       </label>
       <label>
-        <input ref={dataCss} type="text" readOnly spellcheck="false" />
+        <input ref={dataCss} type="text" class={s.output} readOnly spellcheck="false" />
       </label>
-      <div>
-        <select ref={changeRadix}>
+      <div class={s.bytes}>
+        <select ref={changeRadix} class={s.radix}>
           <option value="16">16</option>
           <option value="10">10</option>
           <option value="8">8</option>
           <option value="2">2</option>
         </select>
         <label>
-          <input ref={dataBytes} type="text" readOnly spellcheck="false" />
+          <input ref={dataBytes} type="text" class={s.output} readOnly spellcheck="false" />
         </label>
       </div>
       <label>
-        <input ref={dataLink} type="text" readOnly spellcheck="false" />
+        <input ref={dataLink} type="text" class={s.output} readOnly spellcheck="false" />
       </label>
     </fieldset>
   );

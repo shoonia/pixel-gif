@@ -1,5 +1,6 @@
 import { type FC, useRef } from 'jsx-dom-runtime';
 
+import * as s from './styles.module.css';
 import type { TParam } from '../../store/types';
 import { connect, dispatch } from '../../store';
 
@@ -30,6 +31,7 @@ export const Inputs: FC<Props> = ({ param }) => {
       <label>
         <input
           type="number"
+          class={s.number}
           max={255}
           min={0}
           step={1}
@@ -40,6 +42,7 @@ export const Inputs: FC<Props> = ({ param }) => {
       <label>
         <input
           type="range"
+          class={s.range}
           max={255}
           min={0}
           step={1}

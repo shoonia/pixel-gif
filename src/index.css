@@ -19,18 +19,15 @@ input {
     sans-serif;
 }
 
-input[type="text"] {
-  width: 100%;
-}
-
-select {
-  font-size: 1em;
-  padding: 0.5em;
-}
-
 body {
   padding: 0;
   margin: 0;
+  font-size: 16px;
+}
+
+input {
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
 fieldset {
@@ -42,6 +39,7 @@ fieldset {
 
 button,
 hex-color-picker {
+  font-size: 1em;
   margin: 1em;
   display: flex;
   white-space: nowrap;
