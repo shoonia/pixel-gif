@@ -1,3 +1,4 @@
+import './index.css';
 import { App } from './components/App';
 import { dispatch, getState, readyStore } from './store';
 import { parseHex, randomHex } from './util';
