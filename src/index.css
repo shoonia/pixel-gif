@@ -1,6 +1,8 @@
 :root {
-  --border-radius: 8px;
-  --bg-color: rgb(255 255 255 / 70%);
+  --br-rds: 6px;
+  --c-bg: rgb(255 255 255 / 70%);
+  --c-sh: rgb(0 0 0 / 30%);
+  --c-pr: #116dff;
 }
 
 body,
@@ -32,8 +34,8 @@ input {
 
 fieldset {
   border: none;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 30%);
-  background-color: var(--bg-color);
+  box-shadow: 0 3px 10px var(--c-sh);
+  background-color: var(--c-bg);
   margin: 1em;
 }
 
@@ -51,8 +53,8 @@ header {
   gap: 1em;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgb(0 0 0 / 30%);
-  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--c-sh);
+  background-color: var(--c-bg);
 }
 
 main {
@@ -63,7 +65,7 @@ main {
 h1 {
   margin: 1em;
   display: inline-block;
-  background-color: var(--bg-color);
+  background-color: var(--c-bg);
 }
 
 label {
