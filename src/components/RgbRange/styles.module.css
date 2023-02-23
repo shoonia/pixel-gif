@@ -1,0 +1,35 @@
+.number {
+  text-align: center;
+}
+
+.range {
+  appearance: none;
+  height: 1em;
+  margin-top: 0.2em;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.range::range-track {
+  background-color: var(--c-pr);
+  height: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.range::range-thumb {
+  appearance: none;
+  height: 1.5em;
+  width: 1.5em;
+  background-color: #fff;
+  border: 2px solid var(--c-pr);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px var(--c-sh);
+  cursor: pointer;
+  place-content: center center;
+  transform: translateY(-50%);
+}
+
+.range:focus {
+  outline: none;
+}
