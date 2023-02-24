@@ -1,6 +1,7 @@
 import  { type FC, useRef } from 'jsx-dom-runtime';
 
 import * as s from './styles.module.css';
+import { TextInput } from './TextInput';
 import { connect, setState } from '../../store';
 import { createBytesString, createDataUrl, createHex } from '../../util';
 import { createFavicon } from './createFavicon';
@@ -49,10 +50,10 @@ export const Output: FC = () => {
         Output
       </legend>
       <label>
-        <input ref={dataUrl} type="text" class={s.output} readOnly spellcheck="false" />
+        <TextInput ref={dataUrl} />
       </label>
       <label>
-        <input ref={dataCss} type="text" class={s.output} readOnly spellcheck="false" />
+        <TextInput ref={dataCss} />
       </label>
       <div class={s.bytes}>
         <select ref={changeRadix} class={s.radix}>
@@ -62,11 +63,11 @@ export const Output: FC = () => {
           <option value="2">2</option>
         </select>
         <label>
-          <input ref={dataBytes} type="text" class={s.output} readOnly spellcheck="false" />
+          <TextInput ref={dataBytes} />
         </label>
       </div>
       <label>
-        <input ref={dataLink} type="text" class={s.output} readOnly spellcheck="false" />
+        <TextInput ref={dataLink} />
       </label>
     </fieldset>
   );
