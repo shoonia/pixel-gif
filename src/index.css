@@ -27,9 +27,11 @@ body {
   font-size: 16px;
 }
 
-input {
+input,
+select {
   box-sizing: border-box;
   font-size: 1em;
+  border: 2px solid var(--c-pr);
 }
 
 fieldset {
@@ -40,11 +42,29 @@ fieldset {
 }
 
 button,
-hex-color-picker {
-  font-size: 1em;
+a[role="button"] {
   margin: 1em;
-  display: flex;
+  font-size: 1em;
+  display: inline-flex;
+  background-color: var(--c-pr);
+  border: 1px solid var(--c-pr);
   white-space: nowrap;
+  transition: all .1s ease-in;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1.5em;
+  position: relative;
+  user-select: none;
+  border-radius: var(--br-rds);
+  -webkit-touch-callout: none;
+  cursor: pointer;
+}
+
+button:focus,
+button:hover,
+a[role="button"]:focus,
+a[role="button"]:hover {
+  box-shadow: 0 3px 10px var(--c-sh);
 }
 
 header {

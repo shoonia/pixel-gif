@@ -8,11 +8,12 @@
   margin-top: 0.2em;
   background-color: transparent;
   cursor: pointer;
+  border: none;
 }
 
 .range::range-track {
   background-color: var(--c-pr);
-  height: 5px;
+  height: 4px;
   cursor: pointer;
   border-radius: 10px;
 }
@@ -27,7 +28,7 @@
   box-shadow: 0 2px 4px var(--c-sh);
   cursor: pointer;
   place-content: center center;
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% + 2px));
 }
 
 .range:focus {
