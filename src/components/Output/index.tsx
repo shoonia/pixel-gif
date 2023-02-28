@@ -48,6 +48,9 @@ export const Output: FC = () => {
 
   return (
     <fieldset>
+      <legend>
+        Output
+      </legend>
       <TextInput ref={dataUrl} label="Data: URL" />
       <TextInput ref={dataCss} label="CSS:" />
       <TextInput ref={dataBase64} label="Base64:" />

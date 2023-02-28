@@ -28,28 +28,27 @@ export const Inputs: FC<Props> = ({ param }) => {
 
   return (
     <div>
-      <label>
-        <input
-          type="number"
-          class={s.number}
-          max={255}
-          min={0}
-          step={1}
-          ref={number}
-          oninput={input}
-        />
-      </label>
-      <label>
-        <input
-          type="range"
-          class={s.range}
-          max={255}
-          min={0}
-          step={1}
-          ref={range}
-          oninput={input}
-        />
-      </label>
+      <span class={s.label}>
+        {param.toUpperCase()}
+      </span>
+      <input
+        type="number"
+        class={s.number}
+        max={255}
+        min={0}
+        step={1}
+        ref={number}
+        oninput={input}
+      />
+      <input
+        type="range"
+        class={s.range}
+        max={255}
+        min={0}
+        step={1}
+        ref={range}
+        oninput={input}
+      />
     </div>
   );
 };

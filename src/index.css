@@ -3,6 +3,7 @@
   --c-bg: rgb(255 255 255 / 70%);
   --c-sh: rgb(0 0 0 / 30%);
   --c-pr: #116dff;
+  --c-sc: #ffd500;
 }
 
 body,
@@ -34,12 +35,20 @@ select {
   border: 2px solid var(--c-pr);
 }
 
-fieldset {
-  border: none;
+legend {
   box-shadow: 0 3px 10px var(--c-sh);
+  background-color: #ffd500;
+  border: 1px solid var(--c-sh);
+  padding: 0.1em 0.5em;
+}
+
+fieldset {
+  border: 2px solid var(--c-sc);
+  box-shadow: 0 3px 10px var(--c-sh);
+  box-shadow: inset 1px 1px 0 1px var(--c-sh);
   background-color: var(--c-bg);
   margin: 1em;
-  padding: 1em;
+  padding: 1.5em 1em 1em;
 }
 
 button,
@@ -74,7 +83,17 @@ header {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid var(--c-sh);
-  background-color: var(--c-bg);
+  background-color: #222;
+  box-shadow: 0 3px 10px var(--c-sh);
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
 }
 
 main {
