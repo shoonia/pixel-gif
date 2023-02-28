@@ -7,12 +7,6 @@ declare global {
       }
     }
   }
-
-  const process: {
-    readonly env: {
-      readonly NODE_ENV: string;
-    };
-  };
 }
 
 export {};

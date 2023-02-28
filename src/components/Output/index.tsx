@@ -11,6 +11,7 @@ export const Output: FC = () => {
   const dataCss = useRef<HTMLInputElement>();
   const dataLink = useRef<HTMLInputElement>();
   const dataBytes = useRef<HTMLInputElement>();
+  const dataBase64 = useRef<HTMLInputElement>();
   const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
 
   const changeRadix = (node: HTMLSelectElement) => {
@@ -31,6 +32,7 @@ export const Output: FC = () => {
 
     dataUrl.current.value = dataURL;
     dataCss.current.value = background;
+    dataBase64.current.value = dataURL.slice(22);
     dataLink.current.value = 'https://shoonia.github.io/pixel-gif/' + hex;
     dataBytes.current.value = createBytesString(r, g, b, radix);
     document.body.style.backgroundImage = url;
@@ -46,29 +48,19 @@ export const Output: FC = () => {
 
   return (
     <fieldset>
-      <legend>
-        Output
-      </legend>
-      <label>
-        <TextInput ref={dataUrl} />
-      </label>
-      <label>
-        <TextInput ref={dataCss} />
-      </label>
+      <TextInput ref={dataUrl} label="Data: URL" />
+      <TextInput ref={dataCss} label="CSS:" />
+      <TextInput ref={dataBase64} label="Base64:" />
       <div class={s.bytes}>
+        <TextInput ref={dataBytes} label="Bytes:" />
         <select ref={changeRadix} class={s.radix}>
           <option value="16">16</option>
           <option value="10">10</option>
           <option value="8">8</option>
           <option value="2">2</option>
         </select>
-        <label>
-          <TextInput ref={dataBytes} />
-        </label>
       </div>
-      <label>
-        <TextInput ref={dataLink} />
-      </label>
+      <TextInput ref={dataLink} label="Share Link:" />
     </fieldset>
   );
 };
