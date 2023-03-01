@@ -6,3 +6,7 @@
 [https://shoonia.github.io/pixel-gif/](https://shoonia.github.io/pixel-gif/)
 
 Online generator creating one pixel GIF image in base64 encoded.
+
+---
+
+[Оne pixel transparent PNG ](https://shoonia.github.io/1x1/)
