@@ -2,8 +2,8 @@
   --br-rds: 6px;
   --c-bg: rgb(255 255 255 / 70%);
   --c-sh: rgb(0 0 0 / 30%);
-  --c-pr: #116dff;
-  --c-sc: #ffd500;
+  --c-pr: #0057b8;
+  --c-sc: gold;
 }
 
 body,
@@ -44,8 +44,7 @@ legend {
 
 fieldset {
   border: 2px solid var(--c-sc);
-  box-shadow: 0 3px 10px var(--c-sh);
-  box-shadow: inset 1px 1px 0 1px var(--c-sh);
+  box-shadow: inset 1px 1px 0 1px var(--c-sh), 0 3px 10px var(--c-sh);
   background-color: var(--c-bg);
   margin: 1em;
   padding: 1.5em 1em 1em;
