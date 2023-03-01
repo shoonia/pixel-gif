@@ -1,0 +1,24 @@
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  flex-direction: row-reverse;
+}
+
+.middel {
+  display: flex;
+}
+
+.middel fieldset {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .top {
+    display: block;
+  }
+
+  .middel {
+    display: block;
+  }
+}
