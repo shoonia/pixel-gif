@@ -37,7 +37,7 @@ export const Output: FC = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       document.title = '1x1 Pixel GIF | ' + hex;
-      history.pushState('', '', hex);
+      location.hash = hex;
       favicon.href = createFavicon(hex) ||'';
       console.log('%c  ', css, hex);
     }, 300);
