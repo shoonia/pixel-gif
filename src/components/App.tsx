@@ -1,5 +1,3 @@
-import type { FC } from 'jsx-dom-runtime';
-
 import * as s from './App.module.css';
 import { ColorPicker } from './ColorPicker';
 import { HaxInput } from './HaxInput';

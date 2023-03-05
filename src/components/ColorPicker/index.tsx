@@ -1,4 +1,3 @@
-import type { FC } from 'jsx-dom-runtime';
 import type { HexColorPicker } from 'vanilla-colorful';
 
 import * as s from './styles.module.css';

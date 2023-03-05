@@ -1,5 +1,3 @@
-import type { FC } from 'jsx-dom-runtime';
-
 import * as s from './TextInput.module.css';
 
 interface Props {

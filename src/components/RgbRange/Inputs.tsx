@@ -1,4 +1,4 @@
-import { type FC, useRef } from 'jsx-dom-runtime';
+import { useRef } from 'jsx-dom-runtime';
 
 import * as s from './Inputs.module.css';
 import type { TParam } from '../../store/types';

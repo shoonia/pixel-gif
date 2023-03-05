@@ -1,4 +1,4 @@
-import { type FC, useRef } from 'jsx-dom-runtime';
+import { useRef } from 'jsx-dom-runtime';
 
 import * as s from './styles.module.css';
 import { DataList } from './DataList';

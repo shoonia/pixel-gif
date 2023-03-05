@@ -1,5 +1,3 @@
-import type { FC } from 'jsx-dom-runtime';
-
 import { colors } from '../../util';
 
 interface Props {
