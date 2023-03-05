@@ -8,7 +8,6 @@ import { createFavicon } from './createFavicon';
 
 export const Output: FC = () => {
   const dataUrl = useRef<HTMLInputElement>();
-  const dataCss = useRef<HTMLInputElement>();
   const dataLink = useRef<HTMLInputElement>();
   const dataBytes = useRef<HTMLInputElement>();
   const dataBase64 = useRef<HTMLInputElement>();
@@ -27,11 +26,9 @@ export const Output: FC = () => {
     const hex = '#' + createHex(r, g, b);
 
     const url = `url(${dataURL})`;
-    const background = `background-image: ${url};`;
-    const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + background;
+    const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
 
     dataUrl.current.value = dataURL;
-    dataCss.current.value = background;
     dataBase64.current.value = dataURL.slice(22);
     dataLink.current.value = 'https://shoonia.github.io/pixel-gif/' + hex;
     dataBytes.current.value = createBytesString(r, g, b, radix);
@@ -52,7 +49,6 @@ export const Output: FC = () => {
         Output
       </legend>
       <TextInput ref={dataUrl} label="Data: URL" />
-      <TextInput ref={dataCss} label="CSS:" />
       <TextInput ref={dataBase64} label="Base64:" />
       <div class={s.bytes}>
         <TextInput ref={dataBytes} label="Bytes:" />
