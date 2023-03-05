@@ -20,7 +20,7 @@ export const TextInput: FC<Props> = ({ label, ref }) =>  (
     <input
       ref={ref}
       onclick={copy}
-      class={s.textInput}
+      class={s.text}
       type="text"
       spellcheck="false"
       readOnly
