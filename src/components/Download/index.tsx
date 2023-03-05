@@ -1,5 +1,6 @@
 import * as s from './styles.module.css';
 import { saveGifButton, saveGifLink } from './save';
+import { Stars } from '../Stars';
 
 export const Download: FC = () => {
   const button = typeof window.showSaveFilePicker === 'function'
@@ -14,8 +15,9 @@ export const Download: FC = () => {
     );
 
   return (
-    <fieldset>
+    <fieldset class={s.box}>
       {button}
+      <Stars />
     </fieldset>
   );
 };
