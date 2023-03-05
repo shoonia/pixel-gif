@@ -1,5 +1,6 @@
 .btn {
   overflow: hidden;
+  margin: auto;
 }
 
 .btn::after {
@@ -21,4 +22,10 @@
   opacity: 1;
   padding: 0;
   transition: 0s;
+}
+
+@media (max-width: 900px) {
+  .btn {
+    margin: 0;
+  }
 }

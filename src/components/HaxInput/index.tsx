@@ -1,5 +1,6 @@
 import { type FC, useRef } from 'jsx-dom-runtime';
 
+import * as s from './styles.module.css';
 import { DataList } from './DataList';
 import { connect, dispatch } from '../../store';
 import { parseHex, randomHex } from '../../util';
@@ -36,6 +37,7 @@ export const HaxInput: FC = () => {
         list={id}
         onchange={change}
         onkeyup={keyup}
+        class={s.text}
         type="text"
         value="ffffff"
         spellcheck="false"

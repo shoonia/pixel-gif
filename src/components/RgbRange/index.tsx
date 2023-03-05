@@ -1,4 +1,6 @@
 import type { FC } from 'jsx-dom-runtime';
+
+import * as s from './styles.module.css';
 import { Inputs } from './Inputs';
 
 export const RgbRange: FC = () => (
@@ -6,8 +8,10 @@ export const RgbRange: FC = () => (
     <legend>
       RGB
     </legend>
-    <Inputs param="r" />
-    <Inputs param="g" />
-    <Inputs param="b" />
+    <div class={s.rgb}>
+      <Inputs param="r" />
+      <Inputs param="g" />
+      <Inputs param="b" />
+    </div>
   </fieldset>
 );

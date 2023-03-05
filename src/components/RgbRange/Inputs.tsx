@@ -1,6 +1,6 @@
 import { type FC, useRef } from 'jsx-dom-runtime';
 
-import * as s from './styles.module.css';
+import * as s from './Inputs.module.css';
 import type { TParam } from '../../store/types';
 import { connect, dispatch } from '../../store';
 
@@ -27,7 +27,7 @@ export const Inputs: FC<Props> = ({ param }) => {
   });
 
   return (
-    <div>
+    <div class={s.box}>
       <span class={s.label}>
         {param.toUpperCase()}
       </span>
