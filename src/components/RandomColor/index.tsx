@@ -1,4 +1,5 @@
 import * as s from './styles.module.css';
+import { Group } from '../Group';
 import { dispatch } from '../../store';
 import { randomHex } from '../../util';
 
@@ -8,13 +9,10 @@ export const RandomColor: FC = () => {
   };
 
   return (
-    <fieldset>
-      <legend>
-        Random Color
-      </legend>
+    <Group title="Random Color">
       <button type="button" onclick={click} class={s.btn}>
         Generate
       </button>
-    </fieldset>
+    </Group>
   );
 };

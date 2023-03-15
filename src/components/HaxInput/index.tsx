@@ -1,6 +1,7 @@
 import { useRef } from 'jsx-dom-runtime';
 
 import * as s from './styles.module.css';
+import { Group } from '../Group';
 import { DataList } from './DataList';
 import { connect, dispatch } from '../../store';
 import { parseHex, randomHex } from '../../util';
@@ -28,10 +29,7 @@ export const HaxInput: FC = () => {
   });
 
   return (
-    <fieldset>
-      <legend>
-        HEX
-      </legend>
+    <Group title="HEX">
       <input
         ref={ref}
         list={id}
@@ -45,6 +43,6 @@ export const HaxInput: FC = () => {
         placeholder="ffffff"
       />
       <DataList id={id} />
-    </fieldset>
+    </Group>
   );
 };

@@ -15,6 +15,6 @@ export const ColorPicker: FC = () => {
   };
 
   return (
-    <hex-color-picker ref={mount} class={s.picker}></hex-color-picker>
+    <hex-color-picker ref={mount} class={s.picker} />
   );
 };

@@ -2,6 +2,7 @@ import  { useRef } from 'jsx-dom-runtime';
 
 import * as s from './styles.module.css';
 import { TextInput } from './TextInput';
+import { Group } from '../Group';
 import { connect, setState } from '../../store';
 import { createBytesString, createDataUrl, createHex } from '../../util';
 import { createFavicon } from './createFavicon';
@@ -44,10 +45,7 @@ export const Output: FC = () => {
   });
 
   return (
-    <fieldset>
-      <legend>
-        Output
-      </legend>
+    <Group title="Output">
       <TextInput ref={dataUrl} label="Data: URL" />
       <TextInput ref={dataBase64} label="Base64:" />
       <div class={s.bytes}>
@@ -60,6 +58,6 @@ export const Output: FC = () => {
         </select>
       </div>
       <TextInput ref={dataLink} label="Share Link:" />
-    </fieldset>
+    </Group>
   );
 };

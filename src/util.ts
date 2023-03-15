@@ -12,7 +12,7 @@ export const createHex = (r: number, g: number, b: number): string => {
 };
 
 export const rgbToHex = (color: string): string => {
-  const [r, g, b] = color.match(/(0?\.?\d{1,3})%?\b/g) || [];
+  const [r, g, b] = color.match(/(0?\.?\d+)%?\b/g) || [];
   const rgb = [Number(r), Number(g), Number(b)] as const;
 
   if (rgb.every((i) => i >= 0 && i <= 255)) {
@@ -44,7 +44,7 @@ export const parseHex = (value: string) => {
   }
 
   if (color.length !== 6) {
-    return [false] as const;
+    return [false, null] as const;
   }
 
   return [true, color] as const;
