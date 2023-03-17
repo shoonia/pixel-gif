@@ -39,15 +39,14 @@ export const parseHex = (value: string) => {
     color = rgbToHex(color);
   }
 
-  if (color.length === 3) {
-    color += color;
+  switch (color.length) {
+    case 6: {
+      return color;
+    }
+    case 3: {
+      return color.split('').map((i) => i + i).join('');
+    }
   }
-
-  if (color.length !== 6) {
-    return [false, null] as const;
-  }
-
-  return [true, color] as const;
 };
 
 export const randomHex = (size: number): string => {

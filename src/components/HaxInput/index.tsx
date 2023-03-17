@@ -8,12 +8,12 @@ import { parseHex, randomHex } from '../../util';
 
 export const HaxInput: FC = () => {
   const ref = useRef<HTMLInputElement>();
-  const id = 'i' + randomHex(6);
+  const id = 'i' + randomHex(4);
 
   const change = () => {
-    const [isValid, color] = parseHex(ref.current.value);
+    const color = parseHex(ref.current.value);
 
-    if (isValid) {
+    if (color) {
       dispatch('set/hex', color);
     }
   };
