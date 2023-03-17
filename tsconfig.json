@@ -4,7 +4,6 @@
     "jsxImportSource": "jsx-dom-runtime",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "isolatedModules": true,

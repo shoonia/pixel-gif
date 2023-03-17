@@ -12,25 +12,25 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.29.0",
+    "jsx-dom-runtime": "^0.29.2",
     "storeon-velo": "^4.1.2",
     "vanilla-colorful": "^0.7.2"
   },
   "devDependencies": {
-    "@evilmartians/lefthook": "^1.3.3",
+    "@evilmartians/lefthook": "^1.3.6",
     "@types/wicg-file-system-access": "^2020.9.5",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
-    "eslint": "^8.35.0",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
     "mini-css-class-name": "^0.13.2",
     "parcel": "^2.8.3",
     "postcss": "^8.4.21",
     "postcss-input-range": "^5.0.0",
     "postcss-modules": "^4.3.1",
-    "stylelint": "^15.2.0",
+    "stylelint": "^15.3.0",
     "stylelint-config-css-modules": "^4.2.0",
-    "stylelint-config-standard": "^30.0.1",
-    "typescript": "^4.9.5"
+    "stylelint-config-standard": "^31.0.0",
+    "typescript": "^5.0.2"
   },
   "targets": {
     "default": {
