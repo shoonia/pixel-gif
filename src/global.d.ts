@@ -8,12 +8,6 @@ declare global {
     }
   }
 
-  const process: {
-    readonly env: {
-      readonly NODE_ENV: string;
-    };
-  };
-
   type FC<T = Record<string, unknown>> = import('jsx-dom-runtime').FC<T>;
 }
 

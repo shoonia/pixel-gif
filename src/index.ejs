@@ -1,0 +1,59 @@
+<%
+  var title = '1x1 Pixel GIF';
+  var description = 'One pixel GIF. Online generator for creating 1x1 pixel GIF image in Base64 encoded, Bytes, or Download. 1 pixel for white, black, transparent image.';
+  var image = new URL('favicon.png', homepage).href;
+  var ldJson = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: homepage,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${homepage}#{color}`,
+      'query-input': {
+        '@type': 'PropertyValueSpecification',
+        valueRequired: true,
+        valueMaxlength: 20,
+        valueName: 'color'
+      }
+    }
+  });
+%>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= title %></title>
+  <% if (isProd) { %>
+    <base href="<%= homepage %>">
+    <link rel="preload" as="fetch" href="https://api.github.com/repos/shoonia/pixel-gif" crossorigin="anonymous">
+  <% } %>
+  <link rel="canonical" href="<%= homepage %>">
+  <link rel="sitemap" href="sitemap.xml" type="application/xml" title="<%= title %>">
+  <meta name="google-site-verification" content="JkNxAfkbyATcDv733CZNZPVT9UPc4rJNXxd31OgDwvY">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="<%= description %>">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%= homepage %>">
+  <meta property="og:image" content="<%= image %>">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@_shoonia">
+  <meta name="twitter:creator" content="@_shoonia">
+  <script type="application/ld+json"><%= ldJson %></script>
+</head>
+
+<body>
+  <div style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">
+    <%= description %>
+  </div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script id="colors" type="application/json">
+    <%= JSON.stringify(colors) %>
+  </script>
+</body>
+
+</html>
