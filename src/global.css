@@ -1,14 +1,37 @@
 :root {
-  --br-rds: 6px;
-  --c-bg: rgb(255 255 255 / 70%);
+  --header-h: 70px;
+  --footer-h: 70px;
+  --toolbar-w: 300px;
+  --c-pr: #b94147;
   --c-sh: rgb(0 0 0 / 30%);
-  --c-pr: #0057b8;
-  --c-sc: gold;
 }
 
-body,
-button,
-input {
+::placeholder {
+  color: #ccc;
+}
+
+::selection {
+  background-color: #d3edff;
+}
+
+::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+kbd,
+input,
+button {
+  font-size: 16px;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -22,8 +45,39 @@ input {
     sans-serif;
 }
 
-body {
-  padding: 0;
+a,
+button,
+input {
+  -webkit-touch-callout: none;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.1s ease-in;
+  font-size: 1em;
+}
+
+a {
+  color: #116dff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body,
+input,
+button {
+  color: #0d1117;
+}
+
+fieldset {
+  border: none;
   margin: 0;
-  font-size: 16px;
+  padding: 0;
+}
+
+label {
+  width: 100%;
+  display: block;
 }

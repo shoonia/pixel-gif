@@ -1,3 +1,6 @@
 import './global.css';
+import { App } from './components/App';
+import { readyStore } from './store';
 
-document.body.append(<h1>hello</h1>);
+document.body.append(<App />);
+readyStore();
