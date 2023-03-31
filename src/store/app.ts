@@ -15,7 +15,7 @@ export const app: StoreonModule<State, Events> = (store) => {
     };
   });
 
-  store.on('set/rgb', (state, [key, value]) => {
+  store.on('rgb', (state, [key, value]) => {
     const { r, g, b }: Readonly<State> = {
       ...state,
       [key]: value,
@@ -27,7 +27,7 @@ export const app: StoreonModule<State, Events> = (store) => {
     };
   });
 
-  store.on('set/hex', (state, hex) => {
+  store.on('hex', (state, hex) => {
     const i = parseInt(hex, 16);
 
     return getDiff(

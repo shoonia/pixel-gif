@@ -1,5 +1,3 @@
-export type TParam = 'r' | 'g' | 'b';
-
 export interface State {
   readonly r: number;
   readonly g: number;
@@ -8,7 +6,9 @@ export interface State {
   readonly hex: string;
 }
 
+export type TParam = keyof  Pick<State, 'r' | 'g' | 'b'>
+
 export interface Events {
-  'set/rgb': [param: TParam, value: number];
-  'set/hex': string;
+  'rgb': [param: TParam, value: number];
+  'hex': string;
 }
