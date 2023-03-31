@@ -1,12 +1,16 @@
 import s from './App.css';
+import { PixelPNG } from './PixelPNG';
+import { Stars } from './Stars';
+import { SupportUkraine } from './SupportUkraine';
 
-export const App: FC = () =>  (
+export const App: FC = () => (
   <div class={s.page}>
     <header class={s.header}>
-      <a href="./" class={s.left}>
+      <a href="./" class={s.left} aria-current="page">
         1x1 Pixel GIF
       </a>
       <div class={s.right}>
+        <SupportUkraine />
       </div>
     </header>
     <aside class={s.toolbar}>
@@ -22,6 +26,8 @@ export const App: FC = () =>  (
       <div class={s.left}>
       </div>
       <div class={s.right}>
+        <Stars />
+        <PixelPNG />
       </div>
     </footer>
   </div>
