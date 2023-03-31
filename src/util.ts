@@ -1,7 +1,4 @@
-export const colors: Record<string, string> = JSON.parse(
-  // @ts-expect-error @typescript-eslint/ban-ts-comment
-  document.getElementById('colors').textContent,
-);
+import { colors, isColorsKey } from './utils';
 
 export const createHex = (r: number, g: number, b: number): string => {
   return [r, g, b].map((i) => {
@@ -31,7 +28,7 @@ export const parseHex = (value: string) => {
     .toLowerCase()
     .replace(SYMBOL_HASH, '');
 
-  if (color in colors) {
+  if (isColorsKey(color)) {
     color = colors[color];
   }
 
