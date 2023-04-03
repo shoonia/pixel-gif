@@ -1,4 +1,5 @@
 import s from './App.css';
+import { HexInput } from './HexInput';
 import { PixelPNG } from './PixelPNG';
 import { Stars } from './Stars';
 import { SupportUkraine } from './SupportUkraine';
@@ -14,6 +15,7 @@ export const App: FC = () => (
       </div>
     </header>
     <aside class={s.toolbar}>
+      <HexInput />
     </aside>
     <main class={s.main}>
       <div class={s.content}>
