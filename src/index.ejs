@@ -1,6 +1,6 @@
 <%
   var title = '1x1 Pixel GIF';
-  var description = 'One pixel GIF. Online generator for creating 1x1 pixel GIF image in Base64 encoded, Bytes, or Download. 1 pixel for white, black, transparent image';
+  var description = 'One pixel GIF. Online generator for creating 1x1 pixel GIF image in Base64 encoded, Bytes, or Download. 1 pixel for white, black image';
   var image = new URL('favicon.png', homepage).href;
   var ldJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -39,7 +39,7 @@
   <meta property="og:description" content="<%= description %>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="<%= homepage %>">
-  <meta property="og:image" content="<%= image %>">
+  <!-- <meta property="og:image" content="<%= image %>"> -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@_shoonia">
   <meta name="twitter:creator" content="@_shoonia">
@@ -47,10 +47,10 @@
 </head>
 
 <body>
-  <div style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">
+  <p style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;white-space:nowrap">
     <%= description %>
-  </div>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  </p>
+  <noscript>You need to enable JavaScript to run this app</noscript>
   <script id="colors" type="application/json">
     <%= JSON.stringify(colors) %>
   </script>
