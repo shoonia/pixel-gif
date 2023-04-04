@@ -5,6 +5,7 @@ import { PixelPNG } from './PixelPNG';
 import { Stars } from './Stars';
 import { SupportUkraine } from './SupportUkraine';
 import { ColorPicker } from './ColorPicker';
+import { Output } from './Output';
 
 export const App: FC = () => (
   <div class={s.page}>
@@ -26,6 +27,7 @@ export const App: FC = () => (
         <h1 class={s.title}>
           One pixel Base64 encoded GIF generator
         </h1>
+        <Output />
       </div>
     </main>
     <footer class={s.footer}>
