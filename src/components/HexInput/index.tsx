@@ -24,18 +24,17 @@ export const HexInput: FC = () => {
 
   return (
     <Group open title="HEX">
-      <label aria-label="color">
-        <input
-          ref={inp}
-          list={listId}
-          onchange={changeColor}
-          class={s.inp}
-          type="text"
-          autoComplete="on"
-          placeholder="ffffff"
-          spellcheck="false"
-        />
-      </label>
+      <input
+        ref={inp}
+        list={listId}
+        onchange={changeColor}
+        class={s.inp}
+        type="text"
+        autoComplete="on"
+        placeholder="ffffff"
+        spellcheck="false"
+        aria-label="color"
+      />
       <DataList id={listId} />
     </Group>
   );
