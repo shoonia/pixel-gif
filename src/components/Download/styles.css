@@ -1,0 +1,23 @@
+.btn {
+  font-size: 1em;
+  display: inline-flex;
+  gap: 0.5em;
+  background-color: var(--c-pr);
+  border: 2px solid var(--c-pr);
+  white-space: nowrap;
+  transition: all .1s ease-in;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1.5em;
+  position: relative;
+  user-select: none;
+  border-radius: 4px;
+  -webkit-touch-callout: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.02);
+  text-decoration: none;
+}
