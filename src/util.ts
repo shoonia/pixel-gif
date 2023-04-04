@@ -62,3 +62,7 @@ export const getBytesArray = (r: number, g: number, b: number) => [
   0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0,
   0,0, 1,0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
 ];
+
+export const getBase64 = (bytes: number[]) => btoa(String.fromCharCode.apply(null, bytes));
+
+export const getDataUrl = (base64: string) => 'data:image/gif;base64,' + base64;

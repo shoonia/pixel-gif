@@ -3,7 +3,7 @@ import { useRef } from 'jsx-dom-runtime';
 import s from './styles.css';
 import { TextInput } from './TextInput';
 import { connect, setState } from '../../store';
-import { getBytesArray } from '../../util';
+import { getBase64, getBytesArray, getDataUrl } from '../../util';
 
 export const Output: FC = () => {
   const view = useRef<HTMLDivElement>();
@@ -21,11 +21,10 @@ export const Output: FC = () => {
     });
   };
 
-  connect('hex', 'radix', ({ hex, r, g, b, radix }) => {
+  connect('hex', 'radix', ({ hex, bytes, radix }) => {
     const hex6 = '#' + hex;
-    const bytes = getBytesArray(r, g, b);
-    const base64 = btoa(String.fromCharCode.apply(null, bytes));
-    const data = 'data:image/gif;base64,' + base64;
+    const base64 = getBase64(bytes);
+    const data = getDataUrl(base64);
     const url = `url(${data})`;
 
     view.current.style.backgroundImage = url;

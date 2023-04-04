@@ -4,6 +4,7 @@ export interface State {
   readonly b: number;
   readonly radix: number;
   readonly hex: string;
+  readonly bytes: number[];
 }
 
 export type TParam = keyof  Pick<State, 'r' | 'g' | 'b'>
