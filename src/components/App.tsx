@@ -4,6 +4,7 @@ import { RGBInputs } from './RgbInputs';
 import { PixelPNG } from './PixelPNG';
 import { Stars } from './Stars';
 import { SupportUkraine } from './SupportUkraine';
+import { ColorPicker } from './ColorPicker';
 
 export const App: FC = () => (
   <div class={s.page}>
@@ -18,6 +19,7 @@ export const App: FC = () => (
     <aside class={s.toolbar}>
       <HexInput />
       <RGBInputs />
+      <ColorPicker />
     </aside>
     <main class={s.main}>
       <div class={s.content}>
