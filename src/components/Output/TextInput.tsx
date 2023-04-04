@@ -1,4 +1,4 @@
-import * as s from './TextInput.module.css';
+import s from './TextInput.css';
 
 interface Props {
   label: string;
@@ -20,7 +20,7 @@ export const TextInput: FC<Props> = ({ label, ref }) =>  (
     <input
       ref={ref}
       onclick={copy}
-      class={s.text}
+      class={s.inp}
       type="text"
       spellcheck="false"
       readOnly

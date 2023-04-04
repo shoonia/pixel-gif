@@ -1,53 +1,56 @@
 import { useRef } from 'jsx-dom-runtime';
 
-import * as s from './Inputs.module.css';
+import s from './PairInputs.css';
 import type { TParam } from '../../store/types';
 import { connect, dispatch } from '../../store';
 
 interface Props {
-  param: TParam
+  param: TParam;
 }
 
-export const Inputs: FC<Props> = ({ param }) => {
+export const PairInputs: FC<Props> = ({ param }) => {
   const number = useRef<HTMLInputElement>();
   const range = useRef<HTMLInputElement>();
+  const label = `color channel "${param}"`;
 
   const input: EventListener = (event) => {
     const el = event.target as HTMLInputElement;
-    const val = el.valueAsNumber;
+    const val = ~~el.valueAsNumber;
 
-    dispatch('set/rgb', [param, val > 255 ? 255 : val]);
+    dispatch('rgb', [param, val > 255 ? 255 : val]);
   };
 
   connect(param, (state) => {
-    const val = `${state[param]}`;
+    const val = state[param];
 
-    number.current.value = val;
-    range.current.value = val;
+    number.current.valueAsNumber = val;
+    range.current.valueAsNumber = val;
   });
 
   return (
     <div class={s.box}>
       <span class={s.label}>
-        {param.toUpperCase()}
+        {param}
       </span>
       <input
+        ref={number}
         type="number"
         class={s.number}
+        oninput={input}
         max={255}
         min={0}
         step={1}
-        ref={number}
-        oninput={input}
+        aria-label={label}
       />
       <input
+        ref={range}
         type="range"
         class={s.range}
+        oninput={input}
         max={255}
         min={0}
         step={1}
-        ref={range}
-        oninput={input}
+        aria-label={label}
       />
     </div>
   );

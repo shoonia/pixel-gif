@@ -1,5 +1,7 @@
+const canvas = <canvas width={50} height={50} />;
+
 export const createFavicon = (color: string): string | void => {
-  const el = <canvas width={50} height={50} /> as HTMLCanvasElement;
+  const el = canvas.cloneNode() as HTMLCanvasElement;
 
   const ctx = el.getContext('2d', {
     alpha: true,

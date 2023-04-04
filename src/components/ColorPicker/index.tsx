@@ -1,20 +1,29 @@
 import type { HexColorPicker } from 'vanilla-colorful';
+import 'vanilla-colorful/hex-color-picker.js';
 
-import * as s from './styles.module.css';
+import s from './styles.css';
+import { Group } from '../Group';
 import { connect, dispatch } from '../../store';
 
 export const ColorPicker: FC = () => {
-  const mount = (picker: HexColorPicker) => {
+  const isBigScreen = window.matchMedia('(min-width:700px)').matches;
+
+  const ready = (node: HexColorPicker) => {
     connect('hex', (state) => {
-      picker.color = '#' + state.hex;
+      node.color = '#' + state.hex;
     });
 
-    picker.addEventListener('color-changed', () => {
-      dispatch('set/hex', picker.color.slice(1));
+    node.addEventListener('color-changed', (event) => {
+      dispatch('hex', event.detail.value.slice(1));
     });
   };
 
   return (
-    <hex-color-picker ref={mount} class={s.picker} />
+    <Group open={isBigScreen} title="Picker">
+      <hex-color-picker
+        ref={ready}
+        class={s.picker}
+      />
+    </Group>
   );
 };

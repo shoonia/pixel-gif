@@ -17,8 +17,9 @@
     }
   },
   "ignorePatterns": [
-    "node_modules/",
-    "dist/"
+    "webpack.config.js",
+    "scripts",
+    "dist"
   ],
   "rules": {
     "comma-dangle": [
