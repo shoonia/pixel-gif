@@ -4,6 +4,7 @@ import s from './styles.css';
 import { TextInput } from './TextInput';
 import { connect, setState } from '../../store';
 import { getBase64, getBytesArray, getDataUrl } from '../../util';
+import { createFavicon } from './createFavicon';
 
 export const Output: FC = () => {
   const view = useRef<HTMLDivElement>();
@@ -11,6 +12,7 @@ export const Output: FC = () => {
   const dataLink = useRef<HTMLInputElement>();
   const dataBytes = useRef<HTMLInputElement>();
   const dataBase64 = useRef<HTMLInputElement>();
+  const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
   const size = getBytesArray(0, 0, 0).length;
 
   let timeout: number;
@@ -37,6 +39,7 @@ export const Output: FC = () => {
     timeout = window.setTimeout(() => {
       const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
 
+      favicon.href = createFavicon(hex6) || '';
       document.title = '1x1 Pixel GIF | ' + hex6;
       location.hash = hex6;
       console.log('%c  ', css, hex6);
