@@ -163,8 +163,8 @@ module.exports = ({ NODE_ENV: nodeEnv }) => {
         },
       }),
       new webpack.DefinePlugin({
-        'process.platform': JSON.stringify(process.platform),
         'process.env.NODE_ENV': JSON.stringify(nodeEnv),
+        'process.env.HOMEPAGE': JSON.stringify(homepage),
         'process.env': 'undefined',
         'process': 'undefined',
       }),

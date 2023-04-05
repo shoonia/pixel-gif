@@ -33,7 +33,7 @@ export const Output: FC = () => {
     dataUrl.current.value = data;
     dataBase64.current.value = base64;
     dataBytes.current.value = bytes.map((i) => i.toString(radix)).join(' ');
-    dataLink.current.value = 'https://shoonia.github.io/pixel-gif/' + hex6;
+    dataLink.current.value = process.env.HOMEPAGE + hex6;
 
     clearTimeout(timeout);
     timeout = window.setTimeout(() => {
