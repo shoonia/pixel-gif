@@ -7,6 +7,7 @@ import { SupportUkraine } from './SupportUkraine';
 import { ColorPicker } from './ColorPicker';
 import { Output } from './Output';
 import { Download } from './Download';
+import { RandomColor } from './RandomColor';
 
 export const App: FC = () => (
   <div class={s.page}>
@@ -16,6 +17,7 @@ export const App: FC = () => (
       </a>
       <div class={s.right}>
         <SupportUkraine />
+        <RandomColor />
       </div>
     </header>
     <aside class={s.toolbar}>
