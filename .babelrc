@@ -1,5 +1,0 @@
-{
-  "presets": [
-    "jsx-dom-runtime/babel-preset"
-  ]
-}
