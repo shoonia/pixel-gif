@@ -6,6 +6,7 @@ export const createFavicon = (color: string): string | void => {
   const ctx = el.getContext('2d', {
     alpha: true,
     desynchronized: true,
+    colorSpace: 'srgb',
   });
 
   if (ctx) {
