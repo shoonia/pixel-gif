@@ -7,7 +7,7 @@ export interface State {
   readonly bytes: number[];
 }
 
-export type TParam = keyof  Pick<State, 'r' | 'g' | 'b'>
+export type TParam = keyof Pick<State, 'r' | 'g' | 'b'>;
 
 export interface Events {
   'rgb': [param: TParam, value: number];
