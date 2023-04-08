@@ -8,6 +8,7 @@ import { ColorPicker } from './ColorPicker';
 import { Output } from './Output';
 import { Download } from './Download';
 import { RandomColor } from './RandomColor';
+import { HotKeys } from './HotKeys';
 
 export const App: FC = () => (
   <div class={s.page}>
@@ -36,6 +37,7 @@ export const App: FC = () => (
     </main>
     <footer class={s.footer}>
       <div class={s.left}>
+        <HotKeys />
       </div>
       <div class={s.right}>
         <Stars />
