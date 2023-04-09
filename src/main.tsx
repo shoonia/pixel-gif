@@ -6,8 +6,7 @@ import { parseHex, randomHex } from './util';
 const color = parseHex(location.hash);
 const hex = color ? color : randomHex(6);
 
-history.pushState('', '', '#' + hex);
-document.body.append(<App />);
-
 dispatch('hex', hex);
-readyStore();
+
+history.pushState('', '', '#' + hex);
+document.body.append(<App ready={readyStore} />);
