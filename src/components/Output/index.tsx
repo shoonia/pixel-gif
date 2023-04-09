@@ -1,4 +1,4 @@
-import { useRef } from 'jsx-dom-runtime';
+import { useRef, useText } from 'jsx-dom-runtime';
 
 import s from './styles.css';
 import { TextInput } from './TextInput';
@@ -15,6 +15,7 @@ export const Output: FC = () => {
   const dataBase64 = useRef<HTMLInputElement>();
   const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
   const size = getBytesArray(0, 0, 0).length;
+  const [color, setColor] = useText('#000000');
 
   let timeout: number;
 
@@ -24,6 +25,7 @@ export const Output: FC = () => {
     const data = getDataUrl(base64);
     const url = `url(${data})`;
 
+    setColor(hex6);
     view.current.style.backgroundImage = url;
     dataUrl.current.value = data;
     dataBase64.current.value = base64;
@@ -44,9 +46,12 @@ export const Output: FC = () => {
   return (
     <>
       <div ref={view} class={s.view}>
-        <span class={s.size}>
+        <code class={s.color}>
+          {color}
+        </code>
+        <code class={s.size}>
           {`1x1 (${size} bytes)`}
-        </span>
+        </code>
       </div>
       <fieldset class={s.box}>
         <TextInput ref={dataUrl} label="Data URL:" />
