@@ -4,6 +4,7 @@
     "stylelint-config-css-modules"
   ],
   "rules": {
+    "media-feature-range-notation": null,
     "selector-pseudo-element-no-unknown": [
       true,
       {
