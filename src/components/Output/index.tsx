@@ -2,7 +2,8 @@ import { useRef } from 'jsx-dom-runtime';
 
 import s from './styles.css';
 import { TextInput } from './TextInput';
-import { connect, setState } from '../../store';
+import { RadixSelect } from './RadixSelect';
+import { connect } from '../../store';
 import { getBase64, getBytesArray, getDataUrl } from '../../util';
 import { createFavicon } from './createFavicon';
 
@@ -16,12 +17,6 @@ export const Output: FC = () => {
   const size = getBytesArray(0, 0, 0).length;
 
   let timeout: number;
-
-  const changeRadix = (node: HTMLSelectElement) => {
-    node.addEventListener('change', () => {
-      setState({ radix: ~~node.value });
-    });
-  };
 
   connect('hex', 'radix', ({ hex, bytes, radix }) => {
     const hex6 = '#' + hex;
@@ -39,7 +34,7 @@ export const Output: FC = () => {
     timeout = window.setTimeout(() => {
       const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
 
-      favicon.href = createFavicon(hex6) || '';
+      favicon.href = createFavicon(hex6);
       document.title = '1x1 Pixel GIF | ' + hex6;
       location.hash = hex6;
       console.log('%c  ', css, hex6);
@@ -58,12 +53,7 @@ export const Output: FC = () => {
         <TextInput ref={dataBase64} label="Base64:" />
         <div class={s.bytes}>
           <TextInput ref={dataBytes} label="Bytes:" />
-          <select ref={changeRadix} class={s.radix}>
-            <option value="16">16</option>
-            <option value="10">10</option>
-            <option value="8">8</option>
-            <option value="2">2</option>
-          </select>
+          <RadixSelect />
         </div>
         <TextInput ref={dataLink} label="Share Link:" />
       </fieldset>

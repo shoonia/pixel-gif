@@ -1,6 +1,6 @@
 const canvas = <canvas width={50} height={50} />;
 
-export const createFavicon = (color: string): string | void => {
+export const createFavicon = (color: string): string => {
   const el = canvas.cloneNode() as HTMLCanvasElement;
 
   const ctx = el.getContext('2d', {
@@ -14,7 +14,7 @@ export const createFavicon = (color: string): string | void => {
     ctx.arc(25, 25, 24, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
-
-    return el.toDataURL('image/png', 0.1);
   }
+
+  return el.toDataURL('image/png', 0.1);
 };
