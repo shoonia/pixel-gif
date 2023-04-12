@@ -3,7 +3,7 @@ import { useRef } from 'jsx-dom-runtime';
 import s from './styles.css';
 import { Group } from '../Group';
 import { connect, dispatch } from '../../store';
-import { parseHex, randomHex } from '../../util';
+import { getHex, randomHex } from '../../util';
 import { DataList } from './DataList';
 
 export const HexInput: FC = () => {
@@ -11,7 +11,7 @@ export const HexInput: FC = () => {
   const listId = 'e' + randomHex(4);
 
   const changeColor: EventListener = () => {
-    const hex = parseHex(inp.current.value);
+    const hex = getHex(inp.current.value);
 
     if (hex) {
       dispatch('hex', hex);

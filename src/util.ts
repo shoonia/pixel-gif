@@ -1,6 +1,6 @@
 import { colors, isColorsKey } from './utils';
 
-export const createHex = (...rgb: [number, number, number]): string => {
+export const createHex = (...rgb: [r: number, g: number, b: number]): string => {
   return rgb.map((i) => {
     const hex = i.toString(16);
 
@@ -22,7 +22,7 @@ export const rgbToHex = (color: string): string => {
 const SYMBOL_HASH = /^#/;
 const NOT_HEXADECIMAL = /[^\da-f]/g;
 
-export const parseHex = (value: string) => {
+export const getHex = (value: string) => {
   let color = value
     .trim()
     .toLowerCase()
@@ -60,7 +60,7 @@ export const getBytesArray = (r: number, g: number, b: number) => [
   71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0,
   r, g, b,
   0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0,
-  0,0, 1,0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
+  0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
 ];
 
 export const getBase64 = (bytes: number[]) => btoa(String.fromCharCode.apply(null, bytes));
