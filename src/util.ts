@@ -1,7 +1,7 @@
 import { colors, isColorsKey } from './utils';
 
-export const createHex = (r: number, g: number, b: number): string => {
-  return [r, g, b].map((i) => {
+export const createHex = (...rgb: [number, number, number]): string => {
+  return rgb.map((i) => {
     const hex = i.toString(16);
 
     return hex.length < 2 ? '0' + hex : hex;
