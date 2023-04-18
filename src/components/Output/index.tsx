@@ -37,7 +37,6 @@ export const Output: FC = () => {
       const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
 
       favicon.href = createFavicon(hex6);
-      document.title = '1x1 Pixel GIF | ' + hex6;
       location.hash = hex6;
       console.log('%c  ', css, hex6);
     }, 300);
