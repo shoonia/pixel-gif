@@ -23,7 +23,7 @@ export const HexInput: FC = () => {
   });
 
   return (
-    <Group open title="HEX">
+    <Group title="HEX">
       <input
         ref={inp}
         list={listId}
