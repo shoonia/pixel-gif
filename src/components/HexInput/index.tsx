@@ -30,7 +30,7 @@ export const HexInput: FC = () => {
         onchange={changeColor}
         class={s.inp}
         type="text"
-        autoComplete="on"
+        autocomplete="on"
         placeholder="ffffff"
         spellcheck="false"
         aria-label="color"
