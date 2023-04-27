@@ -10,12 +10,17 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 const CssMqpackerPlugin = require('css-mqpacker-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
-const { homepage } = require('./package.json');
+const manifest = require('./static/manifest.json');
 const colors = require('./src/utils/colors.json');
 
 const appDirectory = realpathSync(process.cwd());
 const resolveApp = (relativePath) => resolve(appDirectory, relativePath);
+
+const srcDir = resolveApp('src');
+const staticDir = resolveApp('static');
+const distDir = resolveApp('dist');
 
 module.exports = ({ NODE_ENV }) => {
   const isDev = NODE_ENV === 'development';
@@ -29,7 +34,7 @@ module.exports = ({ NODE_ENV }) => {
     output: {
       iife: false,
       scriptType: 'module',
-      path: isProd ? resolveApp('dist') : undefined,
+      path: isProd ? distDir : undefined,
       pathinfo: isDev,
       filename: '[name].[contenthash:4].js',
       publicPath: isProd ? homepage : '',
@@ -96,7 +101,7 @@ module.exports = ({ NODE_ENV }) => {
           oneOf: [
             {
               test: /\.[jt]sx?$/,
-              include: resolveApp('src'),
+              include: srcDir,
               loader: 'babel-loader',
               options: {
                 cacheDirectory: true,
@@ -160,14 +165,14 @@ module.exports = ({ NODE_ENV }) => {
           useShortDoctype: true,
         },
         templateParameters: {
-          homepage,
+          manifest,
           isProd,
           colors,
         },
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'process.env.HOMEPAGE': JSON.stringify(homepage),
+        'process.env.HOMEPAGE': JSON.stringify(manifest.scope),
         'process.env': 'undefined',
         'process': 'undefined',
       }),
@@ -181,6 +186,14 @@ module.exports = ({ NODE_ENV }) => {
       isProd && new HTMLInlineCSSWebpackPlugin({
         styleTagFactory: ({ style }) => `<style>${style}</style>`,
       }),
+      isProd && new CopyPlugin({
+        patterns: [
+          {
+            from: staticDir,
+            to: distDir,
+          },
+        ],
+      }),
     ].filter(Boolean),
     node: false,
     performance: false,
@@ -190,7 +203,7 @@ module.exports = ({ NODE_ENV }) => {
     devServer: {
       hot: true,
       compress: true,
-      static: resolveApp('src'),
+      static: srcDir,
       port: 3000,
     },
   };
