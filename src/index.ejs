@@ -1,7 +1,8 @@
 <%
-  var title = '1x1 Pixel GIF';
-  var description = 'One pixel GIF. Online generator for creating 1x1 pixel GIF image (43 bytes) in Base64 encoded, Bytes, or Download. 1 pixel for white, black image';
-  var image = new URL('favicon.png', homepage).href;
+  var title = manifest.name;
+  var description = manifest.description;
+  var homepage = manifest.scope;
+  var image = new URL('icon.png', homepage).href;
 
   var ldJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -30,17 +31,18 @@
   <% if (isProd) { %>
     <base href="<%= homepage %>">
     <link rel="preload" as="fetch" href="https://api.github.com/repos/shoonia/pixel-gif" crossorigin="anonymous">
+    <link rel="manifest" href="manifest.json">
   <% } %>
   <link rel="canonical" href="<%= homepage %>">
   <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
   <meta name="google-site-verification" content="JkNxAfkbyATcDv733CZNZPVT9UPc4rJNXxd31OgDwvY">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="<%= manifest.theme_color %>">
   <meta name="description" content="<%= description %>">
   <meta property="og:title" content="<%= title %>">
   <meta property="og:description" content="<%= description %>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="<%= homepage %>">
-  <!-- <meta property="og:image" content="<%= image %>"> -->
+  <meta property="og:image" content="<%= image %>">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@_shoonia">
   <meta name="twitter:creator" content="@_shoonia">

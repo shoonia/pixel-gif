@@ -45,7 +45,6 @@
     "webpack-cli": "^5.0.2",
     "webpack-dev-server": "^4.13.3"
   },
-  "homepage": "https://shoonia.github.io/pixel-gif/",
   "author": {
     "name": "Alexander Zaytsev",
     "email": "zaytsev126@gmail.com",
