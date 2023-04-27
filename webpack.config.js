@@ -37,7 +37,7 @@ module.exports = ({ NODE_ENV }) => {
       path: isProd ? distDir : undefined,
       pathinfo: isDev,
       filename: '[name].[contenthash:4].js',
-      publicPath: isProd ? manifest.scope : '',
+      publicPath: '',
       clean: isProd,
     },
     optimization: {
@@ -155,7 +155,6 @@ module.exports = ({ NODE_ENV }) => {
         inject: 'head',
         template: resolveApp('src/index.ejs'),
         scriptLoading: 'module',
-        // favicon: resolveApp('src/favicon.png'),
         minify: isProd && {
           collapseWhitespace: true,
           removeComments: true,
