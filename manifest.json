@@ -1,0 +1,34 @@
+{
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "https://shoonia.github.io/pixel-gif/",
+  "start_url": "/pixel-gif/",
+  "name": "1x1 Pixel GIF",
+  "short_name": "1x1 Pixel GIF",
+  "lang": "en",
+  "orientation": "portrait",
+  "description": "One pixel GIF. Online generator for creating 1x1 pixel GIF image (43 bytes) in Base64 encoded, Bytes, or Download. 1 pixel for white, black image",
+  "icons": [
+    {
+      "src": "/pixel-gif/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pixel-gif/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/pixel-gif/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/pixel-gif/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
