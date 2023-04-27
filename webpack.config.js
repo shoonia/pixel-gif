@@ -37,7 +37,7 @@ module.exports = ({ NODE_ENV }) => {
       path: isProd ? distDir : undefined,
       pathinfo: isDev,
       filename: '[name].[contenthash:4].js',
-      publicPath: isProd ? homepage : '',
+      publicPath: isProd ? manifest.scope : '',
       clean: isProd,
     },
     optimization: {
