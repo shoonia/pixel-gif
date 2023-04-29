@@ -1,4 +1,4 @@
-window.dataLayer ??= [];
+window.dataLayer = [];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function gtag(..._: unknown[]): void {
@@ -6,10 +6,10 @@ function gtag(..._: unknown[]): void {
   window.dataLayer.push(arguments);
 }
 
-export const Analytics: FC = () => {
-  gtag('js', new Date());
-  gtag('config', 'G-2W35Q7B86C');
+gtag('js', new Date());
+gtag('config', 'G-2W35Q7B86C');
 
+export const Analytics: FC = () => {
   return process.env.NODE_ENV === 'production'
     ? <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W35Q7B86C" />
     : null;
