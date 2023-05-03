@@ -10,7 +10,7 @@ dispatch('hex', hex);
 history.pushState('', '', '#' + hex);
 
 window.addEventListener('load', () => {
-  navigator.serviceWorker?.register('/service-worker.js');
+  navigator.serviceWorker?.register('service-worker.js');
 });
 
 document.body.append(<App ready={readyStore} />);
