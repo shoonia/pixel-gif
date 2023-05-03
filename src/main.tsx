@@ -9,4 +9,8 @@ const hex = color ? color : randomHex(6);
 dispatch('hex', hex);
 history.pushState('', '', '#' + hex);
 
+window.addEventListener('load', () => {
+  navigator.serviceWorker?.register('/service-worker.js');
+});
+
 document.body.append(<App ready={readyStore} />);

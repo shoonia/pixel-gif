@@ -11,6 +11,7 @@ const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').def
 const CssMqpackerPlugin = require('css-mqpacker-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const manifest = require('./static/manifest.json');
 const colors = require('./src/utils/colors.json');
@@ -180,6 +181,13 @@ module.exports = ({ NODE_ENV }) => {
         typescript: {
           configFile: resolveApp('tsconfig.json'),
         },
+      }),
+      new GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+        mode: NODE_ENV,
+        sourcemap: isDev,
+        inlineWorkboxRuntime: true,
       }),
       isProd && new MiniCssExtractPlugin(),
       isProd && new HTMLInlineCSSWebpackPlugin({
