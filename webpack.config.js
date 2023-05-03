@@ -188,6 +188,9 @@ module.exports = ({ NODE_ENV }) => {
         mode: NODE_ENV,
         sourcemap: isDev,
         inlineWorkboxRuntime: true,
+        exclude: [
+          '.DS_Store',
+        ],
       }),
       isProd && new MiniCssExtractPlugin(),
       isProd && new HTMLInlineCSSWebpackPlugin({
