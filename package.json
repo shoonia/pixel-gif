@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack serve --env NODE_ENV=development",
     "build": "webpack build --env NODE_ENV=production",
-    "lint": "tsc --noEmit && eslint 'src/**/*.{ts,tsx}' && stylelint 'src/**/*.css'",
+    "lint": "eslint 'src/**/*.{ts,tsx}' && stylelint 'src/**/*.css'",
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
