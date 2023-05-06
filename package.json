@@ -9,7 +9,7 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.36.1",
+    "jsx-dom-runtime": "^0.36.2",
     "storeon-velo": "^4.1.2",
     "tinykeys": "^1.4.0",
     "vanilla-colorful": "^0.7.2"
@@ -26,7 +26,7 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "css-mqpacker-webpack-plugin": "^0.12.9",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "fork-ts-checker-webpack-plugin": "^8.0.0",
     "html-inline-css-webpack-plugin": "^1.11.1",
     "html-webpack-plugin": "^5.5.1",
