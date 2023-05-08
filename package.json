@@ -9,7 +9,7 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.37.0",
+    "jsx-dom-runtime": "^0.39.0",
     "storeon-velo": "^4.1.2",
     "tinykeys": "^1.4.0",
     "vanilla-colorful": "^0.7.2"
@@ -43,7 +43,7 @@
     "typescript": "^5.0.4",
     "webpack": "^5.82.0",
     "webpack-cli": "^5.1.0",
-    "webpack-dev-server": "^4.14.0",
+    "webpack-dev-server": "^4.15.0",
     "workbox-webpack-plugin": "^6.5.4"
   },
   "author": {
