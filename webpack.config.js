@@ -105,7 +105,7 @@ module.exports = ({ NODE_ENV }) => {
               include: srcDir,
               loader: 'babel-loader',
               options: {
-                cacheDirectory: true,
+                cacheDirectory: false,
                 cacheCompression: false,
                 compact: isProd,
                 presets: [
