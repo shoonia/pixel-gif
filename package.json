@@ -9,7 +9,7 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.41.0-beta.3",
+    "jsx-dom-runtime": "^0.41.0-beta.4",
     "storeon-velo": "^4.1.2",
     "tinykeys": "^1.4.0",
     "vanilla-colorful": "^0.7.2"
