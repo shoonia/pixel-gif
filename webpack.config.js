@@ -182,7 +182,7 @@ module.exports = ({ NODE_ENV }) => {
           configFile: resolveApp('tsconfig.json'),
         },
       }),
-      new GenerateSW({
+      isProd && new GenerateSW({
         clientsClaim: true,
         skipWaiting: true,
         mode: NODE_ENV,
