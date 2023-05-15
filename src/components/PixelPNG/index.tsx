@@ -1,9 +1,9 @@
 import s from './styles.css';
 import { connect } from '../../store';
 
-export const PixelPNG: FC = () => {
-  const url = new URL('https://shoonia.github.io/1x1/');
+const url = new URL('https://shoonia.github.io/1x1/');
 
+export const PixelPNG: FC = () => {
   const ready = (a: HTMLAnchorElement) => {
     connect('hex', (state) => {
       url.hash = state.hex + 'ff';
