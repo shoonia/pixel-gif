@@ -23,7 +23,7 @@ export const HexInput: FC = () => {
     <Group open title="HEX">
       <input
         ref={ready}
-        list="hex"
+        list="color-list"
         class={s.inp}
         type="text"
         autocomplete="on"
@@ -31,7 +31,7 @@ export const HexInput: FC = () => {
         spellcheck="false"
         aria-label="color"
       />
-      <DataList id="hex" />
+      <DataList />
     </Group>
   );
 };

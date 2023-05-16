@@ -1,6 +1,6 @@
 import './global.css';
 import { App } from './components/App';
-import { dispatch, readyStore } from './store';
+import { dispatch } from './store';
 import { getHex, randomHex } from './util';
 
 const color = getHex(location.hash);
@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-document.body.append(<App ready={readyStore} />);
+document.body.append(<App />);

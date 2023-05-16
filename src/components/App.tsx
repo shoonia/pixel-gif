@@ -10,14 +10,11 @@ import { Download } from './Download';
 import { RandomColor } from './RandomColor';
 import { HotKeys } from './HotKeys';
 import { Analytics } from './Analytics';
+import { readyStore } from '../store';
 
-interface Props {
-  ready: (node: HTMLDivElement) => void;
-}
-
-export const App: FC<Props> = ({ ready }) => (
+export const App: FC = () => (
   <>
-    <div ref={ready} class={s.page}>
+    <div ref={readyStore} class={s.page}>
       <header class={s.header}>
         <a href="./" class={s.left} aria-current="page">
          1x1 Pixel GIF
