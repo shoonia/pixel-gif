@@ -34,7 +34,7 @@ tinykeys(window, {
   '$mod+Shift+z': redo,
 });
 
-export const HotKeys: FC = () =>  (
+export const HotKeys: FC = () => (
   <div class={s.box}>
     <div>
       <div>Undo:</div>

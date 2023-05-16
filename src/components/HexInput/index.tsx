@@ -1,33 +1,29 @@
-import { useRef } from 'jsx-dom-runtime';
-
 import s from './styles.css';
 import { Group } from '../Group';
 import { connect, dispatch } from '../../store';
-import { getHex, randomHex } from '../../util';
+import { getHex } from '../../util';
 import { DataList } from './DataList';
 
 export const HexInput: FC = () => {
-  const inp = useRef<HTMLInputElement>();
-  const listId = 'e' + randomHex(4);
+  const ready = (input: HTMLInputElement) => {
+    input.addEventListener('change', () => {
+      const hex = getHex(input.value);
 
-  const changeColor: EventListener = () => {
-    const hex = getHex(inp.current.value);
+      if (hex) {
+        dispatch('hex', hex);
+      }
+    });
 
-    if (hex) {
-      dispatch('hex', hex);
-    }
+    connect('hex', (state) => {
+      input.value = state.hex;
+    });
   };
-
-  connect('hex', (state) => {
-    inp.current.value = state.hex;
-  });
 
   return (
     <Group open title="HEX">
       <input
-        ref={inp}
-        list={listId}
-        onchange={changeColor}
+        ref={ready}
+        list="hex"
         class={s.inp}
         type="text"
         autocomplete="on"
@@ -35,7 +31,7 @@ export const HexInput: FC = () => {
         spellcheck="false"
         aria-label="color"
       />
-      <DataList id={listId} />
+      <DataList id="hex" />
     </Group>
   );
 };
