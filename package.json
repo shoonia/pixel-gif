@@ -9,7 +9,7 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.46.0",
+    "jsx-dom-runtime": "^0.48.0",
     "storeon-velo": "^4.1.2",
     "tinykeys": "^1.4.0",
     "vanilla-colorful": "^0.7.2"
@@ -36,7 +36,7 @@
     "postcss-input-range": "^5.0.0",
     "postcss-loader": "^7.3.0",
     "style-loader": "^3.3.2",
-    "stylelint": "^15.6.0",
+    "stylelint": "^15.6.2",
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-standard": "^33.0.0",
     "terser-webpack-plugin": "^5.3.8",
