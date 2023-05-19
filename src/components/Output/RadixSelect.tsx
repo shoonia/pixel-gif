@@ -3,12 +3,12 @@ import { setState } from '../../store';
 
 export const RadixSelect: FC = () => {
   const ready = (node: HTMLSelectElement) => {
-    node.addEventListener('change', () => {
-      setState({ radix: ~~node.value });
-    });
+    node.addEventListener('change', () =>
+      setState({ radix: ~~node.value }),
+    );
   };
 
-  const options = /*#__PURE__*/ [16, 10, 8, 2].map((i) => (
+  const options = /*#__PURE__*/[16, 10, 8, 2].map((i) => (
     <option value={i}>
       {i}
     </option>
