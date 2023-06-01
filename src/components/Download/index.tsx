@@ -24,20 +24,16 @@ export const Download: FC = () => {
       suggestedName: createName(hex),
     });
 
-    const state = await file.queryPermission();
+    const writable = await file.createWritable();
 
-    if (state === 'granted') {
-      const writable = await file.createWritable();
+    await writable.write(
+      new Blob(
+        [new Uint8Array(bytes)],
+        { type: 'image/gif' },
+      ),
+    );
 
-      await writable.write(
-        new Blob(
-          [new Uint8Array(bytes)],
-          { type: 'image/gif' },
-        ),
-      );
-
-      await writable.close();
-    }
+    await writable.close();
   };
 
   const linkHandler = (link: HTMLAnchorElement): void => {
