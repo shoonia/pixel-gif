@@ -59,8 +59,7 @@ export const randomHex = (size: number): string => {
 export const getBytesArray = (r: number, g: number, b: number) => [
   71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0,
   r, g, b,
-  0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0,
-  0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
+  0, 0, 0, 33, 249, 4, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59,
 ];
 
 export const getBase64 = (bytes: number[]) => btoa(String.fromCharCode.apply(null, bytes));
