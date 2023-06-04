@@ -209,7 +209,6 @@ module.exports = ({ NODE_ENV }) => {
     performance: false,
     experiments: {
       backCompat: false,
-      outputModule: true,
     },
     devServer: {
       hot: true,
