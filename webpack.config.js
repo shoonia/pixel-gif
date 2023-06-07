@@ -209,9 +209,10 @@ module.exports = ({ NODE_ENV }) => {
     performance: false,
     experiments: {
       backCompat: false,
+      outputModule: true,
     },
     devServer: {
-      hot: true,
+      hot: false,
       compress: true,
       static: srcDir,
       port: 3000,
