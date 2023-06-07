@@ -4,7 +4,7 @@ import { connect, dispatch } from '../../store';
 import { getHex } from '../../util';
 import { DataList } from './DataList';
 
-export const HexInput: FC = () => {
+export const HexInput: JSX.FC = () => {
   const ready = (input: HTMLInputElement) => {
     input.addEventListener('change', () => {
       const hex = getHex(input.value);

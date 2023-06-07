@@ -7,7 +7,7 @@ import { connect } from '../../store';
 import { getBase64, getBytesArray, getDataUrl } from '../../util';
 import { createFavicon } from './createFavicon';
 
-export const Output: FC = () => {
+export const Output: JSX.FC = () => {
   const view = useRef<HTMLDivElement>();
   const dataUrl = useRef<HTMLInputElement>();
   const dataLink = useRef<HTMLInputElement>();

@@ -16,7 +16,7 @@ const content = (
   </>
 );
 
-export const Download: FC = () => {
+export const Download: JSX.FC = () => {
   const buttonHandler: EventListener = async () => {
     const { hex, bytes } = getState();
 

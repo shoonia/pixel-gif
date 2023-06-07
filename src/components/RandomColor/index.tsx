@@ -2,7 +2,7 @@ import s from './styles.css';
 import { dispatch } from '../../store';
 import { randomHex } from '../../util';
 
-export const RandomColor: FC = () => {
+export const RandomColor: JSX.FC = () => {
   const click: EventListener = () =>
     dispatch('hex', randomHex(6));
 

@@ -12,7 +12,7 @@ import { HotKeys } from './HotKeys';
 import { Analytics } from './Analytics';
 import { readyStore } from '../store';
 
-export const App: FC = () => (
+export const App: JSX.FC = () => (
   <>
     <div ref={readyStore} class={s.page}>
       <header class={s.header}>
