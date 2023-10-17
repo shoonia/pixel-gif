@@ -23,6 +23,10 @@ const srcDir = resolveApp('src');
 const staticDir = resolveApp('static');
 const distDir = resolveApp('dist');
 
+/**
+ * @param {NodeJS.ProcessEnv} env
+ * @returns {webpack.Configuration}
+ */
 module.exports = ({ NODE_ENV }) => {
   const isDev = NODE_ENV === 'development';
   const isProd = NODE_ENV === 'production';
@@ -43,6 +47,7 @@ module.exports = ({ NODE_ENV }) => {
     },
     optimization: {
       minimize: isProd,
+      mergeDuplicateChunks: true,
       minimizer: [
         new TerserPlugin({
           terserOptions: {
@@ -101,7 +106,7 @@ module.exports = ({ NODE_ENV }) => {
         {
           oneOf: [
             {
-              test: /\.[jt]sx?$/,
+              test: /\.tsx?$/,
               include: srcDir,
               loader: 'babel-loader',
               options: {
@@ -109,7 +114,12 @@ module.exports = ({ NODE_ENV }) => {
                 cacheCompression: false,
                 compact: isProd,
                 presets: [
-                  '@babel/typescript',
+                  [
+                    '@babel/preset-typescript',
+                    {
+                      optimizeConstEnums: true,
+                    },
+                  ],
                   'jsx-dom-runtime/babel-preset',
                 ],
               },
@@ -210,6 +220,7 @@ module.exports = ({ NODE_ENV }) => {
     experiments: {
       backCompat: false,
       outputModule: true,
+      topLevelAwait: true,
     },
     devServer: {
       hot: false,
