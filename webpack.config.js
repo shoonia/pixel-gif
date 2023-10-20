@@ -33,6 +33,7 @@ module.exports = ({ NODE_ENV }) => {
 
   return {
     mode: NODE_ENV,
+    cache: isDev,
     bail: isProd,
     devtool: isDev && 'cheap-module-source-map',
     entry: resolveApp('src/main.tsx'),
@@ -101,16 +102,20 @@ module.exports = ({ NODE_ENV }) => {
       ],
     },
     module: {
-      strictExportPresence: true,
+      parser: {
+        javascript: {
+          strictExportPresence: true,
+        },
+      },
       rules: [
         {
           oneOf: [
             {
               test: /\.tsx?$/,
               include: srcDir,
-              loader: 'babel-loader',
+              loader: require.resolve('babel-loader'),
               options: {
-                cacheDirectory: false,
+                cacheDirectory: isDev,
                 cacheCompression: false,
                 compact: isProd,
                 presets: [
@@ -128,10 +133,10 @@ module.exports = ({ NODE_ENV }) => {
               test: /\.css$/,
               use: [
                 isDev
-                  ? 'style-loader'
+                  ? require.resolve('style-loader')
                   : MiniCssExtractPlugin.loader,
                 {
-                  loader: 'css-loader',
+                  loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
                     sourceMap: isDev,
@@ -143,7 +148,7 @@ module.exports = ({ NODE_ENV }) => {
                   },
                 },
                 {
-                  loader: 'postcss-loader',
+                  loader: require.resolve('postcss-loader'),
                   options: {
                     sourceMap: isDev,
                     postcssOptions: {
@@ -183,8 +188,6 @@ module.exports = ({ NODE_ENV }) => {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         'process.env.HOMEPAGE': JSON.stringify(manifest.scope),
-        'process.env': 'undefined',
-        'process': 'undefined',
       }),
       new ForkTsCheckerWebpackPlugin({
         async: isDev,
@@ -224,7 +227,7 @@ module.exports = ({ NODE_ENV }) => {
     },
     devServer: {
       hot: false,
-      compress: true,
+      compress: false,
       static: srcDir,
       port: 3000,
     },
