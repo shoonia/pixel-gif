@@ -17,7 +17,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.2",
     "@evilmartians/lefthook": "^1.5.2",
-    "@types/wicg-file-system-access": "^2023.10.1",
+    "@types/wicg-file-system-access": "^2023.10.2",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "autoprefixer": "^10.4.16",
