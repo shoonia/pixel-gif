@@ -2,6 +2,7 @@
   "name": "pixel-gif",
   "version": "1.0.0",
   "description": "One pixel GIF base64 encoded online generator",
+  "type": "module",
   "scripts": {
     "start": "webpack serve --env NODE_ENV=development",
     "build": "webpack build --env NODE_ENV=production",
