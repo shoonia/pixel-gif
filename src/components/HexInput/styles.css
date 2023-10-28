@@ -6,3 +6,8 @@
   border: var(--border);
   border-radius: var(--radius);
 }
+
+.inp::-webkit-search-cancel-button {
+  appearance: none;
+  opacity: 0;
+}

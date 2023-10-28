@@ -30,7 +30,7 @@
   <title><%= title %></title>
   <% if (isProd) { %>
     <base href="<%= homepage %>">
-    <link rel="preload" as="fetch" href="https://api.github.com/repos/shoonia/pixel-gif" crossorigin="anonymous">
+    <link rel="preload" as="fetch" fetchpriority="high" href="https://api.github.com/repos/shoonia/pixel-gif" crossorigin="anonymous">
     <link rel="manifest" href="manifest.json">
   <% } %>
   <link rel="canonical" href="<%= homepage %>">

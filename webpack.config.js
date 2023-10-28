@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import createLocalIdent from 'mini-css-class-name/css-loader/index.js';
+import createLocalIdent from 'mini-css-class-name/css-loader';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
 import CssMqpackerPlugin from 'css-mqpacker-webpack-plugin';
