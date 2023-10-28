@@ -25,11 +25,13 @@ export const HexInput: JSX.FC = () => {
         ref={ready}
         list="color-list"
         class={s.inp}
-        type="text"
+        type="search"
         autocomplete="on"
         placeholder="ffffff"
         spellcheck="false"
         aria-label="color"
+        minLength={3}
+        maxLength={25}
       />
       <DataList />
     </Group>
