@@ -13,6 +13,7 @@ export const app: StoreonModule<State, Events> = (store) => {
       radix: 16,
       hex: '000000',
       bytes: getBytesArray(0, 0, 0),
+      toast: false,
     };
   });
 
