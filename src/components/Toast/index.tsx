@@ -1,12 +1,25 @@
 import s from './styles.css';
+import { connect } from '../../store';
 
 export const Toast: JSX.FC = () => {
   const ready = (node: HTMLDivElement) => {
-    node.classList.add(s.show);
+    let timer: ReturnType<typeof setTimeout>;
 
-    setTimeout(() => {
-      node.classList.remove(s.show);
-    }, 3000);
+    const show = () => {
+      clearTimeout(timer);
+      node.classList.add(s.show);
+
+      timer = setTimeout(
+        () => node.classList.remove(s.show),
+        3_000,
+      );
+    };
+
+    connect('toast', (store) => {
+      if (store.toast) {
+        show();
+      }
+    });
   };
 
   return (
