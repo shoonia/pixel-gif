@@ -1,13 +1,11 @@
 .toast {
-  --toast-bottom: 4em;
-
   position: fixed;
   left: 50%;
-  bottom: var(--toast-bottom);
+  bottom: 4em;
   text-align: center;
   display: none;
   color: #fff;
-  background-color: rgb(0 0 0 / 80%);
+  background-color: rgb(0 0 0 / 70%);
   border-radius: var(--radius);
   padding: 0.7em 1.4em;
   font-size: 1.3em;
@@ -32,15 +30,13 @@
   }
 
   100% {
-    bottom: var(--toast-bottom);
+    bottom: 4em;
     opacity: 1;
   }
 }
 
 @media (max-width: 700px) {
   .toast {
-    --toast-bottom: 1em;
-
     transform: translateX(-50%);
   }
 }
