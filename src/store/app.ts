@@ -38,13 +38,8 @@ export const app: StoreonModule<State, Events> = (store) => {
 
     return getDiff(
       state,
-      {
-        r,
-        g,
-        b,
-        hex,
-        bytes: getBytesArray(r, g, b),
-      },
+      { r, g, b },
+      { hex, bytes: getBytesArray(r, g, b) },
     );
   });
 };
