@@ -8,11 +8,10 @@ const hex = color ? color : randomHex(6);
 
 dispatch('hex', hex);
 history.pushState('', '', '#' + hex);
+document.body.append(<App />);
 
 if (process.env.NODE_ENV === 'production') {
-  window.addEventListener('load', () => {
+  addEventListener('load', () => {
     navigator.serviceWorker?.register('service-worker.js');
   });
 }
-
-document.body.append(<App />);

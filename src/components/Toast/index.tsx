@@ -15,8 +15,8 @@ export const Toast: JSX.FC = () => {
       );
     };
 
-    connect('toast', (store) => {
-      if (store.toast) {
+    connect('toast', (state) => {
+      if (state.toast) {
         show();
       }
     });

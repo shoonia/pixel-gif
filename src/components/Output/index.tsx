@@ -4,7 +4,7 @@ import s from './styles.css';
 import { TextInput } from './TextInput';
 import { RadixSelect } from './RadixSelect';
 import { connect } from '../../store';
-import { getBase64, getBytesArray, getDataUrl } from '../../util';
+import { getBase64, getDataUrl } from '../../util';
 import { createFavicon } from './createFavicon';
 
 export const Output: JSX.FC = () => {
@@ -14,10 +14,9 @@ export const Output: JSX.FC = () => {
   const dataBytes = useRef<HTMLInputElement>();
   const dataBase64 = useRef<HTMLInputElement>();
   const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-  const size = getBytesArray(0, 0, 0).length;
   const [color, setColor] = useText('#000000');
 
-  let timeout: number;
+  let timeout: ReturnType<typeof setTimeout>;
 
   connect('hex', 'radix', ({ hex, bytes, radix }) => {
     const hex6 = '#' + hex;
@@ -33,7 +32,7 @@ export const Output: JSX.FC = () => {
     dataLink.current.value = process.env.HOMEPAGE + hex6;
 
     clearTimeout(timeout);
-    timeout = window.setTimeout(() => {
+    timeout = setTimeout(() => {
       const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
 
       favicon.href = createFavicon(hex6);
@@ -49,7 +48,7 @@ export const Output: JSX.FC = () => {
           {color}
         </code>
         <code class={s.size}>
-          {`1x1 (${size} bytes)`}
+          1x1 (43 bytes)
         </code>
       </div>
       <fieldset class={s.box}>

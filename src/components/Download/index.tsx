@@ -20,7 +20,7 @@ export const Download: JSX.FC = () => {
   const buttonHandler: EventListener = async () => {
     const { hex, bytes } = getState();
 
-    const file = await window.showSaveFilePicker({
+    const file = await showSaveFilePicker({
       suggestedName: createName(hex),
     });
 
@@ -45,7 +45,7 @@ export const Download: JSX.FC = () => {
     });
   };
 
-  return typeof window.showSaveFilePicker === 'function'
+  return typeof showSaveFilePicker === 'function'
     ? (
       <button onclick={buttonHandler} type="button" class={s.btn}>
         {content}
