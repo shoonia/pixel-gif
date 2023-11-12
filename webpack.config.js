@@ -198,6 +198,7 @@ export default ({ NODE_ENV }) => {
         },
       }),
       isProd && new GenerateSW({
+        swDest: 'sw.js',
         clientsClaim: true,
         skipWaiting: true,
         mode: NODE_ENV,

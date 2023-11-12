@@ -11,7 +11,5 @@ history.pushState('', '', '#' + hex);
 document.body.append(<App />);
 
 if (process.env.NODE_ENV === 'production') {
-  addEventListener('load', () => {
-    navigator.serviceWorker?.register('service-worker.js');
-  });
+  addEventListener('load', () => navigator.serviceWorker?.register('sw.js'));
 }
