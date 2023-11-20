@@ -32,9 +32,7 @@ export const getHex = (value: string) => {
 
   if (isColorsKey(color)) {
     color = colors[color];
-  }
-
-  if (NOT_HEXADECIMAL.test(color)) {
+  } else if (NOT_HEXADECIMAL.test(color)) {
     color = rgbToHex(color);
   }
 
