@@ -7,7 +7,7 @@ const color = getHex(location.hash);
 const hex = color ? color : randomHex(6);
 
 dispatch('hex', hex);
-history.pushState('', '', '#' + hex);
+history.replaceState('', '', '#' + hex);
 document.body.append(<App />);
 
 if (process.env.NODE_ENV === 'production') {
