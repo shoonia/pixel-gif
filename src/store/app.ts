@@ -25,7 +25,7 @@ export const app: StoreonModule<State, Events> = (store) => {
 
     return {
       [key]: value,
-      hex: createHex(r, g, b),
+      hex: createHex([r, g, b]),
       bytes: getBytesArray(r, g, b),
     };
   });
