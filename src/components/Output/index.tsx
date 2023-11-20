@@ -18,7 +18,7 @@ export const Output: JSX.FC = () => {
 
   let timeout: ReturnType<typeof setTimeout>;
 
-  connect('hex', 'radix', ({ hex, bytes, radix }) => {
+  connect('hex', ({ hex, bytes }) => {
     const hex6 = '#' + hex;
     const base64 = getBase64(bytes);
     const data = getDataUrl(base64);
@@ -28,7 +28,6 @@ export const Output: JSX.FC = () => {
     view.current.style.backgroundImage = url;
     dataUrl.current.value = data;
     dataBase64.current.value = base64;
-    dataBytes.current.value = bytes.map((i) => i.toString(radix)).join(' ');
     dataLink.current.value = process.env.HOMEPAGE + hex6;
 
     clearTimeout(timeout);
@@ -39,6 +38,10 @@ export const Output: JSX.FC = () => {
       location.hash = hex6;
       console.log('%c  ', css, hex6);
     }, 300);
+  });
+
+  connect('bytes', 'radix', ({ bytes, radix }) => {
+    dataBytes.current.value = bytes.map((i) => i.toString(radix)).join(' ');
   });
 
   return (
