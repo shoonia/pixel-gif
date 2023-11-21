@@ -1,6 +1,8 @@
 import { colors, isColorsKey } from './utils';
 
-export const createHex = (...rgb: [r: number, g: number, b: number]): string => {
+type TRGB = readonly [r: number, g: number, b: number];
+
+export const createHex = (rgb: TRGB): string => {
   return rgb.map((i) => {
     const hex = i.toString(16);
 
@@ -10,10 +12,10 @@ export const createHex = (...rgb: [r: number, g: number, b: number]): string => 
 
 export const rgbToHex = (color: string): string => {
   const [r, g, b] = color.match(/(0?\.?\d+)%?\b/g) || [];
-  const rgb = [Number(r), Number(g), Number(b)] as const;
+  const rgb: TRGB = [Number(r), Number(g), Number(b)];
 
-  if (rgb.every((i) => i >= 0 && i <= 255)) {
-    return createHex(...rgb);
+  if (rgb.every((i) => i >= 0 && i < 256)) {
+    return createHex(rgb);
   }
 
   return '';
@@ -30,9 +32,7 @@ export const getHex = (value: string) => {
 
   if (isColorsKey(color)) {
     color = colors[color];
-  }
-
-  if (NOT_HEXADECIMAL.test(color)) {
+  } else if (NOT_HEXADECIMAL.test(color)) {
     color = rgbToHex(color);
   }
 
