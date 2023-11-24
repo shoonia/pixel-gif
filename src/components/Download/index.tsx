@@ -36,14 +36,13 @@ export const Download: JSX.FC = () => {
     await writable.close();
   };
 
-  const linkHandler = (link: HTMLAnchorElement): void => {
+  const linkHandler = (link: HTMLAnchorElement): void =>
     link.addEventListener('click', () => {
       const { hex, bytes } = getState();
 
       link.download = createName(hex);
       link.href = getDataUrl(getBase64(bytes));
     });
-  };
 
   return typeof showSaveFilePicker === 'function'
     ? (
