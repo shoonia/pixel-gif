@@ -1,3 +1,5 @@
+import type { RefCallback } from 'jsx-dom-runtime';
+
 import s from './styles.css';
 import { getState } from '../../store';
 import { getBase64, getDataUrl } from '../../util';
@@ -36,7 +38,7 @@ export const Download: JSX.FC = () => {
     await writable.close();
   };
 
-  const linkHandler = (link: HTMLAnchorElement): void =>
+  const linkHandler: RefCallback<HTMLAnchorElement> = (link): void =>
     link.addEventListener('click', () => {
       const { hex, bytes } = getState();
 
