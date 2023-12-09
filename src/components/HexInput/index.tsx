@@ -1,3 +1,5 @@
+import type { RefCallback } from 'jsx-dom-runtime';
+
 import s from './styles.css';
 import { Group } from '../Group';
 import { connect, dispatch } from '../../store';
@@ -5,7 +7,7 @@ import { getHex } from '../../util';
 import { DataList } from './DataList';
 
 export const HexInput: JSX.FC = () => {
-  const ready = (input: HTMLInputElement) => {
+  const ready: RefCallback<HTMLInputElement> = (input) => {
     input.addEventListener('change', () => {
       const hex = getHex(input.value);
 
