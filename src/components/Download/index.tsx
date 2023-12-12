@@ -1,4 +1,4 @@
-import type { RefCallback } from 'jsx-dom-runtime';
+import type { MouseEventHandler } from 'jsx-dom-runtime';
 
 import s from './styles.css';
 import { getState } from '../../store';
@@ -38,13 +38,12 @@ export const Download: JSX.FC = () => {
     await writable.close();
   };
 
-  const linkHandler: RefCallback<HTMLAnchorElement> = (link): void =>
-    link.addEventListener('click', () => {
-      const { hex, bytes } = getState();
+  const linkHandler: MouseEventHandler<HTMLAnchorElement> = ({ currentTarget: link }) => {
+    const { hex, bytes } = getState();
 
-      link.download = createName(hex);
-      link.href = getDataUrl(getBase64(bytes));
-    });
+    link.download = createName(hex);
+    link.href = getDataUrl(getBase64(bytes));
+  };
 
   return typeof showSaveFilePicker === 'function'
     ? (
@@ -52,7 +51,7 @@ export const Download: JSX.FC = () => {
         {content}
       </button>
     ) : (
-      <a ref={linkHandler} role="button" class={s.btn} href="#">
+      <a onclick={linkHandler} role="button" class={s.btn} href="#">
         {content}
       </a>
     );

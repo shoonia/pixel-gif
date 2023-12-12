@@ -1,4 +1,4 @@
-import { useRef } from 'jsx-dom-runtime';
+import { type InputEventHandler, useRef } from 'jsx-dom-runtime';
 
 import s from './PairInputs.css';
 import type { TParam } from '../../store/types';
@@ -13,9 +13,8 @@ export const PairInputs: JSX.FC<Props> = ({ param }) => {
   const range = useRef<HTMLInputElement>();
   const label = `color channel "${param}"`;
 
-  const input: EventListener = (event) => {
-    const el = event.target as HTMLInputElement;
-    const val = ~~el.valueAsNumber;
+  const input: InputEventHandler<HTMLInputElement> = (event) => {
+    const val = ~~event.currentTarget.valueAsNumber;
 
     dispatch('rgb', [param, val > 255 ? 255 : val]);
   };
