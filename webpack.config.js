@@ -15,8 +15,8 @@ import { GenerateSW } from 'workbox-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import inputRange from 'postcss-input-range';
 
-import manifest from './static/manifest.json' assert { type: 'json' };
-import colors from './src/utils/colors.json' assert { type: 'json' };
+import manifest from './static/manifest.json' with { type: 'json' };
+import colors from './src/utils/colors.json' with { type: 'json' };
 
 const appDirectory = realpathSync(process.cwd());
 const resolveApp = (relativePath) => resolve(appDirectory, relativePath);
