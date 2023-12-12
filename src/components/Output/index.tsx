@@ -13,7 +13,7 @@ export const Output: JSX.FC = () => {
   const dataLink = useRef<HTMLInputElement>();
   const dataBytes = useRef<HTMLInputElement>();
   const dataBase64 = useRef<HTMLInputElement>();
-  const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+  const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
   const [color, setColor] = useText('#000000');
 
   let timeout: ReturnType<typeof setTimeout>;

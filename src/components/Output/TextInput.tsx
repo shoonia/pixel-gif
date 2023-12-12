@@ -1,4 +1,4 @@
-import type { RefObject } from 'jsx-dom-runtime';
+import type { GenericEventHandler, RefObject } from 'jsx-dom-runtime';
 
 import s from './TextInput.css';
 import { setState } from '../../store';
@@ -8,9 +8,7 @@ interface Props {
   ref: RefObject<HTMLInputElement>;
 }
 
-const copy: EventListener = (event) => {
-  const el = event.target as HTMLInputElement;
-
+const copy: GenericEventHandler<HTMLInputElement> = ({ currentTarget: el }) => {
   el.select();
   navigator.clipboard.writeText(el.value);
   setState({ toast: true });
