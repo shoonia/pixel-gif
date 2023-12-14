@@ -37,7 +37,7 @@
   appearance: none;
   height: 28px;
   width: 28px;
-  background-color: var(--c-pr);
+  background-color: var(--c-thumb, var(--c-pr));
   border: 2px solid #fff;
   border-radius: 50%;
   place-content: center center;
