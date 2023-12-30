@@ -1,7 +1,7 @@
 .inp {
   width: 100%;
   margin: 0.5em 0;
-  padding: var(--inp-pdg);
+  padding: var(--pdg);
   box-sizing: border-box;
   border: var(--border);
   border-radius: var(--radius);
