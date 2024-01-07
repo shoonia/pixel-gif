@@ -58,7 +58,6 @@ input {
   outline: none;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.1s ease-in;
 }
 
 a {
