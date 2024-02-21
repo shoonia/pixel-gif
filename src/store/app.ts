@@ -18,13 +18,16 @@ export const app: StoreonModule<State, Events> = (store) => {
   });
 
   store.on('rgb', (state, [key, value]) => {
+    const v = ~~value;
+    const i = v < 0 ? 0 : v > 255 ? 255 : v;
+
     const { r, g, b }: Readonly<State> = {
       ...state,
-      [key]: value,
+      [key]: i,
     };
 
     return {
-      [key]: value,
+      [key]: i,
       hex: createHex([r, g, b]),
       bytes: getBytesArray(r, g, b),
     };
