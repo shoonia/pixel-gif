@@ -46,15 +46,7 @@ export const getHex = (value: string) => {
   }
 };
 
-export const randomHex = (size: number): string => {
-  let hex = '';
-
-  while (size--) {
-    hex += (16 * Math.random() | 0).toString(16);
-  }
-
-  return hex;
-};
+export const randomHex = () => crypto.randomUUID().slice(-6);
 
 export const getBytesArray = (r: number, g: number, b: number) => [
   71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0,
