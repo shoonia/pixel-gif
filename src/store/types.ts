@@ -11,6 +11,6 @@ export interface State {
 export type TParam = keyof Pick<State, 'r' | 'g' | 'b'>;
 
 export interface Events {
-  'rgb': [param: TParam, value: number];
+  'rgb': readonly [param: TParam, value: number];
   'hex': string;
 }
