@@ -53,6 +53,7 @@ export default ({ NODE_ENV }) => {
       mergeDuplicateChunks: true,
       minimizer: [
         new TerserPlugin({
+          extractComments: false,
           terserOptions: {
             ecma: 2020,
             module: true,
@@ -66,6 +67,7 @@ export default ({ NODE_ENV }) => {
               passes: 3,
               toplevel: true,
               pure_getters: true,
+              unsafe: true,
               unsafe_arrows: true,
               unsafe_undefined: true,
               unsafe_math: true,

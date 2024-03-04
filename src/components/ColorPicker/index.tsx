@@ -8,8 +8,6 @@ import { connect, dispatch } from '../../store';
 customElements.define('color-picker', HexBase);
 
 export const ColorPicker: JSX.FC = () => {
-  const isBigScreen = /*#__PURE__*/ matchMedia('(min-width:700px)').matches;
-
   const ready: RefCallback<HexBase> = (node) => {
     connect('hex', (state) => {
       node.color = '#' + state.hex;
@@ -21,7 +19,10 @@ export const ColorPicker: JSX.FC = () => {
   };
 
   return (
-    <Group open={isBigScreen} title="Picker">
+    <Group
+      open={matchMedia('(min-width:700px)').matches}
+      title="Picker"
+    >
       <color-picker
         ref={ready}
         class={s.picker}
