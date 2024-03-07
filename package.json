@@ -10,8 +10,8 @@
     "serve": "python3 -m http.server -d dist"
   },
   "dependencies": {
-    "jsx-dom-runtime": "^0.60.0",
-    "storeon-velo": "^5.0.0-rc.4",
+    "jsx-dom-runtime": "^0.60.1",
+    "storeon-velo": "^5.0.0-rc.5",
     "tinykeys": "^2.1.0",
     "vanilla-colorful": "^0.7.2"
   },
@@ -42,7 +42,7 @@
     "stylelint-config-css-modules": "^4.4.0",
     "stylelint-config-standard": "^36.0.0",
     "terser-webpack-plugin": "^5.3.10",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.2",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.2",
