@@ -9,6 +9,6 @@ Online generator creating one pixel GIF image (43 bytes) in Base64 encoded, Byte
 
 ---
 
-Online generator creating one pixel transparent PNG image in Base64 encoded, Bytes or Download:
+One pixel transparent PNG:
 
 [https://shoonia.github.io/1x1/](https://shoonia.github.io/1x1/)
