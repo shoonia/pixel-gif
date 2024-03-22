@@ -35,7 +35,6 @@
     "mini-css-class-name": "^0.15.1",
     "mini-css-extract-plugin": "^2.8.1",
     "postcss": "^8.4.38",
-    "postcss-input-range": "^5.0.0",
     "postcss-loader": "^8.1.1",
     "style-loader": "^3.3.4",
     "stylelint": "^16.2.1",

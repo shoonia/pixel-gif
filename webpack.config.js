@@ -13,7 +13,6 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
 import autoprefixer from 'autoprefixer';
-import inputRange from 'postcss-input-range';
 
 import manifest from './static/manifest.json' with { type: 'json' };
 import colors from './src/utils/colors.json' with { type: 'json' };
@@ -150,19 +149,18 @@ export default ({ NODE_ENV }) => {
                     },
                   },
                 },
-                {
+                isProd && {
                   loader: 'postcss-loader',
                   options: {
                     sourceMap: isDev,
                     postcssOptions: {
                       plugins: [
-                        isProd && autoprefixer,
-                        inputRange,
-                      ].filter(Boolean),
+                        autoprefixer,
+                      ],
                     },
                   },
                 },
-              ],
+              ].filter(Boolean),
             },
           ],
         },

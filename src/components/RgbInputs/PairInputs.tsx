@@ -25,7 +25,7 @@ export const PairInputs: JSX.FC<Props> = ({ param }) => {
 
     number.current.valueAsNumber = val;
     range.current.valueAsNumber = val;
-    range.current.style.setProperty('--c-thumb', `rgb(${r} ${g} ${b})`);
+    range.current.style.setProperty('--c', `rgb(${r} ${g} ${b})`);
   });
 
   return (
