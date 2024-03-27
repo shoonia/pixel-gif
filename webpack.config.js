@@ -11,7 +11,6 @@ import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
 import CssMqpackerPlugin from 'css-mqpacker-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
-import { GenerateSW } from 'workbox-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 import manifest from './static/manifest.json' with { type: 'json' };
@@ -195,17 +194,6 @@ export default ({ NODE_ENV }) => {
         typescript: {
           configFile: resolveApp('tsconfig.json'),
         },
-      }),
-      isProd && new GenerateSW({
-        swDest: 'sw.js',
-        clientsClaim: true,
-        skipWaiting: true,
-        mode: NODE_ENV,
-        sourcemap: isDev,
-        inlineWorkboxRuntime: true,
-        exclude: [
-          '.DS_Store',
-        ],
       }),
       isProd && new MiniCssExtractPlugin(),
       isProd && new HTMLInlineCSSWebpackPlugin.default({

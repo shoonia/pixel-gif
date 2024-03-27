@@ -9,7 +9,3 @@ const hex = color ? color : randomHex();
 dispatch('hex', hex);
 history.replaceState('', '', '#' + hex);
 document.body.append(<App />);
-
-if (process.env.NODE_ENV === 'production') {
-  addEventListener('load', () => navigator.serviceWorker?.register('sw.js'));
-}
