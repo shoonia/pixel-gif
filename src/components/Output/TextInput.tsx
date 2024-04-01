@@ -1,11 +1,11 @@
-import type { GenericEventHandler, RefObject } from 'jsx-dom-runtime';
+import type { GenericEventHandler } from 'jsx-dom-runtime';
 
 import s from './TextInput.css';
 import { setState } from '../../store';
 
 interface Props {
   label: string;
-  ref: RefObject<HTMLInputElement>;
+  ref: JSX.Ref<HTMLInputElement>;
 }
 
 const copy: GenericEventHandler<HTMLInputElement> = ({ currentTarget: el }) => {
