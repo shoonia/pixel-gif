@@ -39,6 +39,7 @@ export default ({ NODE_ENV }) => {
     entry: resolveApp('src/main.tsx'),
     output: {
       iife: false,
+      module: true,
       scriptType: 'module',
       path: isProd ? distDir : undefined,
       pathinfo: isDev,
@@ -140,10 +141,12 @@ export default ({ NODE_ENV }) => {
                   options: {
                     importLoaders: 1,
                     sourceMap: isDev,
-                    modules: isDev ? {
-                      localIdentName: '[file]--[local]',
-                    } : {
-                      getLocalIdent: createLocalIdent(),
+                    modules: {
+                      namedExport: false,
+                      exportLocalsConvention: 'as-is',
+                      ...(isDev
+                        ? { localIdentName: '[file]--[local]' }
+                        : { getLocalIdent: createLocalIdent() }),
                     },
                   },
                 },
