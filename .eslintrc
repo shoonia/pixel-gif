@@ -22,6 +22,7 @@
     "dist"
   ],
   "rules": {
+    "@typescript-eslint/no-use-before-define": "error",
     "comma-dangle": [
       "error",
       "always-multiline"
@@ -48,7 +49,6 @@
     ],
     "no-else-return": "error",
     "no-trailing-spaces": "error",
-    "no-use-before-define": "error",
     "no-multiple-empty-lines": [
       "error",
       {
