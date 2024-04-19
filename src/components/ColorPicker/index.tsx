@@ -1,4 +1,3 @@
-import type { RefCallback } from 'jsx-dom-runtime';
 import { HexBase } from 'vanilla-colorful/lib/entrypoints/hex';
 
 import s from './styles.css';
@@ -8,7 +7,7 @@ import { connect, dispatch } from '../../store';
 customElements.define('color-picker', HexBase);
 
 export const ColorPicker: JSX.FC = () => {
-  const ready: RefCallback<HexBase> = (node) => {
+  const ready: JSX.Ref<HexBase> = (node) => {
     connect('hex', (state) => {
       node.color = '#' + state.hex;
     });

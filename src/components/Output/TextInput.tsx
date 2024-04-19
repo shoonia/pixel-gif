@@ -14,7 +14,7 @@ const copy: GenericEventHandler<HTMLInputElement> = ({ currentTarget: el }) => {
   setState({ toast: true });
 };
 
-export const TextInput: JSX.FC<Props> = ({ label, ref }) =>  (
+export const TextInput: JSX.FC<Props> = ({ label, ref }) =>
   <label>
     {label}
     <input
@@ -25,5 +25,4 @@ export const TextInput: JSX.FC<Props> = ({ label, ref }) =>  (
       spellcheck="false"
       readOnly
     />
-  </label>
-);
+  </label>;
