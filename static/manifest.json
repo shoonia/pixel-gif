@@ -8,7 +8,7 @@
   "short_name": "1x1 Pixel GIF",
   "lang": "en",
   "orientation": "portrait",
-  "description": "One pixel GIF online generator for creating 1x1 pixel GIF image (43 bytes) in Base64 encoded, Bytes, or Download. 1 pixel for white, black image, or any color",
+  "description": "One pixel GIF online generator for creating 1x1 pixel GIF image (35 bytes) in Base64 encoded, Bytes, or Download. 1 pixel for white, black image, or any color",
   "icons": [
     {
       "src": "/pixel-gif/icon-192x192.png",

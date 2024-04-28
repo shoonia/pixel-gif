@@ -51,7 +51,7 @@ export const Output: JSX.FC = () => {
           {color}
         </code>
         <code class={s.size}>
-          1x1 (43 bytes)
+          1x1 (35 bytes)
         </code>
       </div>
       <fieldset class={s.box}>
