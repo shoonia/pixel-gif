@@ -18,7 +18,7 @@ export const app: StoreonModule<State, Events> = (store) => {
   });
 
   store.on('rgb', (state, [key, value]) => {
-    const v = ~~value;
+    const v = value | 0;
     const i = v < 0 ? 0 : v > 255 ? 255 : v;
 
     const { r, g, b }: Readonly<State> = {
