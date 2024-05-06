@@ -27,8 +27,8 @@ const NOT_HEXADECIMAL = /[^\da-f]/g;
 export const getHex = (value: string) => {
   let color = value
     .trim()
-    .toLowerCase()
-    .replace(SYMBOL_HASH, '');
+    .replace(SYMBOL_HASH, '')
+    .toLowerCase();
 
   if (isColorsKey(color)) {
     color = colors[color];
@@ -48,12 +48,12 @@ export const getHex = (value: string) => {
 
 export const randomHex = () => crypto.randomUUID().slice(-6);
 
-export const getBytesArray = (r: number, g: number, b: number) => [
+export const getBytesArray = (r: number, g: number, b: number) => <const>[
   71, 73, 70, 56, 55, 97, 1, 0, 1, 0, 128, 1, 0, 0, 0, 0,
   r, g, b,
   44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 76, 1, 0, 59,
 ];
 
-export const getBase64 = (bytes: number[]) => btoa(String.fromCharCode.apply(null, bytes));
+export const getBase64 = (bytes: readonly number[]) => btoa(String.fromCharCode(...bytes));
 
 export const getDataUrl = (base64: string) => 'data:image/gif;base64,' + base64;

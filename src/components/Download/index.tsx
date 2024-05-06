@@ -1,5 +1,3 @@
-import type { MouseEventHandler } from 'jsx-dom-runtime';
-
 import s from './styles.css';
 import { getState } from '../../store';
 import { getBase64, getDataUrl } from '../../util';
@@ -19,7 +17,7 @@ const content = (
 );
 
 export const Download: JSX.FC = () => {
-  const buttonHandler: EventListener = async () => {
+  const buttonHandler: JSX.EventListener = async () => {
     const { hex, bytes } = getState();
 
     const file = await showSaveFilePicker({
@@ -38,7 +36,7 @@ export const Download: JSX.FC = () => {
     await writable.close();
   };
 
-  const linkHandler: MouseEventHandler<HTMLAnchorElement> = ({ currentTarget: link }) => {
+  const linkHandler: JSX.EventListener<HTMLAnchorElement> = ({ currentTarget: link }) => {
     const { hex, bytes } = getState();
 
     link.download = createName(hex);

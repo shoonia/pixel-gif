@@ -4,7 +4,7 @@ export interface State {
   readonly b: number;
   readonly radix: number;
   readonly hex: string;
-  readonly bytes: number[];
+  readonly bytes: readonly number[];
   readonly toast: boolean;
 }
 

@@ -13,7 +13,7 @@ import { Toast } from './Toast';
 import { Analytics } from './Analytics';
 import { readyStore } from '../store';
 
-export const App: JSX.FC = () => (
+export const App: JSX.FC = () =>
   <>
     <div ref={readyStore} class={s.page}>
       <header class={s.header}>
@@ -51,5 +51,4 @@ export const App: JSX.FC = () => (
       </footer>
     </div>
     <Analytics />
-  </>
-);
+  </>;
