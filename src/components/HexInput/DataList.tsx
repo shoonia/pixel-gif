@@ -5,6 +5,6 @@ export const DataList: JSX.FC = () =>
     {Object.keys(colors).map((key) =>
       <option value={colors[key as keyof TColors]}>
         {key}
-      </option>
+      </option>,
     )}
   </datalist>;

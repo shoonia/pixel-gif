@@ -14,7 +14,7 @@ export const RadixSelect: JSX.FC = () => {
       {[16, 10, 8, 2].map((i) =>
         <option value={i}>
           {i}
-        </option>
+        </option>,
       )}
     </select>
   );
