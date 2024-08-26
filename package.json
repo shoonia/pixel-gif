@@ -12,7 +12,7 @@
   "dependencies": {
     "jsx-dom-runtime": "^0.70.2",
     "storeon-velo": "^5.0.0-rc.5",
-    "tinykeys": "^2.1.0",
+    "tinykeys": "^3.0.0",
     "vanilla-colorful": "^0.7.2"
   },
   "devDependencies": {
