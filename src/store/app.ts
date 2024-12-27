@@ -3,6 +3,7 @@ import type { StoreonModule } from 'storeon-velo';
 import type { Events, State } from './types';
 import { getDiff } from './helpers';
 import { createHex, getBytesArray } from '../util';
+import { getHistory, saveHistory } from './storage';
 
 export const app: StoreonModule<State, Events> = (store) => {
   store.on('@init', () => {
@@ -11,10 +12,21 @@ export const app: StoreonModule<State, Events> = (store) => {
       g: 0,
       b: 0,
       radix: 16,
-      hex: '000000',
-      bytes: getBytesArray(0, 0, 0),
+      hex: '',
+      bytes: [],
       toast: false,
+      history: getHistory(),
     };
+  });
+
+  store.on('@changed', ({ history }, { hex }) => {
+    if (hex && history.every((i) => i !== hex)) {
+      const newHistory = [hex].concat(history.slice(0, 50));
+
+      saveHistory(newHistory);
+
+      return { history: newHistory };
+    }
   });
 
   store.on('rgb', (state, [key, value]) => {

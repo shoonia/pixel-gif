@@ -6,6 +6,7 @@ export interface State {
   readonly hex: string;
   readonly bytes: readonly number[];
   readonly toast: boolean;
+  readonly history: string[]
 }
 
 export type TParam = keyof Pick<State, 'r' | 'g' | 'b'>;
