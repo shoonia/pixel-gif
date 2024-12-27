@@ -19,8 +19,8 @@ export const app: StoreonModule<State, Events> = (store) => {
     };
   });
 
-  store.on('@changed', ({ history }, { hex }) => {
-    if (hex && history.every((i) => i !== hex)) {
+  store.on('history', ({ history }, hex) => {
+    if (history.every((i) => i !== hex)) {
       const newHistory = [hex].concat(history.slice(0, 50));
 
       saveHistory(newHistory);
@@ -33,14 +33,14 @@ export const app: StoreonModule<State, Events> = (store) => {
     const v = value | 0;
     const i = v < 0 ? 0 : v > 255 ? 255 : v;
 
-    const { r, g, b }: Readonly<State> = {
-      ...state,
-      [key]: i,
-    };
+    const { r, g, b }: Readonly<State> = { ...state, [key]: i };
+    const hex = createHex([r, g, b]);
+
+    store.dispatch('history', hex);
 
     return {
       [key]: i,
-      hex: createHex([r, g, b]),
+      hex,
       bytes: getBytesArray(r, g, b),
     };
   });
@@ -51,6 +51,8 @@ export const app: StoreonModule<State, Events> = (store) => {
     const r = i >> 16 & 255;
     const g = i >> 8 & 255;
     const b = i & 255;
+
+    store.dispatch('history', hex);
 
     return getDiff(
       state,
