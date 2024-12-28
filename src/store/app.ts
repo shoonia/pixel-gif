@@ -29,19 +29,18 @@ export const app: StoreonModule<State, Events> = (store) => {
     }
   });
 
-  store.on('rgb', (state, [key, value]) => {
+  store.on('rgb', ({ r, g, b }, [key, value]) => {
     const v = value | 0;
     const i = v < 0 ? 0 : v > 255 ? 255 : v;
-
-    const { r, g, b }: Readonly<State> = { ...state, [key]: i };
-    const hex = createHex([r, g, b]);
+    const n = { r, g, b, [key]: i };
+    const hex = createHex([n.r, n.g, n.b]);
 
     store.dispatch('history', hex);
 
     return {
       [key]: i,
       hex,
-      bytes: getBytesArray(r, g, b),
+      bytes: getBytesArray(n.r, n.g, n.b),
     };
   });
 
