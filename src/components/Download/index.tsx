@@ -1,6 +1,5 @@
 import s from './styles.css';
 import { getState } from '../../store';
-import { getBase64, getDataUrl } from '../../util';
 
 const createName = (hex: string) => `1x1_#${hex.toUpperCase()}.gif`;
 
@@ -37,10 +36,10 @@ export const Download: JSX.FC = () => {
   };
 
   const linkHandler: JSX.EventListener<HTMLAnchorElement> = ({ currentTarget: link }) => {
-    const { hex, bytes } = getState();
+    const { hex, data } = getState();
 
     link.download = createName(hex);
-    link.href = getDataUrl(getBase64(bytes));
+    link.href = data;
   };
 
   return typeof showSaveFilePicker === 'function'

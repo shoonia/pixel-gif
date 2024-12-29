@@ -5,6 +5,8 @@ export interface State {
   readonly radix: number;
   readonly hex: string;
   readonly bytes: readonly number[];
+  readonly base64: string;
+  readonly data: string;
   readonly toast: boolean;
   readonly history: string[]
 }
