@@ -11,15 +11,13 @@ let timeout: ReturnType<typeof setTimeout>;
 
 export const Preview: JSX.FC = () => {
   const ready: JSX.Ref<HTMLElement> = (node) =>
-    connect('url', ({ url, color }) => {
-      const cssUrl = `url(${url})`;
-
+    connect('color', ({ color }) => {
       setColor(color);
-      node.style.backgroundImage = cssUrl;
+      node.style.backgroundColor = color;
 
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + cssUrl;
+        const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-color:' + color;
 
         favicon.href = createFavicon(color);
         location.hash = color;
