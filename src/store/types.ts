@@ -7,6 +7,7 @@ export interface Rgb {
 export interface State extends Rgb {
   readonly radix: number;
   readonly hex: string;
+  readonly color: string;
   readonly bytes: readonly number[];
   readonly base64: string;
   readonly url: string;

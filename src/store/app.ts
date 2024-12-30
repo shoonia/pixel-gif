@@ -2,18 +2,19 @@ import type { StoreonModule } from 'storeon-velo';
 
 import type { Events, Rgb, State } from './types';
 import { getDiff } from './helpers';
-import { createHex, getBase64, getBytesArray, getDataUrl } from '../util';
+import { createHex, getBytesArray } from '../util';
 import { getHistory, HISTORY_LENGTH, saveHistory } from './storage';
 
 const calc = (hex: string, rgb: Rgb): Partial<State> => {
   const bytes = getBytesArray(rgb);
-  const base64 = getBase64(bytes);
+  const base64 = btoa(String.fromCharCode(...bytes));
 
   return {
     hex,
+    color: '#' + hex,
     bytes,
     base64,
-    url: getDataUrl(base64),
+    url: 'data:image/gif;base64,' + base64,
   };
 };
 

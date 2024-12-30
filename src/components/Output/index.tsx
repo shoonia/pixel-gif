@@ -10,27 +10,26 @@ export const Output: JSX.FC = () => {
   const dataUrl = useRef<HTMLInputElement>();
   const dataLink = useRef<HTMLInputElement>();
   const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
-  const [color, setColor] = useText('#000000');
+  const [color, setColor] = useText('');
 
   let timeout: ReturnType<typeof setTimeout>;
 
   const viewRef: JSX.Ref<HTMLElement> = (view) =>
-    connect('hex', ({ hex, url }) => {
-      const hex6 = '#' + hex;
+    connect('color', ({ color, url }) => {
       const cssUrl = `url(${url})`;
 
-      setColor(hex6);
+      setColor(color);
       view.style.backgroundImage = cssUrl;
       dataUrl.current.value = url;
-      dataLink.current.value = process.env.HOMEPAGE + hex6;
+      dataLink.current.value = process.env.HOMEPAGE + color;
 
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + cssUrl;
 
-        favicon.href = createFavicon(hex6);
-        location.hash = hex6;
-        console.log('%c  ', css, hex6);
+        favicon.href = createFavicon(color);
+        location.hash = color;
+        console.log('%c  ', css, color);
       }, 300);
     });
 

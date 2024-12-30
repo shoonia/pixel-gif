@@ -1,7 +1,7 @@
 import s from './styles.css';
 import { getState } from '../../store';
 
-const createName = (hex: string) => `1x1_#${hex.toUpperCase()}.gif`;
+const createName = (color: string) => `1x1_${color.toUpperCase()}.gif`;
 
 const content = (
   <>
@@ -17,10 +17,10 @@ const content = (
 
 export const Download: JSX.FC = () => {
   const buttonHandler: JSX.EventListener = async () => {
-    const { hex, bytes } = getState();
+    const { color, bytes } = getState();
 
     const file = await showSaveFilePicker({
-      suggestedName: createName(hex),
+      suggestedName: createName(color),
     });
 
     const writable = await file.createWritable();
@@ -36,9 +36,9 @@ export const Download: JSX.FC = () => {
   };
 
   const linkHandler: JSX.EventListener<HTMLAnchorElement> = ({ currentTarget: link }) => {
-    const { hex, url } = getState();
+    const { color, url } = getState();
 
-    link.download = createName(hex);
+    link.download = createName(color);
     link.href = url;
   };
 

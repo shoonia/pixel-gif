@@ -8,8 +8,8 @@ customElements.define('color-picker', HexBase);
 
 export const ColorPicker: JSX.FC = () => {
   const ready: JSX.Ref<HexBase> = (node) =>
-    connect('hex', (state) => {
-      node.color = '#' + state.hex;
+    connect('color', (state) => {
+      node.color = state.color;
     });
 
   const changed = (event: CustomEvent) =>
