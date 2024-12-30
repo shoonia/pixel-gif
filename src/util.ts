@@ -1,3 +1,4 @@
+import type { Rgb } from './store/types';
 import { colors, isColorsKey } from './utils';
 
 type TRGB = readonly [r: number, g: number, b: number];
@@ -48,9 +49,9 @@ export const getHex = (value: string) => {
 
 export const randomHex = () => crypto.randomUUID().slice(-6);
 
-export const getBytesArray = (r: number, g: number, b: number) => <const>[
+export const getBytesArray = (i: Rgb) => <const>[
   71, 73, 70, 56, 55, 97, 1, 0, 1, 0, 128, 1, 0, 0, 0, 0,
-  r, g, b,
+  i.r, i.g, i.b,
   44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 76, 1, 0, 59,
 ];
 
