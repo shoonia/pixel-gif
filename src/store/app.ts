@@ -63,7 +63,7 @@ export const app: StoreonModule<State, Events> = (store) => {
     return getDiff(
       state,
       { r, g, b },
-      { hex, bytes, base64, data: getDataUrl(base64) },
+      { hex, bytes, base64, url: getDataUrl(base64) },
     );
   });
 };

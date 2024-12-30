@@ -36,10 +36,10 @@ export const Download: JSX.FC = () => {
   };
 
   const linkHandler: JSX.EventListener<HTMLAnchorElement> = ({ currentTarget: link }) => {
-    const { hex, data } = getState();
+    const { hex, url } = getState();
 
     link.download = createName(hex);
-    link.href = data;
+    link.href = url;
   };
 
   return typeof showSaveFilePicker === 'function'

@@ -1,17 +1,20 @@
-export interface State {
+export interface Rgb {
   readonly r: number;
   readonly g: number;
   readonly b: number;
+}
+
+export interface State extends Rgb {
   readonly radix: number;
   readonly hex: string;
   readonly bytes: readonly number[];
   readonly base64: string;
-  readonly data: string;
+  readonly url: string;
   readonly toast: boolean;
-  readonly history: string[]
+  readonly history: string[];
 }
 
-export type TParam = keyof Pick<State, 'r' | 'g' | 'b'>;
+export type TParam = keyof Rgb;
 
 export interface Events {
   rgb: readonly [param: TParam, value: number];

@@ -15,18 +15,18 @@ export const Output: JSX.FC = () => {
   let timeout: ReturnType<typeof setTimeout>;
 
   const viewRef: JSX.Ref<HTMLElement> = (view) =>
-    connect('hex', ({ hex, data }) => {
+    connect('hex', ({ hex, url }) => {
       const hex6 = '#' + hex;
-      const url = `url(${data})`;
+      const cssUrl = `url(${url})`;
 
       setColor(hex6);
-      view.style.backgroundImage = url;
-      dataUrl.current.value = data;
+      view.style.backgroundImage = cssUrl;
+      dataUrl.current.value = url;
       dataLink.current.value = process.env.HOMEPAGE + hex6;
 
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + url;
+        const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + cssUrl;
 
         favicon.href = createFavicon(hex6);
         location.hash = hex6;
