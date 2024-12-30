@@ -5,6 +5,7 @@ import { PixelPNG } from './PixelPNG';
 import { Stars } from './Stars';
 import { SupportUkraine } from './SupportUkraine';
 import { ColorPicker } from './ColorPicker';
+import { Preview } from './Preview';
 import { Output } from './Output';
 import { Download } from './Download';
 import { RandomColor } from './RandomColor';
@@ -34,6 +35,7 @@ export const App: JSX.FC = () =>
         <h1 class={s.title}>
           One pixel Base64 encoded GIF generator
         </h1>
+        <Preview />
         <Output />
         <Download />
       </div>

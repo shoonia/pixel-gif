@@ -1,0 +1,40 @@
+import { useText } from 'jsx-dom-runtime';
+
+import s from './styles.css';
+import { createFavicon } from './createFavicon';
+import { connect } from '../../store';
+
+const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
+const [color, setColor] = useText('');
+
+let timeout: ReturnType<typeof setTimeout>;
+
+export const Preview: JSX.FC = () => {
+  const ready: JSX.Ref<HTMLElement> = (node) =>
+    connect('url', ({ url, color }) => {
+      const cssUrl = `url(${url})`;
+
+      setColor(color);
+      node.style.backgroundImage = cssUrl;
+
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-image:' + cssUrl;
+
+        favicon.href = createFavicon(color);
+        location.hash = color;
+        console.log('%c  ', css, color);
+      }, 300);
+    });
+
+  return (
+    <div ref={ready} class={s.view}>
+      <code class={s.color}>
+        {color}
+      </code>
+      <code class={s.size}>
+        1x1 (35 bytes)
+      </code>
+    </div>
+  );
+};
