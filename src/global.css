@@ -4,6 +4,7 @@
   --toolbar-w: 300px;
   --c-pr: #b94147;
   --c-sh: rgb(0 0 0 / 30%);
+  --c-txt: #0d1117;
   --border: 1px solid #767676;
   --radius: 4px;
   --pdg: 0.4em 1em;
@@ -71,7 +72,7 @@ a:hover {
 body,
 input,
 button {
-  color: #0d1117;
+  color: var(--c-txt);
 }
 
 fieldset {

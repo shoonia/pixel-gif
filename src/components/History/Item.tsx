@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Item: JSX.FC<Props> = ({ hex }) =>
-  <li class={s.item} title={hex}>
+  <li class={s.item}>
     <a
       class={s.link}
       href={hex}
