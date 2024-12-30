@@ -3,7 +3,7 @@ import type { StoreonModule } from 'storeon-velo';
 import type { Events, State } from './types';
 import { getDiff } from './helpers';
 import { createHex, getBase64, getBytesArray, getDataUrl } from '../util';
-import { getHistory, saveHistory } from './storage';
+import { getHistory, HISTORY_LENGTH, saveHistory } from './storage';
 
 export const app: StoreonModule<State, Events> = (store) => {
   store.on('@init', () => {
@@ -23,7 +23,7 @@ export const app: StoreonModule<State, Events> = (store) => {
 
   store.on('history', ({ history }, hex) => {
     if (history.every((i) => i !== hex)) {
-      const newHistory = [hex].concat(history.slice(0, 50));
+      const newHistory = [hex].concat(history.slice(0, HISTORY_LENGTH - 1));
 
       saveHistory(newHistory);
 
