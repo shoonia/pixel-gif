@@ -15,11 +15,7 @@ export const History: JSX.FC = () => {
         node.prepend(<Item hex={`#${history[0]}`} />);
       } else {
         isRendered = true;
-        node.append(
-          <>
-            {history.map((i) => <Item hex={`#${i}`} />)}
-          </>,
-        );
+        node.append(...history.map((i) => <Item hex={`#${i}`} />));
       }
     });
 
