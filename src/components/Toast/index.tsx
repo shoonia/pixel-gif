@@ -2,21 +2,14 @@ import s from './styles.css';
 import { connect } from '../../store';
 
 export const Toast: JSX.FC = () => {
-  const ready: JSX.Ref<HTMLDivElement> = (node) => {
-    let timer: ReturnType<typeof setTimeout>;
-
+  const ready: JSX.Ref<HTMLDivElement> = (node) =>
     connect('toast', (state) => {
       if (state.toast) {
-        clearTimeout(timer);
         node.classList.add(s.show);
-
-        timer = setTimeout(
-          () => node.classList.remove(s.show),
-          3_000,
-        );
+      } else {
+        node.classList.remove(s.show);
       }
     });
-  };
 
   return (
     <div ref={ready} class={s.toast} role="status">

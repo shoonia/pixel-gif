@@ -13,6 +13,7 @@ export interface State extends Rgb {
   readonly url: string;
   readonly toast: boolean;
   readonly history: string[];
+  readonly timeout?: NodeJS.Timeout | number;
 }
 
 export type TParam = keyof Rgb;
@@ -21,4 +22,5 @@ export interface Events {
   rgb: readonly [param: TParam, value: number];
   hex: string;
   history: string;
+  copy: never
 }

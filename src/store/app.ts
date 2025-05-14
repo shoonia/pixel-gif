@@ -71,4 +71,13 @@ export const app: StoreonModule<State, Events> = (store) => {
       calc(hex, rgb),
     );
   });
+
+  store.on('copy', (state) => {
+    clearTimeout(state.timeout);
+
+    return {
+      toast: true,
+      timeout: setTimeout(store.set, 3_000, { toast: false }),
+    };
+  });
 };
