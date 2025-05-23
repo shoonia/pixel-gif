@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
+import jsxDomRuntime from 'jsx-dom-runtime/eslint-plugin';
 
 export default ts.config(
   {
@@ -9,6 +10,7 @@ export default ts.config(
   },
   js.configs.recommended,
   ...ts.configs.recommended,
+  jsxDomRuntime,
   {
     languageOptions: {
       ecmaVersion: 2024,
