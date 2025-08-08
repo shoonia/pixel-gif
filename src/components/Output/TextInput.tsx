@@ -3,7 +3,6 @@ import { dispatch } from '../../store';
 
 interface Props {
   label: string;
-  name: string;
   ref: JSX.Ref<HTMLInputElement>;
 }
 
@@ -13,12 +12,12 @@ const copy: JSX.EventListener<HTMLInputElement> = ({ currentTarget: el }) => {
   dispatch('copy');
 };
 
-export const TextInput: JSX.FC<Props> = ({ label, name, ref }) =>
+export const TextInput: JSX.FC<Props> = ({ label, ref }) =>
   <label>
     {label}
     <input
       ref={ref}
-      name={name}
+      name={label.toLowerCase().replaceAll(' ', '-')}
       on:click={copy}
       class={s.inp}
       type="text"

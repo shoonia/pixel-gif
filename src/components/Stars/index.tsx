@@ -24,7 +24,7 @@ export const Stars: JSX.FC = () =>
     </a>
     <a
       href="https://github.com/shoonia/pixel-gif/stargazers"
-      aria-label={`View ${stars} stargazers on GitHub`}
+      aria-label="View stargazers on GitHub"
       class={s.stars}
     >
       {stars}

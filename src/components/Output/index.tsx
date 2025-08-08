@@ -26,13 +26,16 @@ export const Output: JSX.FC = () => {
 
   return (
     <fieldset class={s.box}>
-      <TextInput ref={dataUrlRef} label="Data URL:" name="data-url" />
-      <TextInput ref={base64Ref} label="Base64:" name="base64" />
+      <legend class="sr-only">
+        Output formats
+      </legend>
+      <TextInput ref={dataUrlRef} label="Data URL" />
+      <TextInput ref={base64Ref} label="Base64" />
       <div class={s.bytes}>
-        <TextInput ref={bytesRef} label="Bytes:" name="bytes" />
+        <TextInput ref={bytesRef} label="Bytes" />
         <RadixSelect />
       </div>
-      <TextInput ref={linkRef} label="Share Link:" name="share-link" />
+      <TextInput ref={linkRef} label="Share Link" />
     </fieldset>
   );
 };
