@@ -36,6 +36,7 @@ export const PairInputs: JSX.FC<Props> = ({ param }) => {
       <input
         ref={number}
         type="number"
+        name={`${param}-number`}
         class={s.number}
         on:input={input}
         max={255}
@@ -46,6 +47,7 @@ export const PairInputs: JSX.FC<Props> = ({ param }) => {
       <input
         ref={range}
         type="range"
+        name={`${param}-range`}
         class={s.range}
         on:input={input}
         max={255}

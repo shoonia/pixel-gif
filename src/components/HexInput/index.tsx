@@ -23,13 +23,14 @@ export const HexInput: JSX.FC = () => {
     <Group open title="HEX">
       <input
         ref={ready}
+        name="hex-color"
         list="color-list"
         class={s.inp}
         type="search"
         autocomplete="on"
         placeholder="ffffff"
         spellcheck="false"
-        aria-label="color"
+        aria-label="Hex color code"
         minLength={3}
         maxLength={25}
       />

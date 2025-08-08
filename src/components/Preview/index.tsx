@@ -26,11 +26,11 @@ export const Preview: JSX.FC = () => {
     });
 
   return (
-    <div ref={ready} class={s.view}>
-      <code class={s.color}>
+    <div ref={ready} class={s.view} role="img" aria-label="Color preview">
+      <code class={s.color} aria-label="Current color code">
         {color}
       </code>
-      <code class={s.size}>
+      <code class={s.size} aria-label="GIF file size">
         1x1 (35 bytes)
       </code>
     </div>

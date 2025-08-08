@@ -12,7 +12,7 @@ export const PixelPNG: JSX.FC = () => {
       ref={ready}
       href="https://shoonia.github.io/1x1/"
       class={s.link}
-      aria-label="One pixel Base64 encoded transparent PNG generator"
+      aria-label="Generate 1x1 pixel PNG image"
     >
       1x1 Pixel PNG
     </a>
