@@ -31,7 +31,7 @@ export const Output: JSX.FC = () => {
       </legend>
       <TextInput ref={dataUrlRef} label="Data URL" />
       <TextInput ref={base64Ref} label="Base64" />
-      <div class={s.bytes}>
+      <div class={s.bytes} role="group" aria-label="Output bytes">
         <TextInput ref={bytesRef} label="Bytes" />
         <RadixSelect />
       </div>
