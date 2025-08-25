@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
-import jsxDomRuntime from 'jsx-dom-runtime/eslint-plugin';
+import jsx from 'jsx-dom-runtime/eslint-plugin';
 
 export default ts.config(
   {
@@ -10,7 +10,7 @@ export default ts.config(
   },
   js.configs.recommended,
   ...ts.configs.recommended,
-  jsxDomRuntime,
+  jsx,
   {
     languageOptions: {
       ecmaVersion: 2024,
@@ -22,18 +22,11 @@ export default ts.config(
     rules: {
       'no-else-return': 'error',
       'no-trailing-spaces': 'error',
-      'indent': [
-        'error',
-        2,
-        {
-          'SwitchCase': 1,
-        },
-      ],
-      'quotes': [
+      quotes: [
         'error',
         'single',
       ],
-      'semi': [
+      semi: [
         'error',
         'always',
       ],
