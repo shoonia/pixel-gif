@@ -35,7 +35,7 @@ addEventListener('keydown', createKeybindingsHandler({
 }));
 
 export const HotKeys: JSX.FC = () =>
-  <div class={s.box}>
+  <div class={s.box} role="toolbar" aria-label="Undo and Redo commands">
     <div>
       <div>Undo</div>
       <button
