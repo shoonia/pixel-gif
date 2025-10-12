@@ -4,20 +4,45 @@
   var homepage = manifest.scope;
   var image = new URL('icon.png', homepage).href;
 
-  var ldJson = JSON.stringify({
+var ldJson = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    url: homepage,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${homepage}#{color}`,
-      'query-input': {
-        '@type': 'PropertyValueSpecification',
-        valueRequired: true,
-        valueMaxlength: 20,
-        valueName: 'color'
-      }
-    }
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        url: homepage,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${homepage}#{color}`,
+          'query-input': {
+            '@type': 'PropertyValueSpecification',
+            valueRequired: true,
+            valueMaxLength: 20,
+            valueName: 'color',
+          },
+        },
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: title,
+        description: description,
+        url: homepage,
+        image: image,
+        applicationCategory: 'DeveloperTool',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+        softwareVersion: pkg.version,
+        publisher: {
+          '@type': 'Organization',
+          name: pkg.author.name,
+          url: pkg.author.url,
+        },
+        license: "https://github.com/shoonia/pixel-gif/blob/master/LICENSE"
+      },
+    ],
   });
 %>
 
@@ -26,7 +51,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <title><%= title %></title>
   <% if (isProd) { %>
     <base href="<%= homepage %>">
@@ -39,6 +64,7 @@
   <meta name="theme-color" content="<%= manifest.theme_color %>">
   <meta name="description" content="<%= description %>">
   <meta property="og:title" content="<%= title %>">
+  <meta property="og:site_name" content="<%= title %>">
   <meta property="og:description" content="<%= description %>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="<%= homepage %>">

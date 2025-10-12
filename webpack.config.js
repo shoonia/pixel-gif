@@ -13,6 +13,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
+import pkg from './package.json' with { type: 'json' };
 import manifest from './static/manifest.json' with { type: 'json' };
 import colors from './src/utils/colors.json' with { type: 'json' };
 
@@ -203,6 +204,7 @@ export default ({ NODE_ENV }) => {
           useShortDoctype: true,
         },
         templateParameters: {
+          pkg,
           manifest,
           isProd,
           colors,
