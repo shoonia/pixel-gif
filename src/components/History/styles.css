@@ -8,18 +8,20 @@
 
 .item {
   display: block;
-  padding: 1px;
+  margin: 1px;
   width: var(--size);
   height: var(--size);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  border: var(--border);
+}
+
+.preview {
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
 }
 
 .link {
-  display: block;
-  width: var(--size);
-  height: var(--size);
   color: var(--c-txt);
-  position: relative;
 }
 
 .link::before {

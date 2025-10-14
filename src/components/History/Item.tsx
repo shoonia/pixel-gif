@@ -9,7 +9,13 @@ export const Item: JSX.FC<Props> = ({ hex }) =>
     <a
       class={s.link}
       href={hex}
-      style={{ backgroundColor: hex }}
-      aria-label={`Color ${hex}`}
-    />
+      aria-label={`Select ${hex} color`}
+    >
+      <span
+        role="img"
+        class={s.preview}
+        style={{ backgroundColor: hex }}
+        aria-label="Color preview"
+      />
+    </a>
   </li>;
