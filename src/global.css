@@ -85,6 +85,10 @@ label {
   display: block;
 }
 
+output {
+  font-family: monospace;
+}
+
 :global(.sr-only) {
   position: absolute;
   width: 1px;
