@@ -16,7 +16,6 @@ import autoprefixer from 'autoprefixer';
 
 import pkg from './package.json' with { type: 'json' };
 import manifest from './static/manifest.json' with { type: 'json' };
-import colors from './src/utils/colors.json' with { type: 'json' };
 
 const appDirectory = realpathSync(process.cwd());
 const resolveApp = (relativePath) => resolve(appDirectory, relativePath);
@@ -208,7 +207,6 @@ export default ({ NODE_ENV }) => {
           pkg,
           manifest,
           isProd,
-          colors,
         },
       }),
       new webpack.DefinePlugin({
