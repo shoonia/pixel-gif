@@ -7,7 +7,7 @@ import { connect } from '../../store';
 const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
 const [color, setColor] = useText('');
 
-let timeout: ReturnType<typeof setTimeout>;
+let timeout: NodeJS.Timeout;
 
 export const Preview: JSX.FC = () => {
   const ready: JSX.Ref<HTMLElement> = (node) =>

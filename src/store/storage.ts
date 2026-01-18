@@ -1,6 +1,6 @@
 const KEY = 'one-pixel-gif-history';
 
-let timeout: ReturnType<typeof setTimeout>;
+let timeout: NodeJS.Timeout;
 
 export const HISTORY_LENGTH = 50;
 
