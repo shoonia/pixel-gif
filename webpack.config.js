@@ -8,6 +8,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import createLocalIdent from 'mini-css-class-name/css-loader';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
+import HTMLInlineScriptWebpackPlugin from 'html-inline-script-webpack-plugin';
 import CssMqpackerPlugin from 'css-mqpacker-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
@@ -192,7 +193,7 @@ export default ({ NODE_ENV }) => {
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        inject: 'head',
+        inject: 'body',
         template: resolveApp('src/index.ejs'),
         scriptLoading: 'module',
         minify: isProd && {
@@ -231,6 +232,9 @@ export default ({ NODE_ENV }) => {
             to: distDir,
           },
         ],
+      }),
+      isProd && new HTMLInlineScriptWebpackPlugin({
+        scriptMatchPattern: [/\.js$/],
       }),
     ].filter(Boolean),
     node: false,
