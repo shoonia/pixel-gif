@@ -4,11 +4,7 @@ import { colors, isColorsKey } from './utils';
 type TRGB = readonly [r: number, g: number, b: number];
 
 export const createHex = (rgb: TRGB): string => {
-  return rgb.map((i) => {
-    const hex = i.toString(16);
-
-    return hex.length < 2 ? '0' + hex : hex;
-  }).join('');
+  return rgb.map((i) => i.toString(16).padStart(2, '0')).join('');
 };
 
 export const rgbToHex = (color: string): string => {
