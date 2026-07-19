@@ -17,7 +17,7 @@ export const TextInput: JSX.FC<Props> = ({ label, ref }) =>
     {label}
     <input
       ref={ref}
-      name={label.toLowerCase().replaceAll(' ', '-')}
+      name={label.replaceAll(' ', '-')}
       on:click={copy}
       class={s.inp}
       type="text"
