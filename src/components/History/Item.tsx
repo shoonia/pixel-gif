@@ -14,7 +14,7 @@ export const Item: JSX.FC<Props> = ({ hex }) =>
       <span
         role="img"
         class={s.preview}
-        style={{ backgroundColor: hex }}
+        style={`background-color:${hex}`}
         aria-label="Color preview"
       />
     </a>
