@@ -56,11 +56,11 @@ export default ({ NODE_ENV }) => {
         new TerserPlugin({
           extractComments: false,
           terserOptions: {
-            ecma: 2020,
+            ecma: 2025,
             module: true,
             toplevel: true,
             compress: {
-              ecma: 2020,
+              ecma: 2025,
               module: true,
               comparisons: false,
               inline: 2,
@@ -113,7 +113,7 @@ export default ({ NODE_ENV }) => {
         {
           oneOf: [
             {
-              test: /\.js?$/,
+              test: /\.js$/,
               include: nodeModulesDir,
               loader: 'babel-loader',
               options: {
