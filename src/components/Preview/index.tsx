@@ -1,18 +1,17 @@
-import { useText } from 'jsx-dom-runtime';
-
+import { signal } from 'jsx-dom-runtime';
 import s from './styles.css';
 import { createFavicon } from './createFavicon';
 import { connect } from '../../store';
 
 const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
-const [color, setColor] = useText('');
+const colorText = signal();
 
 let timeout: NodeJS.Timeout;
 
 export const Preview: JSX.FC = () => {
   const ready: JSX.Ref<HTMLElement> = (node) =>
     connect('color', ({ color }) => {
-      setColor(color);
+      colorText.set(color);
       node.style.backgroundColor = color;
 
       clearTimeout(timeout);
@@ -28,7 +27,7 @@ export const Preview: JSX.FC = () => {
   return (
     <div ref={ready} class={s.view} role="img" aria-label="Color preview">
       <output class={s.color} aria-label="Current color code">
-        {color}
+        {colorText}
       </output>
       <output class={s.size} aria-label="GIF file size">
         1x1 (35 bytes)

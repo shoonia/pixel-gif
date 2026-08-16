@@ -34,12 +34,8 @@ export const getHex = (value: string) => {
   }
 
   switch (color.length) {
-    case 6: {
-      return color;
-    }
-    case 3: {
-      return color.split('').map((i) => i + i).join('');
-    }
+    case 6: return color;
+    case 3: return color.split('').map((i) => i + i).join('');
   }
 };
 

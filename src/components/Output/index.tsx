@@ -1,41 +1,43 @@
+import { signal } from 'jsx-dom-runtime';
 import s from './styles.css';
 import { TextInput } from './TextInput';
 import { RadixSelect } from './RadixSelect';
 import { connect } from '../../store';
 
 export const Output: JSX.FC = () => {
-  const dataUrlRef: JSX.Ref<HTMLInputElement> = (node) =>
-    connect('url', (state) => {
-      node.value = state.url;
-    });
+  const dataUrl = signal();
+  const link = signal();
+  const bytesStr = signal();
+  const base64 = signal();
 
-  const linkRef: JSX.Ref<HTMLInputElement> = (node) =>
-    connect('color', (state) => {
-      node.value = process.env.HOMEPAGE + state.color;
-    });
+  connect('url', (state) =>
+    dataUrl.set(state.url),
+  );
 
-  const bytesRef: JSX.Ref<HTMLInputElement> = (node) =>
-    connect('bytes', 'radix', ({ bytes, radix }) => {
-      node.value = bytes.map((i) => i.toString(radix)).join(' ');
-    });
+  connect('color', (state) =>
+    link.set(process.env.HOMEPAGE + state.color),
+  );
 
-  const base64Ref: JSX.Ref<HTMLInputElement> = (node) =>
-    connect('base64', (state) => {
-      node.value = state.base64;
-    });
+  connect('bytes', 'radix', ({ bytes, radix }) =>
+    bytesStr.set(bytes.map((i) => i.toString(radix)).join(' ')),
+  );
+
+  connect('base64', (state) =>
+    base64.set(state.base64),
+  );
 
   return (
     <fieldset class={s.box}>
       <legend class="sr-only">
         Output formats
       </legend>
-      <TextInput ref={dataUrlRef} label="Data URL" />
-      <TextInput ref={base64Ref} label="Base64" />
+      <TextInput value={dataUrl} label="Data URL" />
+      <TextInput value={base64} label="Base64" />
       <div class={s.bytes} role="group" aria-label="Output bytes">
-        <TextInput ref={bytesRef} label="Bytes" />
+        <TextInput value={bytesStr} label="Bytes" />
         <RadixSelect />
       </div>
-      <TextInput ref={linkRef} label="Share Link" />
+      <TextInput value={link} label="Share Link" />
     </fieldset>
   );
 };
