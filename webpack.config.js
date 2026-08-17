@@ -99,6 +99,8 @@ export default ({ NODE_ENV }) => {
       ],
       extensions: [
         '.js',
+        '.cjs',
+        '.mjs',
         '.ts',
         '.tsx',
       ],
@@ -108,12 +110,15 @@ export default ({ NODE_ENV }) => {
         javascript: {
           strictExportPresence: true,
         },
+        json: {
+          namedExports: true,
+        },
       },
       rules: [
         {
           oneOf: [
             {
-              test: /\.js$/,
+              test: /\.[cm]?js$/,
               include: nodeModulesDir,
               loader: 'babel-loader',
               options: {
@@ -211,7 +216,6 @@ export default ({ NODE_ENV }) => {
       }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'process.env.HOMEPAGE': JSON.stringify(manifest.scope),
       }),
       new ForkTsCheckerWebpackPlugin({
         async: isDev,

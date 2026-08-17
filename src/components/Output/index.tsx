@@ -3,6 +3,7 @@ import s from './styles.css';
 import { TextInput } from './TextInput';
 import { RadixSelect } from './RadixSelect';
 import { connect } from '../../store';
+import { scope as baseUrl } from '../../../static/manifest.json';
 
 export const Output: JSX.FC = () => {
   const dataUrl = signal();
@@ -15,7 +16,7 @@ export const Output: JSX.FC = () => {
   );
 
   connect('color', (state) =>
-    link.set(process.env.HOMEPAGE + state.color),
+    link.set(baseUrl + state.color),
   );
 
   connect('bytes', 'radix', ({ bytes, radix }) =>
