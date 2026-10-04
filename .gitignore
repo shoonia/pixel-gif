@@ -1,7 +1,7 @@
 .parcel-cache/
 dist/
 node_modules/
+.swc/
 
 .DS_Store
-.cache
 *.log*

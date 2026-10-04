@@ -1,18 +1,18 @@
-import { resolve } from 'node:path';
 import { realpathSync } from 'node:fs';
+import { resolve } from 'node:path';
 
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import createLocalIdent from 'mini-css-class-name/css-loader';
+import autoprefixer from 'autoprefixer';
+import CopyPlugin from 'copy-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
-import HTMLInlineScriptWebpackPlugin from 'html-inline-script-webpack-plugin';
 import CssMqpackerPlugin from 'css-mqpacker-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
-import autoprefixer from 'autoprefixer';
+import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
+import HTMLInlineScriptWebpackPlugin from 'html-inline-script-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import createLocalIdent from 'mini-css-class-name/css-loader';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
 
 import pkg from './package.json' with { type: 'json' };
 import manifest from './static/manifest.json' with { type: 'json' };
@@ -54,13 +54,14 @@ export default ({ NODE_ENV }) => {
       mergeDuplicateChunks: true,
       minimizer: [
         new TerserPlugin({
+          minify: TerserPlugin.swcMinify,
           extractComments: false,
           terserOptions: {
-            ecma: 2025,
+            ecma: 2024,
             module: true,
             toplevel: true,
             compress: {
-              ecma: 2025,
+              ecma: 2024,
               module: true,
               comparisons: false,
               inline: 2,
@@ -99,6 +100,7 @@ export default ({ NODE_ENV }) => {
       ],
       extensions: [
         '.js',
+        '.jsx',
         '.cjs',
         '.mjs',
         '.ts',
@@ -118,43 +120,31 @@ export default ({ NODE_ENV }) => {
         {
           oneOf: [
             {
-              test: /\.[cm]?js$/,
-              include: nodeModulesDir,
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: isDev,
-                cacheCompression: false,
-                comments: isDev,
-                compact: isProd,
-                minified: isProd,
-                plugins: [
-                  [
-                    'babel-plugin-transform-remove-polyfill',
-                    {
-                      globalObjects: ['navigator'],
+              test: /\.(js|mjs|cjs|jsx|ts|tsx)$/,
+              use: {
+                loader: 'swc-loader',
+                options: {
+                  sync: true,
+                  minify: isProd,
+                  jsc: {
+                    target: 'es2024',
+                    parser: {
+                      syntax: 'typescript',
+                      tsx: true,
                     },
-                  ],
-                ],
-              },
-            },
-            {
-              test: /\.tsx?$/,
-              include: srcDir,
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: isDev,
-                cacheCompression: false,
-                compact: isProd,
-                minified: isProd,
-                presets: [
-                  [
-                    '@babel/preset-typescript',
-                    {
-                      optimizeConstEnums: true,
+                    transform: {
+                      react: {
+                        runtime: 'preserve',
+                      },
                     },
-                  ],
-                  'jsx-dom-runtime/babel-preset',
-                ],
+                    experimental: {
+                      plugins: [
+                        ['swc-jsx-dom-runtime', {}],
+                        isProd && ['swc-plugin-evaluate-polyfills', { browser: true }],
+                      ].filter(Boolean),
+                    },
+                  },
+                },
               },
             },
             {
