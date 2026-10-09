@@ -54,7 +54,6 @@ export default ({ NODE_ENV }) => {
       mergeDuplicateChunks: true,
       minimizer: [
         new TerserPlugin({
-          minify: TerserPlugin.swcMinify,
           extractComments: false,
           terserOptions: {
             ecma: 2024,
@@ -241,6 +240,9 @@ export default ({ NODE_ENV }) => {
       compress: false,
       static: srcDir,
       port: 3000,
+    },
+    stats: {
+      children: true,
     },
   };
 };
