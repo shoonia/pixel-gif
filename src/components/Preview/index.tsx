@@ -20,7 +20,7 @@ export const Preview: JSX.FC = () => {
 
       favicon.href = createFavicon(color);
       location.hash = color;
-      console.log('%c  ', css, color);
+      console.info('%c  ', css, color);
     }, 300);
   });
 

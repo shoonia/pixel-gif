@@ -65,7 +65,7 @@ export default ({ NODE_ENV }) => {
               module: true,
               comparisons: false,
               inline: 2,
-              drop_console: true,
+              drop_console: ['log', 'warn'],
               passes: 3,
               toplevel: true,
               pure_getters: true,
