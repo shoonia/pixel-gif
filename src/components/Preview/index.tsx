@@ -1,18 +1,18 @@
-import { signal, type CSSProperties } from 'jsx-dom-runtime';
+import { signal } from 'jsx-dom-runtime';
 import { connect } from '../../store';
 import { createFavicon } from './createFavicon';
 import s from './styles.css';
 
 const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
 const colorText = signal();
-const bgColor = signal<CSSProperties>();
+const bgColor = signal();
 
 let timeout: NodeJS.Timeout;
 
 export const Preview: JSX.FC = () => {
   connect('color', ({ color }) => {
     colorText.set(color);
-    bgColor.set({ backgroundColor: color });
+    bgColor.set('background-color:' + color);
 
     clearTimeout(timeout);
     timeout = setTimeout(() => {
