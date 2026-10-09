@@ -11,12 +11,14 @@ let timeout: NodeJS.Timeout;
 
 export const Preview: JSX.FC = () => {
   connect('color', ({ color }) => {
+    const bgc = 'background-color:' + color;
+
     colorText.set(color);
-    bgColor.set('background-color:' + color);
+    bgColor.set(bgc);
 
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;background-color:' + color;
+      const css = 'display:inline-block;border:1px solid #c6e2f7;border-radius:50%;width:1em;height:1em;' + bgc;
 
       favicon.href = createFavicon(color);
       location.hash = color;
